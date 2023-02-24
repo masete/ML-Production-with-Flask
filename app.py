@@ -15,3 +15,6 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+    # print(json.dumps(label.__dict__))
