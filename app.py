@@ -12,12 +12,9 @@ with open("model.pkl", "rb") as f:
 def predict():
     x = request.get_json(force=True)
     data = json.dumps(x, cls=jsonencoder.NpEncoder)
-    prediction = model.predict([np.array(json.loads(data.replace(" ", ",")), dtype=np.float32)])
+    prediction = model.predict([np.array(list(data.values()))])
     output = json.dumps(prediction[0].__dict__)
     return jsonify(output)
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# a = np.asarray(json.loads(foo.replace(" ", ",")), dtype=np.float32)
-    # print(json.dumps(label.__dict__))
