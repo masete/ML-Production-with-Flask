@@ -10,10 +10,10 @@ with open("model.pkl", "rb") as f:
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    x = request.get_json(force=True)
-    data = json.dumps(x, cls=jsonencoder.NpEncoder)
+    data = request.get_json(force=True)
+    # data = json.dumps(x, cls=jsonencoder.NpEncoder)
     prediction = model.predict([np.array(list(data.values()))])
-    output = json.dumps(prediction[0].__dict__)
+    output = prediction[0]
     return jsonify(output)
 
 if __name__ == "__main__":
