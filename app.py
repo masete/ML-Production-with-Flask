@@ -1,6 +1,7 @@
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+import jsonencoder
 
 app = Flask(__name__)
 with open("model.pkl", "rb") as f:
