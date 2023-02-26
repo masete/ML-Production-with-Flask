@@ -23,11 +23,11 @@ def predict():
     
     if prediction==0:
         return render_template('index.html',
-                               prediction_text='Low chances of patient having diabetes'.format(prediction),
+                               prediction_text='Low chances of the startup being success'.format(prediction),
                                )
     else:
         return render_template('index.html',
-                               prediction_text='High chances of patient having diabetes'.format(prediction),
+                               prediction_text='High chances that the startup will be successful'.format(prediction),
                               )
 
 
