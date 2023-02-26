@@ -10,11 +10,15 @@ with open("model.pkl", "rb") as f:
 
 @app.route("/predict", methods=["POST", "GET"])
 def predict():
-    data = request.get_json(force=True)
+    # data = request.get_json(force=True)
     # data = json.dumps(x, cls=jsonencoder.NpEncoder)
-    prediction = model.predict([np.array(list(data.values()))])
-    output = prediction[0]
-    return jsonify(output)
+    # prediction = model.predict([np.array(list(data.values()))])
+    # output = prediction[0]
+    # return jsonify(output)
+
+    int_features = [float(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
+    prediction = model.predict(final_features)
 
 if __name__ == "__main__":
     app.run(debug=True)
