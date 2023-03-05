@@ -1,6 +1,7 @@
 import pickle
 import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, make_response
+from flask_restplus import Api, Resource, fields
 
 app = Flask(__name__)
 with open("model.pkl", "rb") as f:
