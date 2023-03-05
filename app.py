@@ -12,29 +12,38 @@ def home():
 
 @app.route("/predict", methods=["POST", "GET"])
 def predict():
-    try: 
-        values = request.json
-        data = [val for val in values.values()]
-        # int_features = [float(x) for x in request.form.values()]
-        final_features = [np.array(data).reshape(1, -1)]
-        prediction = model.predict(final_features)
-        types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
+    class MainClass(Resource):
 
-        response = jsonify({
-            "statusCode": 200,
-            "status": "Prediction made",
-            "result": "The type of iris plant is: " + types[prediction[0]]
+        def options(self):
+            response = make_response()
+            response.headers.add("Access-Control-Allow-Origin", "*")
+            response.headers.add('Access-Control-Allow-Headers', "*")
+            response.headers.add('Access-Control-Allow-Methods', "*")
+            return response
+        
+        try: 
+            values = request.json
+            data = [val for val in values.values()]
+            # int_features = [float(x) for x in request.form.values()]
+            final_features = [np.array(data).reshape(1, -1)]
+            prediction = model.predict(final_features)
+            types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
+
+            response = jsonify({
+                "statusCode": 200,
+                "status": "Prediction made",
+                "result": "The type of iris plant is: " + types[prediction[0]]
+                })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
+        
+        except Exception as error:
+            return jsonify({
+                "statusCode": 500,
+                "status": "Could not make prediction",
+                "error": str(error)
             })
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
-    
-    except Exception as error:
-        return jsonify({
-            "statusCode": 500,
-            "status": "Could not make prediction",
-            "error": str(error)
-        })
-    
+        
     
     # if prediction==0:
     #     return render_template('index.html',
