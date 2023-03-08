@@ -9,6 +9,7 @@ const Predict = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const [isloading, setIsloading] = useState(false)
+  const [result, setResult] = useState("");
 
   const [values, setValues] = useState({
     Last_funding_round_raised_amount: "",
@@ -51,7 +52,7 @@ const Predict = () => {
         'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(formData)
+        body: JSON.stringify(values)
     })  //https://salty-reaches-05509.herokuapp.com/http://127.0.0.1:5000/prediction
     .then(response => response.json())
     .then(response => {
