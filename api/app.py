@@ -31,6 +31,9 @@ def predict():
                 final_features = [np.array(data).reshape(1, -1)]
                 prediction = model.predict(final_features)
                 types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
+                 
+
+                print(response)
 
                 response = jsonify({
                     "statusCode": 200,
@@ -38,7 +41,7 @@ def predict():
                     "result": "The type of iris plant is: " + types[prediction[0]]
                     })
                 response.headers.add('Access-Control-Allow-Origin', '*')
-                return print(response)
+                return response
                 
             except Exception as error:
                 return jsonify({
@@ -58,5 +61,5 @@ def predict():
     #                           )
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
