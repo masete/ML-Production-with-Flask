@@ -22,7 +22,7 @@ const Predict = () => {
     number_of_market_countires: "",
     Female_Co_Founder: "",
     Average_time_of_rounds: "",
-    number_of_investors: 0,
+    number_of_investors: "",
     Sector_Information_Technology: "",
     Business_model_B2C: ""
 
@@ -41,8 +41,9 @@ const Predict = () => {
 
   const handleClick = (event) => {
   //const proxyurl = "https://salty-reaches-05509.herokuapp.com/";
-  
-  const url = "http://127.0.0.1:42707/predict/";
+  const url = "http://127.0.0.1:38209/predict_series_A/";
+
+
 
     setIsloading(true);
     fetch(url,
@@ -101,7 +102,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Last_funding_round_raised_amount}
-                name="firstName"
+                name="Last_funding_round_raised_amount"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -114,7 +115,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.age_of_company}
-                name="lastName"
+                name="age_of_company"
                 error={!!touched.lastName && !!errors.lastName}
                 helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: "span 2" }}
@@ -127,7 +128,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Amount_of_the_last_funding_type}
-                name="email"
+                name="Amount_of_the_last_funding_type"
                 error={!!touched.lastName && !!errors.lastName}
                 helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: "span 2" }}
@@ -140,7 +141,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Companies_Information_Level_of_Completeness}
-                name="contact"
+                name="Companies_Information_Level_of_Completeness"
                 error={!!touched.lastName && !!errors.lastName}
                 helperText={touched.lastName && errors.lastName}
                 sx={{ gridColumn: "span 2" }}
@@ -153,7 +154,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Stage_DA_Classified_Early}
-                name="address1"
+                name="Stage_DA_Classified_Early"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 2" }}
@@ -166,7 +167,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.number_of_founders}
-                name="address2"
+                name="number_of_founders"
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 2" }}
@@ -179,7 +180,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.number_of_bussiness_categories}
-                name="address1"
+                name="number_of_bussiness_categories"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 2" }}
@@ -192,7 +193,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.number_of_market_countires}
-                name="address2"
+                name="number_of_market_countires"
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 2" }}
@@ -205,7 +206,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Female_Co_Founder}
-                name="address1"
+                name="Female_Co_Founder"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 2" }}
@@ -218,7 +219,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Average_time_of_rounds}
-                name="address2"
+                name="Average_time_of_rounds"
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 2" }}
@@ -231,7 +232,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.number_of_investors}
-                name="address2"
+                name="number_of_investors"
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 2" }}
@@ -244,7 +245,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Sector_Information_Technology}
-                name="address1"
+                name="Sector_Information_Technology"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 2" }}
@@ -257,7 +258,7 @@ const Predict = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.Business_model_B2C}
-                name="address1"
+                name="Business_model_B2C"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
                 sx={{ gridColumn: "span 2" }}
@@ -290,12 +291,19 @@ const checkoutSchema = yup.object().shape({
   address2: yup.string().required("required"),
 });
 const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  contact: "",
-  address1: "",
-  address2: "",
+  Last_funding_round_raised_amount: "",
+  age_of_company: "",
+  Amount_of_the_last_funding_type: "",
+  Companies_Information_Level_of_Completeness: "",
+  Stage_DA_Classified_Early: "",
+  number_of_founders: "",
+  number_of_bussiness_categories: "",
+  number_of_market_countires: "",
+  Female_Co_Founder: "",
+  Average_time_of_rounds: "",
+  number_of_investors: "",
+  Sector_Information_Technology: "",
+  Business_model_B2C: ""
 };
 
 export default Predict;
