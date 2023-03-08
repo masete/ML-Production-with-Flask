@@ -9,7 +9,8 @@ const Predict = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const [isloading, setIsloading] = useState(false)
-  const [result, setResult] = useState("");
+  // const [result, setResult] = useState("");
+  const [predictionData, setPredictionData] = useState({})
 
   const [values, setValues] = useState({
     Last_funding_round_raised_amount: "",
@@ -39,28 +40,55 @@ const Predict = () => {
 
 }
 
-  const handleClick = (event) => {
+  const handleClick = async () => {
+
+    setIsloading(true)
+    
+    const request = new values()
+
+    // for(let key in formData) {
+    //     request.append(key, formData[key])
+    // }
+
+    const response = await api.post(
+        "/predict_series_A",
+        request
+    )
+    
+    const responseData = response.data
+    setPredictionData(responseData)
+    setIsloading(false)
+  }
+
+  const handleBackClick = () => {
+    setPredictionData({})
+  }
+
+  // const handleClick = (event) => {
   //const proxyurl = "https://salty-reaches-05509.herokuapp.com/";
-  const url = "http://127.0.0.1:38209/predict_series_A/";
+  // const url = "http://127.0.0.1:36487/predict_series_A/";
+
+  // const url = "http://127.0.0.1:38209/predict_series_A/";
 
 
 
-    setIsloading(true);
-    fetch(url,
-    {
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify(values)
-    })  //https://salty-reaches-05509.herokuapp.com/http://127.0.0.1:5000/prediction
-    .then(response => response.json())
-    .then(response => {
-        setResult(response.result);
-        setIsloading(false);
-    });
-};
+    // setIsloading(true);
+    // fetch(url,
+    // {
+    //     headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //     method: 'POST',
+    //     body: JSON.stringify(values)
+    // })  
+    //https://salty-reaches-05509.herokuapp.com/http://127.0.0.1:5000/prediction
+//     .then(response => response.json())
+//     .then(response => {
+//         setResult(response.result);
+//         setIsloading(false);
+//     });
+// };
 
 
   const handleFormSubmit = (values) => {
