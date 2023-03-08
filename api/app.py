@@ -2,6 +2,7 @@
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify, render_template, make_response
+import json
 
 app = Flask(__name__)
 with open("model.pkl", "rb") as f:
@@ -14,31 +15,32 @@ def home():
 @app.route("/predict_series_A", methods=["GET", "POST"])
 def predictSeriesA():
     try: 
-                values = request.json
-                data = [val for val in values.values()]
-                # int_features = [float(x) for x in request.form.values()]
-                final_features = [np.array(data).reshape(1, -1)]
-                prediction = model.predict(final_features)
-                types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
-                 
+        values = request.json
+        data = [val for val in values.values()]
+        # int_features = [float(x) for x in request.form.values()]
+        final_features = [np.array(data).reshape(1, -1)]
+        prediction = model.predict(final_features)
+        types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
 
-                print(response)
-
-                response = jsonify({
-                    "statusCode": 200,
-                    "status": "Prediction made",
-                    "result": "The are : " + types[prediction[0]]
-                    })
-                response.headers.add('Access-Control-Allow-Origin', '*')
-                return response
+         
+        response = response.get_json(force=True)
+        response = jsonify({
+            "statusCode": 200,
+            "status": "Prediction made",
+            "result": "The are : " + types[prediction[0]]
+            })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        # response_data_forced_json = response.get_json(force=True)
+        return response
                 
     except Exception as error:
-                return jsonify({
-                    "statusCode": 500,
-                    "status": "Could not make prediction",
-                    "error": str(error)
-                })
-            
+
+        return jsonify({
+            "statusCode": 500,
+            "status": "Could not make prediction",
+            "error": str(error)
+        })
+    
     
 # @app.route("/predict", methods=["POST", "GET"])
 # def predict():
