@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, make_response
-# from flask_cors import CORS, cross_origin
+from flask_cors import CORS, cross_origin
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify, render_template, make_response
@@ -9,15 +9,15 @@ ACL_ORIGIN = 'Access-Control-Allow-Origin'
 
 app = Flask(__name__)
 # CORS(app)
-# cors = CORS(app)
+cors = CORS(app)
 
-# @app.after_request
-# def after_request(response):
-#   response.headers.add('Access-Control-Allow-Origin', '*')
-#   response.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-#   response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-#   response.headers.add('Access-Control-Allow-Credentials', 'true')
-#   return 
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  response.headers.add('Access-Control-Allow-Credentials', 'true')
+  return 
 
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
@@ -49,7 +49,7 @@ def predictSeriesA():
         # if response is not None and response.headers is not None and response.headers.get(ACL_ORIGIN):{
         #         response.headers.add('Access-Control-Allow-Origin', '*')
         # }
-        # origin_header.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Origin', '*')
         return response
                 
     except Exception as error:
