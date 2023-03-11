@@ -1,7 +1,9 @@
+# from lib2to3.pytree import convert
 from flask import Flask, request, jsonify, render_template, make_response
 import pickle
 import numpy as np
 import json
+import os
 
 ACL_ORIGIN = 'Access-Control-Allow-Origin'
 
@@ -10,18 +12,21 @@ app = Flask(__name__)
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+def convert(o):
+    if isinstance(o, np.generic):
+        return o.item()
+    raise TypeError
+
+# @app.route('/')
+# def home():
+#     return render_template('index.html')
 
 @app.route("/predict_series_A", methods=["GET", "POST"])
 def predictSeriesA():
 
     try:
         if request.method == "POST":
-            print("request =", request.data)
             form_values = request.json
-            print("form_values =", form_values)
             column_names = ["Last_funding_round_raised_amount", 
                             "age_of_company",
                             "Amount_of_the_last_funding_type",
@@ -38,24 +43,18 @@ def predictSeriesA():
 
             for key in form_values:
                 form_values[key] = form_values[key].strip()
-            input_data = np.asarray([float(form_values[i]) for i in column_names]).reshape(
-                1, -1
-            )
-            print("input_data =", input_data)
+            input_data = np.asarray([float(form_values[i]) for i in column_names]).reshape(1, -1)
             prediction = model.predict(input_data)
-            print("prediction", prediction)
-           
-    
-        types = { 0: "Low chances of the startup being success", 1: "High chances that the startup will be successful "}
 
-        response = jsonify({
-        "statusCode": 200,
-        "status": "Prediction made",
-        "result": "The are : " + types[prediction[0]]
-        })
-        response = json.dumps(prediction)
-        print(response)
-        return response
+            types = { 0:"According to our data and the metrics provided, there are Low chances of the startup being success", 1:"According to our data and the metrics provided, there are High chances that the startup will be successful"}
+            response = jsonify({
+                "statusCode": 200,
+                "status": "Prediction made",
+                "result": "The are : " + types[prediction[0]]
+            })
+           
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
 
         
     except:
