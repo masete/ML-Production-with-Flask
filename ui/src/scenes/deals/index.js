@@ -1,23 +1,17 @@
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { yVposts } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import { Box } from "@mui/material";
 import Header from "../../components/Header";
-import DealsPieChart from "../../components/DealsPieChart";
+// import LineChart from "../../components/LineChart";
+import DealsLineChart from "../../components/DealsLineChart";
 
-const Deals = () => {
-    return (
-        <Box m="20px">
-          <Header title="Pie Chart" subtitle="Simple Pie Chart" />
-          <Box height="75vh">
-            <DealsPieChart />
-          </Box>
-        </Box>
-      );
-    };
-  
-  export default Deals;
-  
+const DealsLineChart = () => {
+  return (
+    <Box m="20px">
+      <Header title="Line Chart" subtitle="Simple Line Chart" />
+      <Box height="75vh">
+        <DealsLineChart />
+      </Box>
+    </Box>
+  );
+};
+
+export default DealsLineChart;
