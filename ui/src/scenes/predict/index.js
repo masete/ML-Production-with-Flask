@@ -1,109 +1,83 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Button, Collapse, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+// import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 const Predict = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
+  const [values, setValues] =useState({})
+  const [result, setResult] = useState("")
+  // const [response, setResponse] = useState('');
+  // const [isLoading, setIsloading] = useState(false);
 
-  const [isloading, setIsloading] = useState(false)
-  // const [result, setResult] = useState("");
-  const [predictionData, setPredictionData] = useState({})
-
-  const [values, setValues] = useState({
-    Last_funding_round_raised_amount: "",
-    age_of_company: "",
-    Amount_of_the_last_funding_type: "",
-    Companies_Information_Level_of_Completeness: "",
-    Stage_DA_Classified_Early: "",
-    number_of_founders: "",
-    number_of_bussiness_categories: "",
-    number_of_market_countires: "",
-    Female_Co_Founder: "",
-    Average_time_of_rounds: "",
-    number_of_investors: "",
-    Sector_Information_Technology: "",
-    Business_model_B2C: ""
-
-});
-
-  const handleChange = (e, changeKey=undefined) => {
-  // console.log(changeKey, e.target.value)
-  let newData = {...values}
-  if(changeKey) {
-      newData[changeKey] = e.target.value
-  }
-  else newData[e.target.id] = e.target.value
-  setValues(newData)
-
+  const handleChange = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+    let inputData = {...values};
+    inputData[name]=value;
+    setValues(inputData);
 }
 
-  const handleClick = async () => {
 
-    setIsloading(true)
+  const handleSubmit = (values, { setSubmitting }) => {
+
+    console.log(values)
     
-    const request = new values()
-
-    // for(let key in formData) {
-    //     request.append(key, formData[key])
-    // }
-
-    const response = await api.post(
-        "/predict_series_A",
-        request
-    )
-    
-    const responseData = response.data
-    setPredictionData(responseData)
-    setIsloading(false)
+    fetch("/predict_series_A", {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    // })
+    // .then(response => {
+    //   if (!response.ok) {
+    //     throw new Error('Network response was not ok');
+    //   }
+    //   return response.json();
+    })
+      .then(response => response.json())
+      .then(response => {
+        // result: response.result,
+        console.log(response.result)
+        setResult(response.result)
+    })
+    .catch(error => {
+      // handle the error
+    })
+    .finally(() => {
+      // set the submitting state to false
+      setSubmitting(false);
+    });
   }
 
-  const handleBackClick = () => {
-    setPredictionData({})
-  }
 
-  // const handleClick = (event) => {
-  //const proxyurl = "https://salty-reaches-05509.herokuapp.com/";
-  // const url = "http://127.0.0.1:36487/predict_series_A/";
-
-  // const url = "http://127.0.0.1:38209/predict_series_A/";
-
-
-
-    // setIsloading(true);
-    // fetch(url,
-    // {
-    //     headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //     method: 'POST',
-    //     body: JSON.stringify(values)
-    // })  
-    //https://salty-reaches-05509.herokuapp.com/http://127.0.0.1:5000/prediction
-//     .then(response => response.json())
-//     .then(response => {
-//         setResult(response.result);
-//         setIsloading(false);
-//     });
-// };
-
-
-  const handleFormSubmit = (values) => {
-    console.log(values);
-  };
+  // const NextForm = ({ result }) => {
+  //   return (
+  //     <div>
+  //       <h2>Results</h2>
+  //       <p>Prediction: {result}</p>
+  //     </div>
+  //   );
+  // };
+  
 
   return (
     <Box m="20px">
-      <Header title="Predict" subtitle="Predicting the probability in reaching series A financing" />
+      <Header title="SERIES A" subtitle="Predicting the probability in reaching series A financing" />
 
       <Formik
-        onSubmit={handleFormSubmit}
-        onChange={handleChange}
+        // onSubmit={handleFormSubmit}
         initialValues={initialValues}
+        onChange={(e)=>handleChange(e)}
         validationSchema={checkoutSchema}
+        onSubmit={handleSubmit}
       >
         {({
           values,
@@ -112,6 +86,7 @@ const Predict = () => {
           handleBlur,
           handleChange,
           handleSubmit,
+          isSubmitting
         }) => (
           <form onSubmit={handleSubmit}>
             <Box
@@ -128,11 +103,11 @@ const Predict = () => {
                 type="text"
                 label="16_Last funding round raised amount"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Last_funding_round_raised_amount}
                 name="Last_funding_round_raised_amount"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
+                error={!!touched.Last_funding_round_raised_amount && !!errors.Last_funding_round_raised_amount}
+                helperText={touched.Last_funding_round_raised_amount && errors.Last_funding_round_raised_amount}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -141,11 +116,11 @@ const Predict = () => {
                 type="text"
                 label="age_of_company"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.age_of_company}
                 name="age_of_company"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
+                error={!!touched.age_of_company && !!errors.age_of_company}
+                helperText={touched.age_of_company && errors.age_of_company}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -154,11 +129,11 @@ const Predict = () => {
                 type="text"
                 label="Amount of the last funding type"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Amount_of_the_last_funding_type}
                 name="Amount_of_the_last_funding_type"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
+                error={!!touched.Amount_of_the_last_funding_type && !!errors.Amount_of_the_last_funding_type}
+                helperText={touched.Amount_of_the_last_funding_type && errors.Amount_of_the_last_funding_type}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -167,11 +142,11 @@ const Predict = () => {
                 type="text"
                 label="Companies Information, Level of Completeness"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Companies_Information_Level_of_Completeness}
                 name="Companies_Information_Level_of_Completeness"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
+                error={!!touched.Companies_Information_Level_of_Completeness && !!errors.Companies_Information_Level_of_Completeness}
+                helperText={touched.Companies_Information_Level_of_Completeness && errors.Companies_Information_Level_of_Completeness}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -180,11 +155,11 @@ const Predict = () => {
                 type="text"
                 label="Stage, DA Classified_Early"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Stage_DA_Classified_Early}
                 name="Stage_DA_Classified_Early"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                error={!!touched.Stage_DA_Classified_Early && !!errors.Stage_DA_Classified_Early}
+                helperText={touched.Stage_DA_Classified_Early && errors.Stage_DA_Classified_Early}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -193,11 +168,11 @@ const Predict = () => {
                 type="text"
                 label="number of founders"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.number_of_founders}
                 name="number_of_founders"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
+                error={!!touched.number_of_founders && !!errors.number_of_founders}
+                helperText={touched.number_of_founders && errors.number_of_founders}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -206,11 +181,11 @@ const Predict = () => {
                 type="text"
                 label="number of bussiness categories"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.number_of_bussiness_categories}
                 name="number_of_bussiness_categories"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                error={!!touched.number_of_bussiness_categories && !!errors.number_of_bussiness_categories}
+                helperText={touched.number_of_bussiness_categories && errors.number_of_bussiness_categories}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -219,11 +194,11 @@ const Predict = () => {
                 type="text"
                 label="number of market countires"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.number_of_market_countires}
                 name="number_of_market_countires"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
+                error={!!touched.number_of_market_countires && !!errors.number_of_market_countires}
+                helperText={touched.number_of_market_countires && errors.number_of_market_countires}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -232,11 +207,11 @@ const Predict = () => {
                 type="text"
                 label="Female_Co-Founder"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Female_Co_Founder}
                 name="Female_Co_Founder"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                error={!!touched.Female_Co_Founder && !!errors.Female_Co_Founder}
+                helperText={touched.Female_Co_Founder && errors.Female_Co_Founder}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -245,11 +220,11 @@ const Predict = () => {
                 type="text"
                 label="Average time of rounds(days)"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Average_time_of_rounds}
                 name="Average_time_of_rounds"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
+                error={!!touched.Average_time_of_rounds && !!errors.Average_time_of_rounds}
+                helperText={touched.Average_time_of_rounds && errors.Average_time_of_rounds}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -258,11 +233,11 @@ const Predict = () => {
                 type="text"
                 label="number of investors"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.number_of_investors}
                 name="number_of_investors"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
+                error={!!touched.number_of_investors && !!errors.number_of_investors}
+                helperText={touched.number_of_investors && errors.number_of_investors}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -271,11 +246,11 @@ const Predict = () => {
                 type="text"
                 label="Sector_Information Technology"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Sector_Information_Technology}
                 name="Sector_Information_Technology"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                error={!!touched.Sector_Information_Technology && !!errors.Sector_Information_Technology}
+                helperText={touched.Sector_Information_Technology && errors.Sector_Information_Technology}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -284,39 +259,77 @@ const Predict = () => {
                 type="text"
                 label="Business_model_B2C"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e)}
                 value={values.Business_model_B2C}
                 name="Business_model_B2C"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                error={!!touched.Business_model_B2C && !!errors.Business_model_B2C}
+                helperText={touched.Business_model_B2C && errors.Business_model_B2C}
                 sx={{ gridColumn: "span 2" }}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button onClick={()=>handleClick()} type="submit" color="secondary" variant="contained">
-                Predict
+              <Button type="submit" disabled={isSubmitting} color="secondary" variant="contained">
+                Predict Series A
               </Button>
             </Box>
           </form>
         )}
       </Formik>
+
+      {/* {response && <p>{response}</p>} */}
+      {/* <p>{{response}}</p> */}
+
+      <div>
+
+        {result === "" ? null :
+              (
+              <Row>
+                <p> 
+                  {/* className="result-container"> */}
+                  <Col>{result}</Col>
+                </p>
+              </Row>
+              )
+        }
+
+      </div>
+      {/* {result === "" ? null : */}
+        {/* <NextForm values={result} /> */}
+      {/* } */}
+      {/* <div>
+      {result ? (
+        <ul>
+          {result.map(item => (
+            <li>{result}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div> */}
+
     </Box>
   );
 };
 
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+// const phoneRegExp =
+//   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
 const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  contact: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
+  Last_funding_round_raised_amount: yup.string().required("required"),
+  age_of_company: yup.string().required("required"),
+  Amount_of_the_last_funding_type: yup.string().required("required"),
+  Companies_Information_Level_of_Completeness: yup.string().required("required"),
+  Stage_DA_Classified_Early: yup.string().required("required"),
+  number_of_founders: yup.string().required("required"),
+  number_of_bussiness_categories: yup.string().required("required"),
+  number_of_market_countires: yup.string().required("required"),
+  Female_Co_Founder: yup.string().required("required"),
+  Average_time_of_rounds: yup.string().required("required"),
+  number_of_investors: yup.string().required("required"),
+  Sector_Information_Technology: yup.string().required("required"),
+  Business_model_B2C: yup.string().required("required"),
+  
 });
 const initialValues = {
   Last_funding_round_raised_amount: "",
