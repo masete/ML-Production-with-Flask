@@ -13,11 +13,11 @@ const LineChart = () => {
       <Grid item xs={12}>
         <Paper>Row 2</Paper>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={11}>
         <Paper style={{ backgroundColor: 'transparent' }}>
             <Box m="1px">
               <Header title="Number of deals by year" subtitle="Simple Line Chart" />
-              <Box height="75vh">
+              <Box height="55vh">
                 <DealsLineChart />
             </Box>
            </Box>
