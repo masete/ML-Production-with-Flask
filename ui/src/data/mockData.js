@@ -1284,55 +1284,62 @@ export const mockGeographyData = [
 
 export const yVposts = [
   {
-      year:2018.000, 
-      posts:510,
+    id: "deals",
+    color: tokens("dark").greenAccent[500],
+    data: [
+  {
+      x:2018.000, 
+      y:510,
   },
   {
-      year:2019.000,   
-      posts:361,
+      x:2019.000,   
+      y:361,
   },
   {
-      year:2017.000,
-      posts:153,
+      x:2017.000,
+      y:153,
   },
   {
-      year:2016.000,
-      posts:108,
+      x:2016.000,
+      y:108,
   },
   {
-      year:2015.000,
-      posts:60,
+      x:2015.000,
+      y:60,
   },
-  {   year:2014.000,
-      posts:31,
-  },
-  {
-      year:2013.000,
-      posts:20,
+  {   x:2014.000,
+      y:31,
   },
   {
-      year:2012.000,
-      posts:16,
+      x:2013.000,
+      y:20,
   },
   {
-      year:2011.000,
-      posts:6,
+      x:2012.000,
+      y:16,
   },
   {
-      year:2010.000,
-      posts:4,
+      x:2011.000,
+      y:6,
   },
   {
-      year:2008.000,
-      posts:2,
+      x:2010.000,
+      y:4,
   },
   {
-      year:2009.000,
-      posts:2,
+      x:2008.000,
+      y:2,
   },
   {
-      year:2007.000,
-      posts:1,
+      x:2009.000,
+      y:2,
   },
-  ];
+  {
+      x:2007.000,
+      y:1,
+  },
+  ],
+},
+
+];
   

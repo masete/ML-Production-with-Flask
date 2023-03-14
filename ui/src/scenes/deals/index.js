@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 // import LineChart from "../../components/LineChart";
 import DealsLineChart from "../../components/DealsLineChart";
 
-const DealsLineChart = () => {
+const LineChart = () => {
   return (
     <Box m="20px">
       <Header title="Line Chart" subtitle="Simple Line Chart" />
@@ -14,4 +14,4 @@ const DealsLineChart = () => {
   );
 };
 
-export default DealsLineChart;
+export default LineChart;
