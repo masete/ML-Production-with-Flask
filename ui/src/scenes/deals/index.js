@@ -6,7 +6,7 @@ import DealsLineChart from "../../components/DealsLineChart";
 const LineChart = () => {
   return (
     <Box m="20px">
-      <Header title="Line Chart" subtitle="Simple Line Chart" />
+      <Header title="Line Chart showing year with most deals" subtitle="Simple Line Chart" />
       <Box height="75vh">
         <DealsLineChart />
       </Box>
