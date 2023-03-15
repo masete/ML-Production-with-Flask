@@ -46,7 +46,7 @@ import Header from "../../components/Header";
 // import { Box, Grid, Paper  } from "@mui/material";
 // import Header from "../../components/Header";
 import DealsLineChart from "../../components/DealsLineChart";
-import LineChart from "../../components/LineChart";
+// import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
@@ -182,14 +182,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Revenue Generated
+                Investment Deals
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                $59,342.32
+                Number of deals by year
               </Typography>
             </Box>
             <Box>
@@ -201,15 +201,16 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-          <Paper style={{ backgroundColor: 'transparent' }}>
-             <Box m="1px">
+          {/* <Paper style={{ backgroundColor: 'transparent' }}> */}
+             {/* <Box m="1px">
                <Header title="Number of deals by year" subtitle="Simple Line Chart" />
                <Box height="55vh">
-                 <DealsLineChart />
-             </Box>
-            </Box>
-         </Paper>
+                 <DealsLineChart /> */}
+             {/* </Box>
+            </Box> */}
+         {/* </Paper> */}
             {/* <LineChart isDashboard={true} /> */}
+            <DealsLineChart />
           </Box>
         </Box>
         <Box
