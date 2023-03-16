@@ -330,7 +330,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
         >
           <Box
-            mt="25px"
+            mt="10px"
             p="0 30px"
             display="flex "
             justifyContent="space-between"

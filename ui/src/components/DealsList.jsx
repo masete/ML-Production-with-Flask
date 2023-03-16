@@ -11,7 +11,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+    // { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "DATE",
       headerName: "DATE",
