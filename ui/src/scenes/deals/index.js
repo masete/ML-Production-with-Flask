@@ -1,39 +1,3 @@
-// import { Box, Grid, Paper  } from "@mui/material";
-// import Header from "../../components/Header";
-// import DealsLineChart from "../../components/DealsLineChart";
-
-// const LineChart = () => {
-//   return (
-//     <Grid container spacing={3}>
-//       <Grid item xs={12}>
-//         <Paper>Row 1</Paper>
-//       </Grid>
-//       <Grid item xs={12}>
-//         <Paper>Row 2</Paper>
-//       </Grid>
-//       <Grid item xs={11}>
-//         <Paper style={{ backgroundColor: 'transparent' }}>
-//             <Box m="1px">
-//               <Header title="Number of deals by year" subtitle="Simple Line Chart" />
-//               <Box height="55vh">
-//                 <DealsLineChart />
-//             </Box>
-//            </Box>
-//         </Paper>
-//       </Grid>
-//       <Grid item xs={12}>
-//         <Paper>Row 4</Paper>
-//       </Grid>
-//       <Grid item xs={12}>
-//         <Paper>Row 5</Paper>
-//       </Grid>
-//     </Grid>
-//   );
-// };
-
-// export default LineChart;
-
-
 import { Box, Button, IconButton, Typography, useTheme, Paper } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
@@ -46,6 +10,7 @@ import Header from "../../components/Header";
 // import { Box, Grid, Paper  } from "@mui/material";
 // import Header from "../../components/Header";
 import DealsLineChart from "../../components/DealsLineChart";
+import DealsBarChart from "../../components/DealsBarChart";
 // import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
@@ -165,7 +130,7 @@ const Dashboard = () => {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 8"
+          gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -189,7 +154,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Number of deals by year
+                Number of deals by year from 2007 to 2018
               </Typography>
             </Box>
             <Box>
@@ -201,19 +166,52 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-          {/* <Paper style={{ backgroundColor: 'transparent' }}> */}
-             {/* <Box m="1px">
-               <Header title="Number of deals by year" subtitle="Simple Line Chart" />
-               <Box height="55vh">
-                 <DealsLineChart /> */}
-             {/* </Box>
-            </Box> */}
-         {/* </Paper> */}
-            {/* <LineChart isDashboard={true} /> */}
             <DealsLineChart />
           </Box>
         </Box>
-        <Box
+
+           {/* ROW 3 */}
+           <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                Investment Deals
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                Number of deals(Millions) by country between 2007 and 2018
+              </Typography>
+            </Box>
+            <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+          </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            <DealsBarChart />
+          </Box>
+        </Box>
+        {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -262,7 +260,7 @@ const Dashboard = () => {
               </Box>
             </Box>
           ))}
-        </Box>
+        </Box> */}
 
         {/* ROW 3 */}
         <Box

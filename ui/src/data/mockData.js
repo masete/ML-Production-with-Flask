@@ -322,12 +322,12 @@ export const mockBarData = [
     country: "AD",
     "hot dog": 137,
     "hot dogColor": "hsl(229, 70%, 50%)",
-    burger: 96,
-    burgerColor: "hsl(296, 70%, 50%)",
-    kebab: 72,
-    kebabColor: "hsl(97, 70%, 50%)",
-    donut: 140,
-    donutColor: "hsl(340, 70%, 50%)",
+    // burger: 96,
+    // burgerColor: "hsl(296, 70%, 50%)",
+    // kebab: 72,
+    // kebabColor: "hsl(97, 70%, 50%)",
+    // donut: 140,
+    // donutColor: "hsl(340, 70%, 50%)",
   },
   {
     country: "AE",
@@ -1343,3 +1343,143 @@ export const yVposts = [
 
 ];
   
+
+export const valueVcountry = [
+
+{
+ country: "unK",
+ amount:	16.1,
+},
+{
+  country: "Alg",
+  amount:	1.7,
+},
+{
+  country: "Ang",
+  amount:	0.7,
+},
+{
+  country: "Aus",
+  amount:	3.4,
+},
+{
+  country: "Ben",
+  amount:	0
+},
+{
+  country: "Bot",
+  amount:	0.1,
+},
+{
+  country: "Cam",
+  amount:	0.6,
+},
+{
+  country: "Egy",
+  amount:	156.0,
+},
+{
+  country: "Eth",
+  amount:	13.5,
+},
+{
+  country: "Fra",
+  amount:	0.1,
+},
+{
+  country: "Gha",
+  amount:	78.7,
+},
+{
+  country: "Ivo",
+  amount:	3.1,
+},
+{
+  country: "Ken",
+  amount:	809.3,
+},
+{
+  country: "Les",
+  amount:	0,
+},
+{
+  country: "Mad",
+  amount:	0,
+},
+{
+  country: "Mal",
+  amount:	0.1,
+},
+{
+  country: "Mal",
+  amount:	0.7
+},
+{
+  country: "Mau",
+  amount:	34.0,
+},
+{
+  country: "Mor",
+  amount:	5.3,
+},
+{
+  country: "Moz",
+  amount:	0,
+},
+{
+  country: "Nam",
+  amount:	0.1,
+},
+{
+  country: "Nig",
+  amount:	1386.1,
+},
+{
+  country: "Rwa",
+  amount:	15.2,
+},
+{
+  country: "Sen",
+  amount:	5.8,
+},
+{
+  country: "Sie",
+  amount:	0.0,
+},
+{
+  country: "SA",
+  amount:	623.2,
+},
+{
+  country: "Tz",
+  amount:	169.4,
+},
+{
+  country: "Tun",
+  amount:	8.6,
+},
+{
+  country: "Uga",
+  amount:	37.0,
+},
+{
+  country: "UK",
+  amount:	382.4,
+},
+{
+  country: "US",
+  amount:	204.3,
+},
+{
+  country: "USA",
+  amount:	0.7,
+},
+{
+  country: "Zam",
+  amount:	23.5,
+},
+{
+  country: "Zim",
+  amount:	36.6,
+},
+]
