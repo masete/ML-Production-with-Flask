@@ -330,7 +330,7 @@ const Dashboard = () => {
           backgroundColor={colors.primary[400]}
         >
           <Box
-            mt="10px"
+            mt="25px"
             p="0 30px"
             display="flex "
             justifyContent="space-between"
@@ -352,13 +352,13 @@ const Dashboard = () => {
                 {/* Number of deals by year from 2007 to 2018 */}
               </Typography>
             </Box>
-            <Box>
+            {/* <Box>
               <IconButton>
                 <DownloadOutlinedIcon
                   sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
                 />
               </IconButton>
-            </Box>
+            </Box> */}
           </Box>
           <Box height="250px" m="-20px 0 0 0">
             <Contacts />
