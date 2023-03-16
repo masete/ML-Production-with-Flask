@@ -11,7 +11,7 @@ import Header from "../../components/Header";
 // import Header from "../../components/Header";
 import DealsLineChart from "../../components/DealsLineChart";
 import DealsBarChart from "../../components/DealsBarChart";
-// import LineChart from "../../components/LineChart";
+import Contacts from "../../components/DealsList";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
@@ -326,7 +326,7 @@ const Dashboard = () => {
         {/* ROW 5 */}
         <Box
           gridColumn="span 12"
-          gridRow="span 2"
+          gridRow="span 4"
           backgroundColor={colors.primary[400]}
         >
           <Box
@@ -342,14 +342,14 @@ const Dashboard = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Investment Deals
+                {/* Investment Deals */}
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Number of deals by year from 2007 to 2018
+                {/* Number of deals by year from 2007 to 2018 */}
               </Typography>
             </Box>
             <Box>
@@ -361,7 +361,7 @@ const Dashboard = () => {
             </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-            <DealsLineChart />
+            <Contacts />
           </Box>
         </Box>
       </Box>
