@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
-import { mockDataContacts } from "../data/mockData";
+import { DealsListData } from "../data/mockData";
 import Header from "../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -13,42 +13,52 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
     { field: "id", headerName: "ID", flex: 0.5 },
     { field: "registrarId", headerName: "Registrar ID" },
     {
-      field: "name",
-      headerName: "Name",
+      field: "DATE",
+      headerName: "DATE",
       flex: 1,
-      cellClassName: "name-column--cell",
+      cellClassName: "DATE-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
+      field: "COMPANYNAME",
+      headerName: "COMPANYNAME",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "AMOUNT",
+      headerName: "AMOUNT",
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "ROUND",
+      headerName: "ROUND",
       flex: 1,
     },
     {
-      field: "address",
-      headerName: "Address",
+      field: "INVESTORS",
+      headerName: "INVESTORS",
       flex: 1,
     },
     {
-      field: "city",
-      headerName: "City",
+      field: "COUNTRY",
+      headerName: "COUNTRY",
       flex: 1,
     },
     {
-      field: "zipCode",
-      headerName: "Zip Code",
+      field: "COUNTRYHQ",
+      headerName: "COUNTRYHQ",
       flex: 1,
+    },
+    {
+        field: "CATEGORY",
+        headerName: "CATEGORY",
+        flex: 1,
+    },
+    {
+        field: "SECTOR",
+        headerName: "SECTOR",
+        flex: 1,
     },
   ];
 
@@ -91,7 +101,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={DealsListData}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
