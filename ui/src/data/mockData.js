@@ -2794,3 +2794,31 @@ export const DealsListData = [
 // 1173	1248,2019-09-02,Livestock Wealth,0.1M,Debt Financing,AlphaCode,South Africa,South Africa,"Agriculture, Crowdfunding",Financial Services
 // 1174	1249,2019-09-02,Zande Africa,0.7M,Debt Financing,AlphaCode,South Africa,South Africa,"Loan financing, SME financing",Financial Services
 // 1175	1250,2019-09-02,Bright On Capital,0.7M,Debt Financing,AlphaCode,South Africa,South Africa,Peer-to-peer lending,Financial Services
+
+export const DealsPieData = [
+  {
+    id: " Q1",
+    label: "Q1",
+    value:  2778.1,
+    color: "hsl(104, 70%, 50%)",
+  },
+  {
+    id: "Q2",
+    label: "Q2",
+    value: 924.3,
+    color: "hsl(162, 70%, 50%)",
+  },
+  {
+    id: "Q3",
+    label: "Q3",
+    value: 571.8,
+    color: "hsl(291, 70%, 50%)",
+  },
+  {
+    id: "Q4",
+    label: "Q4",
+    value: 1004.8,
+    color: "hsl(229, 70%, 50%)",
+  },
+
+];

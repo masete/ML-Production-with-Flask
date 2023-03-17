@@ -10,6 +10,7 @@ import Header from "../../components/Header";
 // import { Box, Grid, Paper  } from "@mui/material";
 // import Header from "../../components/Header";
 import DealsLineChart from "../../components/DealsLineChart";
+import DealsPieChart from "../../components/DealsPieChart";
 import DealsBarChart from "../../components/DealsBarChart";
 import Contacts from "../../components/DealsList";
 import GeographyChart from "../../components/GeographyChart";
@@ -279,14 +280,16 @@ const Dashboard = () => {
             mt="25px"
           >
             <ProgressCircle size="125" />
+            
             <Typography
               variant="h5"
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $48,352 revenue generated
+              $48,352M Total sum of deals collected
             </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
+            {/* <Typography>Includes extra misc expenditures and costs</Typography> */}
+            {/* < /> */}
           </Box>
         </Box>
         <Box
@@ -299,10 +302,11 @@ const Dashboard = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Sales Quantity
+            Value of deals by quater in millions
           </Typography>
           <Box height="250px" mt="-20px">
-            <BarChart isDashboard={true} />
+            {/* <BarChart isDashboard={true} /> */}
+            <DealsPieChart isDashboard={true} />
           </Box>
         </Box>
         <Box
