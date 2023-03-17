@@ -60,7 +60,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="12,361"
+            title="1,279"
             subtitle="Total No. of deals"
             progress="0.75"
             increase="+14%"
@@ -79,7 +79,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="431,225"
+            title="$5,280M+"
             subtitle="Total investment"
             progress="0.50"
             increase="+21%"
@@ -98,7 +98,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
+            title="$32,441"
             subtitle="Avg. Investment"
             progress="0.30"
             increase="+5%"
@@ -117,7 +117,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
+            title="$1086.6M"
             subtitle="Largest Investment"
             progress="0.80"
             increase="+43%"
@@ -197,7 +197,7 @@ const Dashboard = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Number of deals(Millions) by country between 2007 and 2018
+                Value of deals(Millions) by country between 2007 and 2018
               </Typography>
             </Box>
             <Box>

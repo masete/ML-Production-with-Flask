@@ -80,7 +80,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  Digest Africa
+                  DA
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -110,7 +110,7 @@ const Sidebar = () => {
                   Digest Africa
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VC Dashbaord
+                  Your welcome
                 </Typography>
               </Box>
             </Box>
@@ -130,7 +130,7 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Descriptive Analysis
             </Typography>
              <Item
               title="Deals"
@@ -166,7 +166,7 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Predictions
+              Predictive Analysis
             </Typography>
             <Item
               title="Probability to Series A"
