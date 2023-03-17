@@ -271,7 +271,7 @@ const Dashboard = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
-            Campaign
+            Total Value of Deals(millions)
           </Typography>
           <Box
             display="flex"
@@ -286,7 +286,7 @@ const Dashboard = () => {
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $48,352M Total sum of deals collected
+              $5,280M+ Value sum of deals from 2007 to 2018
             </Typography>
             {/* <Typography>Includes extra misc expenditures and costs</Typography> */}
             {/* < /> */}
