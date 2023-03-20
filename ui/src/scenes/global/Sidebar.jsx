@@ -140,7 +140,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
-            </Typography>
+            {/* </Typography> */}
              <Item
               title="Company"
               to="/company"

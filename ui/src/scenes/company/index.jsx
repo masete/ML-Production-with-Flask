@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography, useTheme, Paper } from "@mui/material";
+import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -7,18 +7,13 @@ import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
-// import { Box, Grid, Paper  } from "@mui/material";
-// import Header from "../../components/Header";
-import DealsLineChart from "../../components/DealsLineChart";
-import DealsPieChart from "../../components/DealsPieChart";
-import DealsBarChart from "../../components/DealsBarChart";
-import Contacts from "../../components/DealsList";
+import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 
-const Deals = () => {
+const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -26,7 +21,7 @@ const Deals = () => {
     <Box m="20px">
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Deals" subtitle="breaking down of deals" />
+        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         <Box>
           <Button
@@ -60,8 +55,8 @@ const Deals = () => {
           justifyContent="center"
         >
           <StatBox
-            title="1,279"
-            subtitle="Total No. of deals"
+            title="12,361"
+            subtitle="Emails Sent"
             progress="0.75"
             increase="+14%"
             icon={
@@ -79,8 +74,8 @@ const Deals = () => {
           justifyContent="center"
         >
           <StatBox
-            title="$5,280M+"
-            subtitle="Total investment"
+            title="431,225"
+            subtitle="Sales Obtained"
             progress="0.50"
             increase="+21%"
             icon={
@@ -98,8 +93,8 @@ const Deals = () => {
           justifyContent="center"
         >
           <StatBox
-            title="$4.1M"
-            subtitle="Avg. Investment"
+            title="32,441"
+            subtitle="New Clients"
             progress="0.30"
             increase="+5%"
             icon={
@@ -117,8 +112,8 @@ const Deals = () => {
           justifyContent="center"
         >
           <StatBox
-            title="$1086.6M"
-            subtitle="Largest Investment"
+            title="1,325,134"
+            subtitle="Traffic Received"
             progress="0.80"
             increase="+43%"
             icon={
@@ -131,7 +126,7 @@ const Deals = () => {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 12"
+          gridColumn="span 8"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -148,14 +143,14 @@ const Deals = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                Investment Deals
+                Revenue Generated
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Number of deals by year from 2007 to 2018
+                $59,342.32
               </Typography>
             </Box>
             <Box>
@@ -167,52 +162,10 @@ const Deals = () => {
             </Box>
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-            <DealsLineChart />
+            <LineChart isDashboard={true} />
           </Box>
         </Box>
-
-           {/* ROW 3 */}
-           <Box
-          gridColumn="span 12"
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-        >
-          <Box
-            mt="25px"
-            p="0 30px"
-            display="flex "
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Box>
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                color={colors.grey[100]}
-              >
-                Investment Deals
-              </Typography>
-              <Typography
-                variant="h3"
-                fontWeight="bold"
-                color={colors.greenAccent[500]}
-              >
-                Value of deals(Millions) by country between 2007 and 2018
-              </Typography>
-            </Box>
-            <Box>
-              <IconButton>
-                <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                />
-              </IconButton>
-            </Box>
-          </Box>
-          <Box height="250px" m="-20px 0 0 0">
-            <DealsBarChart />
-          </Box>
-        </Box>
-        {/* <Box
+        <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -261,7 +214,7 @@ const Deals = () => {
               </Box>
             </Box>
           ))}
-        </Box> */}
+        </Box>
 
         {/* ROW 3 */}
         <Box
@@ -271,7 +224,7 @@ const Deals = () => {
           p="30px"
         >
           <Typography variant="h5" fontWeight="600">
-            Total Value of Deals(millions)
+            Campaign
           </Typography>
           <Box
             display="flex"
@@ -280,16 +233,14 @@ const Deals = () => {
             mt="25px"
           >
             <ProgressCircle size="125" />
-            
             <Typography
               variant="h5"
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $5,280M+ Value sum of deals from 2007 to 2018
+              $48,352 revenue generated
             </Typography>
-            {/* <Typography>Includes extra misc expenditures and costs</Typography> */}
-            {/* < /> */}
+            <Typography>Includes extra misc expenditures and costs</Typography>
           </Box>
         </Box>
         <Box
@@ -302,11 +253,10 @@ const Deals = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Value of deals by quater in millions
+            Sales Quantity
           </Typography>
           <Box height="250px" mt="-20px">
-            {/* <BarChart isDashboard={true} /> */}
-            <DealsPieChart isDashboard={true} />
+            <BarChart isDashboard={true} />
           </Box>
         </Box>
         <Box
@@ -326,51 +276,9 @@ const Deals = () => {
             <GeographyChart isDashboard={true} />
           </Box>
         </Box>
-
-        {/* ROW 5 */}
-        <Box
-          gridColumn="span 12"
-          gridRow="span 4"
-          backgroundColor={colors.primary[400]}
-        >
-          <Box
-            mt="25px"
-            p="0 30px"
-            display="flex "
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Box>
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                color={colors.grey[100]}
-              >
-                {/* Investment Deals */}
-              </Typography>
-              <Typography
-                variant="h3"
-                fontWeight="bold"
-                color={colors.greenAccent[500]}
-              >
-                {/* Number of deals by year from 2007 to 2018 */}
-              </Typography>
-            </Box>
-            {/* <Box>
-              <IconButton>
-                <DownloadOutlinedIcon
-                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
-                />
-              </IconButton>
-            </Box> */}
-          </Box>
-          <Box height="250px" m="-20px 0 0 0">
-            <Contacts />
-          </Box>
-        </Box>
       </Box>
     </Box>
   );
 };
 
-export default Deals;
+export default Dashboard;
