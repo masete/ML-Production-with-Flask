@@ -8,6 +8,7 @@ import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Company from "./scenes/company";
+import Investor from "./scenes/investors";
 import Founders from "./scenes/founders";
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
@@ -40,6 +41,7 @@ function App() {
               <Route path="/deals" element={<DealsLineChart />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/company" element={<Company />} />
+              <Route path="/investors" element={<Investor />} />
               <Route path="/founders" element={<Founders />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
