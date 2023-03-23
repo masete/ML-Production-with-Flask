@@ -15,6 +15,7 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import ComBarRChart from "../../components/ComBarRoundChart";
 
 const Company = () => {
   const theme = useTheme();
