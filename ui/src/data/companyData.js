@@ -86,33 +86,33 @@ export const companyVCHQ = [
 
     export const comPieData = [
         {
-          id: "hack",
-          label: "hack",
-          value: 239,
+          id: "Acquired",
+          label: "Acquired",
+          value: 47,
           color: "hsl(104, 70%, 50%)",
         },
         {
-          id: "make",
-          label: "make",
-          value: 170,
+          id: "Active",
+          label: "Active",
+          value: 2726,
           color: "hsl(162, 70%, 50%)",
         },
         {
-          id: "go",
-          label: "go",
-          value: 322,
+          id: "Closed",
+          label: "Closed",
+          value: 2,
           color: "hsl(291, 70%, 50%)",
         },
         {
-          id: "lisp",
-          label: "lisp",
-          value: 503,
+          id: "Dead",
+          label: "Dead",
+          value: 8,
           color: "hsl(229, 70%, 50%)",
         },
         {
-          id: "scala",
-          label: "scala",
-          value: 584,
+          id: "Others",
+          label: "Others",
+          value: 1,
           color: "hsl(344, 70%, 50%)",
         },
       ];
