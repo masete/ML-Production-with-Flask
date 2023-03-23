@@ -1,6 +1,7 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import Contacts from "../../components/DealsList";
+import CPieChart from "../../components/ComPieChart";
 import ComBarChart from "../../components/ComBarChart";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -258,7 +259,8 @@ const Company = () => {
             Sales Quantity
           </Typography>
           <Box height="250px" mt="-20px">
-            <BarChart isDashboard={true} />
+            {/* <BarChart isDashboard={true} /> */}
+            <CPieChart isDashboard={true}/>
           </Box>
         </Box>
         <Box
