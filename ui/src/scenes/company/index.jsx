@@ -282,7 +282,7 @@ const Company = () => {
         {/* ROW 5 */}
         <Box
           gridColumn="span 12"
-          gridRow="span 4"
+          gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
           <Box
@@ -299,13 +299,15 @@ const Company = () => {
                 color={colors.grey[100]}
               >
                 {/* Investment Deals */}
+                Count of campanies by country.
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                {/* Number of deals by year from 2007 to 2018 */}
+                20 Countries with most companies....
+                {/* $59,342.32 */}
               </Typography>
             </Box>
             {/* <Box>
