@@ -247,8 +247,8 @@ const Company = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
-          gridRow="span 2"
+          gridColumn="span 8"
+          gridRow="span 4"
           backgroundColor={colors.primary[400]}
         >
           <Typography
@@ -258,12 +258,12 @@ const Company = () => {
           >
             Sales Quantity
           </Typography>
-          <Box height="250px" mt="-20px">
+          <Box height="500px" mt="-20px">
             {/* <BarChart isDashboard={true} /> */}
             <CPieChart isDashboard={true}/>
           </Box>
         </Box>
-        <Box
+        {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -279,7 +279,7 @@ const Company = () => {
           <Box height="200px">
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box>
+        </Box> */}
 
         {/* ROW 5 */}
         <Box
