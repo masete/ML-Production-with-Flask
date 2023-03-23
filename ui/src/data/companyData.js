@@ -117,3 +117,85 @@ export const companyVCHQ = [
         },
       ];
       
+
+      export const RoundData = [
+
+        { 
+            Round: "Seed",                  
+            value: 294,
+        },
+        {
+            Round: "Grant",                  
+            value: 86,
+        },
+        {   Round: "Series A",                 
+            value: 71,
+        },
+        {   Round: "Venture Round",  
+            value: 55,
+        },
+        { 
+            Round: "Pre-Seed",
+            value: 29,
+        },
+        {
+            Round: "Series B",
+            value: 18
+        },
+        { 
+            Round: "-",
+            value: 12,
+        },
+        {   
+            Round: "Debt Financing",
+            value: 12,
+        },
+        {
+            Round: "Non-Equity Assistance",
+            value: 12,
+        },
+        {
+            Round: "Private Equity",
+            value: 12,
+        },
+        {
+            Round: "Angel Round",
+            value: 6,
+        },
+        {
+            Round: "Corporate Round",
+            value: 6,
+        },
+        {
+            Round: "Series C",
+            value: 6,
+        },
+        { 
+            Round: "Angel",
+            value: 5,
+        },
+        {
+            Round: "Acquisition",
+            value: 4,
+        },
+        {   Round: "Convertible Note",
+            value: 4,
+        },
+        { 
+            Round: "Equity Crowdfunding",
+            value: 3,
+        },
+        {
+            Round: "None",
+            value: 3,
+        },
+        {
+            Round: "Seed",
+            value: 3,
+        },
+        {
+            Round: "Acquired",
+            value: 2,
+        }
+        ,
+    ];
