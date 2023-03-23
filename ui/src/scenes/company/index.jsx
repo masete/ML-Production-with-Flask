@@ -1,6 +1,7 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import Contacts from "../../components/DealsList";
+import ComBarChart from "../../components/ComBarChart";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
@@ -316,7 +317,7 @@ const Company = () => {
             </Box> */}
           </Box>
           <Box height="250px" m="-20px 0 0 0">
-            <Contacts />
+            <ComBarChart />
           </Box>
         </Box>
       </Box>
