@@ -85,7 +85,7 @@ const ComBarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
+        legend: isDashboard ? undefined : "Count", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}
