@@ -264,7 +264,7 @@ const Company = () => {
             <CPieChart isDashboard={true}/>
           </Box>
         </Box>
-        {/* <Box
+        <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -280,7 +280,7 @@ const Company = () => {
           <Box height="200px">
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box> */}
+        </Box>
 
         {/* ROW 5 */}
         <Box
