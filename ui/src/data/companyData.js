@@ -642,35 +642,35 @@ export const companyVCHQ = [
         },
         {
           id: "NGA",
-          value: 862877,
+          value: 584,
         },
         {
           id: "NIC",
-          value: 90831,
+          value: 0,
         },
         {
           id: "NLD",
-          value: 281879,
+          value: 0,
         },
         {
           id: "NOR",
-          value: 224537,
+          value: 0,
         },
         {
           id: "NPL",
-          value: 322331,
+          value: 0,
         },
         {
           id: "NZL",
-          value: 86615,
+          value: 0,
         },
         {
           id: "OMN",
-          value: 707881,
+          value: 0,
         },
         {
           id: "PAK",
-          value: 158577,
+          value: 0,
         },
         {
           id: "PAN",
@@ -686,35 +686,35 @@ export const companyVCHQ = [
         },
         {
           id: "PNG",
-          value: 516874,
+          value: 0,
         },
         {
           id: "POL",
-          value: 682137,
+          value: 0,
         },
         {
           id: "PRI",
-          value: 957399,
+          value: 0,
         },
         {
           id: "PRT",
-          value: 846430,
+          value: 0,
         },
         {
           id: "PRY",
-          value: 720555,
+          value: 0,
         },
         {
           id: "QAT",
-          value: 478726,
+          value: 0,
         },
         {
           id: "ROU",
-          value: 259318,
+          value: 0,
         },
         {
           id: "RUS",
-          value: 268735,
+          value: 0,
         },
         {
           id: "RWA",
@@ -722,11 +722,11 @@ export const companyVCHQ = [
         },
         {
           id: "ESH",
-          value: 151957,
+          value: 0,
         },
         {
           id: "SAU",
-          value: 111821,
+          value: 646,
         },
         {
           id: "SDN",
@@ -766,31 +766,31 @@ export const companyVCHQ = [
         },
         {
           id: "SUR",
-          value: 972121,
+          value: 0,
         },
         {
           id: "SVK",
-          value: 319923,
+          value: 0,
         },
         {
           id: "SVN",
-          value: 728766,
+          value: 0,
         },
         {
           id: "SWZ",
-          value: 379669,
+          value: 0,
         },
         {
           id: "SYR",
-          value: 16221,
+          value: 0,
         },
         {
           id: "TCD",
-          value: 101273,
+          value: 0,
         },
         {
           id: "TGO",
-          value: 498411,
+          value: 0,
         },
         {
           id: "THA",
@@ -834,23 +834,23 @@ export const companyVCHQ = [
         },
         {
           id: "UKR",
-          value: 74172,
+          value: 0,
         },
         {
           id: "URY",
-          value: 753177,
+          value: 0,
         },
         {
           id: "USA",
-          value: 658725,
+          value: 0,
         },
         {
           id: "UZB",
-          value: 550313,
+          value: 0,
         },
         {
           id: "VEN",
-          value: 707492,
+          value: 0,
         },
         {
           id: "VNM",
