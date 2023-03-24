@@ -202,415 +202,415 @@ export const companyVCHQ = [
     export const CompGeographyData = [
         {
           id: "AFG",
-          value: 520600,
+          value: 0,
         },
         {
           id: "AGO",
-          value: 949905,
+          value: 0,
         },
         {
           id: "ALB",
-          value: 329910,
+          value: 0,
         },
         {
           id: "ARE",
-          value: 675484,
+          value: 0,
         },
         {
           id: "ARG",
-          value: 432239,
+          value: 0,
         },
         {
           id: "ARM",
-          value: 288305,
+          value: 0,
         },
         {
           id: "ATA",
-          value: 415648,
+          value: 0,
         },
         {
           id: "ATF",
-          value: 665159,
+          value: 0,
         },
         {
           id: "AUT",
-          value: 798526,
+          value: 0,
         },
         {
           id: "AZE",
-          value: 481678,
+          value: 0,
         },
         {
           id: "BDI",
-          value: 496457,
+          value: 0,
         },
         {
           id: "BEL",
-          value: 252276,
+          value: 0,
         },
         {
           id: "BEN",
-          value: 440315,
+          value: 0,
         },
         {
           id: "BFA",
-          value: 343752,
+          value: 0,
         },
         {
           id: "BGD",
-          value: 920203,
+          value: 0,
         },
         {
           id: "BGR",
-          value: 261196,
+          value: 0,
         },
         {
           id: "BHS",
-          value: 421551,
+          value: 0,
         },
         {
           id: "BIH",
-          value: 974745,
+          value: 0,
         },
         {
           id: "BLR",
-          value: 349288,
+          value: 0,
         },
         {
           id: "BLZ",
-          value: 305983,
+          value: 0,
         },
         {
           id: "BOL",
-          value: 430840,
+          value: 0,
         },
         {
           id: "BRN",
-          value: 345666,
+          value: 0,
         },
         {
           id: "BTN",
-          value: 649678,
+          value: 0,
         },
         {
           id: "BWA",
-          value: 319392,
+          value: 0,
         },
         {
           id: "CAF",
-          value: 722549,
+          value: 0,
         },
         {
           id: "CAN",
-          value: 332843,
+          value: 0,
         },
         {
           id: "CHE",
-          value: 122159,
+          value: 0,
         },
         {
           id: "CHL",
-          value: 811736,
+          value: 0,
         },
         {
           id: "CHN",
-          value: 593604,
+          value: 0,
         },
         {
           id: "CIV",
-          value: 143219,
+          value: 0,
         },
         {
           id: "CMR",
-          value: 630627,
+          value: 0,
         },
         {
           id: "COG",
-          value: 498556,
+          value: 0,
         },
         {
           id: "COL",
-          value: 660527,
+          value: 0,
         },
         {
           id: "CRI",
-          value: 60262,
+          value: 0,
         },
         {
           id: "CUB",
-          value: 177870,
+          value: 0,
         },
         {
           id: "-99",
-          value: 463208,
+          value: 0,
         },
         {
           id: "CYP",
-          value: 945909,
+          value: 0,
         },
         {
           id: "CZE",
-          value: 500109,
+          value: 0,
         },
         {
           id: "DEU",
-          value: 63345,
+          value: 0,
         },
         {
           id: "DJI",
-          value: 634523,
+          value: 0,
         },
         {
           id: "DNK",
-          value: 731068,
+          value: 0,
         },
         {
           id: "DOM",
-          value: 262538,
+          value: 0,
         },
         {
           id: "DZA",
-          value: 760695,
+          value: 0,
         },
         {
           id: "ECU",
-          value: 301263,
+          value: 0,
         },
         {
           id: "EGY",
-          value: 148475,
+          value: 260,
         },
         {
           id: "ERI",
-          value: 939504,
+          value: 0,
         },
         {
           id: "ESP",
-          value: 706050,
+          value: 0,
         },
         {
           id: "EST",
-          value: 977015,
+          value: 0,
         },
         {
           id: "ETH",
-          value: 461734,
+          value: 0,
         },
         {
           id: "FIN",
-          value: 22800,
+          value: 0,
         },
         {
           id: "FJI",
-          value: 18985,
+          value: 0,
         },
         {
           id: "FLK",
-          value: 64986,
+          value: 0,
         },
         {
           id: "FRA",
-          value: 447457,
+          value: 0,
         },
         {
           id: "GAB",
-          value: 669675,
+          value: 0,
         },
         {
           id: "GBR",
-          value: 757120,
+          value: 0,
         },
         {
           id: "GEO",
-          value: 158702,
+          value: 0,
         },
         {
           id: "GHA",
-          value: 893180,
+          value: 0,
         },
         {
           id: "GIN",
-          value: 877288,
+          value: 0,
         },
         {
           id: "GMB",
-          value: 724530,
+          value: 0,
         },
         {
           id: "GNB",
-          value: 387753,
+          value: 0,
         },
         {
           id: "GNQ",
-          value: 706118,
+          value: 0,
         },
         {
           id: "GRC",
-          value: 377796,
+          value: 0,
         },
         {
           id: "GTM",
-          value: 66890,
+          value: 0,
         },
         {
           id: "GUY",
-          value: 719300,
+          value: 0,
         },
         {
           id: "HND",
-          value: 739590,
+          value: 0,
         },
         {
           id: "HRV",
-          value: 929467,
+          value: 0,
         },
         {
           id: "HTI",
-          value: 538961,
+          value: 0,
         },
         {
           id: "HUN",
-          value: 146095,
+          value: 0,
         },
         {
           id: "IDN",
-          value: 490681,
+          value: 0,
         },
         {
           id: "IND",
-          value: 549818,
+          value: 0,
         },
         {
           id: "IRL",
-          value: 630163,
+          value: 0,
         },
         {
           id: "IRN",
-          value: 596921,
+          value: 0,
         },
         {
           id: "IRQ",
-          value: 767023,
+          value: 0,
         },
         {
           id: "ISL",
-          value: 478682,
+          value: 0,
         },
         {
           id: "ISR",
-          value: 963688,
+          value: 0,
         },
         {
           id: "ITA",
-          value: 393089,
+          value: 0,
         },
         {
           id: "JAM",
-          value: 83173,
+          value: 0,
         },
         {
           id: "JOR",
-          value: 52005,
+          value: 0,
         },
         {
           id: "JPN",
-          value: 199174,
+          value: 0,
         },
         {
           id: "KAZ",
-          value: 181424,
+          value: 0,
         },
         {
           id: "KEN",
-          value: 60946,
+          value: 487,
         },
         {
           id: "KGZ",
-          value: 432478,
+          value: 0,
         },
         {
           id: "KHM",
-          value: 254461,
+          value: 0,
         },
         {
           id: "OSA",
-          value: 942447,
+          value: 0,
         },
         {
           id: "KWT",
-          value: 414413,
+          value: 0,
         },
         {
           id: "LAO",
-          value: 448339,
+          value: 0,
         },
         {
           id: "LBN",
-          value: 620090,
+          value: 0,
         },
         {
           id: "LBR",
-          value: 435950,
+          value: 0,
         },
         {
           id: "LBY",
-          value: 75091,
+          value: 0,
         },
         {
           id: "LKA",
-          value: 595124,
+          value: 0,
         },
         {
           id: "LSO",
-          value: 483524,
+          value: 0,
         },
         {
           id: "LTU",
-          value: 867357,
+          value: 0,
         },
         {
           id: "LUX",
-          value: 689172,
+          value: 0,
         },
         {
           id: "LVA",
-          value: 742980,
+          value: 0,
         },
         {
           id: "MAR",
-          value: 236538,
+          value: 0,
         },
         {
           id: "MDA",
-          value: 926836,
+          value: 0,
         },
         {
           id: "MDG",
-          value: 840840,
+          value: 0,
         },
         {
           id: "MEX",
-          value: 353910,
+          value: 0,
         },
         {
           id: "MKD",
-          value: 505842,
+          value: 0,
         },
         {
           id: "MLI",
-          value: 286082,
+          value: 0,
         },
         {
           id: "MMR",
-          value: 915544,
+          value: 0,
         },
         {
           id: "MNE",
-          value: 609500,
+          value: 0,
         },
         {
           id: "MNG",
-          value: 410428,
+          value: 0,
         },
         {
           id: "MOZ",
@@ -618,27 +618,27 @@ export const companyVCHQ = [
         },
         {
           id: "MRT",
-          value: 375671,
+          value: 0,
         },
         {
           id: "MWI",
-          value: 591935,
+          value: 0,
         },
         {
           id: "MYS",
-          value: 991644,
+          value: 0,
         },
         {
           id: "NAM",
-          value: 701897,
+          value: 0,
         },
         {
           id: "NCL",
-          value: 144098,
+          value: 0,
         },
         {
           id: "NER",
-          value: 312944,
+          value: 0,
         },
         {
           id: "NGA",
@@ -674,15 +674,15 @@ export const companyVCHQ = [
         },
         {
           id: "PAN",
-          value: 738579,
+          value: 0,
         },
         {
           id: "PER",
-          value: 248751,
+          value: 0,
         },
         {
           id: "PHL",
-          value: 557292,
+          value: 0,
         },
         {
           id: "PNG",
@@ -734,35 +734,35 @@ export const companyVCHQ = [
         },
         {
           id: "SDS",
-          value: 966473,
+          value: 0,
         },
         {
           id: "SEN",
-          value: 158085,
+          value: 0,
         },
         {
           id: "SLB",
-          value: 178389,
+          value: 0,
         },
         {
           id: "SLE",
-          value: 528433,
+          value: 0,
         },
         {
           id: "SLV",
-          value: 353467,
+          value: 0,
         },
         {
           id: "ABV",
-          value: 251,
+          value: 0,
         },
         {
           id: "SOM",
-          value: 445243,
+          value: 0,
         },
         {
           id: "SRB",
-          value: 202402,
+          value: 0,
         },
         {
           id: "SUR",
