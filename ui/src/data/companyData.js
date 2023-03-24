@@ -426,7 +426,7 @@ export const companyVCHQ = [
         },
         {
           id: "GHA",
-          value: 0,
+          value: 135,
         },
         {
           id: "GIN",
@@ -614,7 +614,7 @@ export const companyVCHQ = [
         },
         {
           id: "MOZ",
-          value: 32868,
+          value: 0,
         },
         {
           id: "MRT",
@@ -794,43 +794,43 @@ export const companyVCHQ = [
         },
         {
           id: "THA",
-          value: 506906,
+          value: 0,
         },
         {
           id: "TJK",
-          value: 613093,
+          value: 0,
         },
         {
           id: "TKM",
-          value: 327016,
+          value: 0,
         },
         {
           id: "TLS",
-          value: 607972,
+          value: 0,
         },
         {
           id: "TTO",
-          value: 936365,
+          value: 0,
         },
         {
           id: "TUN",
-          value: 898416,
+          value: 0,
         },
         {
           id: "TUR",
-          value: 237783,
+          value: 0,
         },
         {
           id: "TWN",
-          value: 878213,
+          value: 0,
         },
         {
           id: "TZA",
-          value: 442174,
+          value: 0,
         },
         {
           id: "UGA",
-          value: 720710,
+          value: 62,
         },
         {
           id: "UKR",
