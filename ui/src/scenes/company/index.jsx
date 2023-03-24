@@ -12,6 +12,7 @@ import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import GeographyChart from "../../components/GeographyChart";
+import ComGeographyChart from "../../components/ComGeoChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
@@ -327,7 +328,7 @@ const Company = () => {
         </Box>
 
            {/* ROW 6 */}
-           <Box
+        <Box
           gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -368,6 +369,52 @@ const Company = () => {
           <Box height="250px" m="-20px 0 0 0">
             {/* <ComBarChart /> */}
             <ComBarRChart/>
+          </Box>
+        </Box>
+
+        {/* ROW 7 */}
+        <Box
+          gridColumn="span 12"
+          gridRow="span 4"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                {/* Investment Deals */}
+                Count of campanies by seed round.
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                seed rounds with most companies
+                {/* $59,342.32 */}
+              </Typography>
+            </Box>
+            {/* <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box> */}
+          </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            {/* <ComBarChart /> */}
+            {/* <ComBarRChart/> */}
+            <GeographyChart isDashboard={true} />
           </Box>
         </Box>
       </Box>
