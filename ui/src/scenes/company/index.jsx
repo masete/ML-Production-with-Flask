@@ -309,7 +309,7 @@ const Company = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                20 Countries with most companies....
+                Countries with most companies....
                 {/* $59,342.32 */}
               </Typography>
             </Box>
@@ -323,6 +323,51 @@ const Company = () => {
           </Box>
           <Box height="250px" m="-20px 0 0 0">
             <ComBarChart />
+          </Box>
+        </Box>
+
+           {/* ROW 6 */}
+           <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                {/* Investment Deals */}
+                Count of campanies by seed round.
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                seed rounds with most companies
+                {/* $59,342.32 */}
+              </Typography>
+            </Box>
+            {/* <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box> */}
+          </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            {/* <ComBarChart /> */}
+            <ComBarRChart/>
           </Box>
         </Box>
       </Box>
