@@ -184,7 +184,7 @@ const Company = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+              Countries with most companies
             </Typography>
           </Box>
           {mockTransactions.map((transaction, i) => (
@@ -257,7 +257,7 @@ const Company = () => {
             fontWeight="600"
             sx={{ padding: "30px 30px 0 30px" }}
           >
-            Sales Quantity
+            Company status representation
           </Typography>
           <Box height="500px" mt="-20px">
             {/* <BarChart isDashboard={true} /> */}
