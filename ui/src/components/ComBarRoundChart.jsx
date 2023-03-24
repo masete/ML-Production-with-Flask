@@ -76,8 +76,8 @@ const ComBarRChart = ({ isDashboard = false }) => {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "country", // changed
+        tickRotation: 50,
+        legend: isDashboard ? undefined : "Seed Round", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
