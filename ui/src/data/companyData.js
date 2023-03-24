@@ -868,10 +868,10 @@ export const companyVCHQ = [
         //   id: "YEM",
         //   value: 0,
         // },
-        // {
-        //   id: "ZAF",
-        //   value: 0,
-        // },
+        {
+          id: "ZAF",
+          value: 6460000,
+        },
         {
           id: "ZMB",
           value: 140000,
