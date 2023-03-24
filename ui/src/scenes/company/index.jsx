@@ -414,7 +414,7 @@ const Company = () => {
           <Box height="250px" m="-20px 0 0 0">
             {/* <ComBarChart /> */}
             {/* <ComBarRChart/> */}
-            <GeographyChart isDashboard={true} />
+            <ComGeographyChart isDashboard={false} />
           </Box>
         </Box>
       </Box>
