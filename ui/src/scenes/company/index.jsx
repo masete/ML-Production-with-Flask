@@ -375,12 +375,12 @@ const Company = () => {
         {/* ROW 7 */}
         <Box
           gridColumn="span 12"
-          gridRow="span 4"
+          gridRow="span 3"
           backgroundColor={colors.primary[400]}
         >
           <Box
-            mt="25px"
-            p="0 30px"
+            mt="0px"
+            p="40px 0px"
             display="flex "
             justifyContent="space-between"
             alignItems="center"
@@ -392,14 +392,14 @@ const Company = () => {
                 color={colors.grey[100]}
               >
                 {/* Investment Deals */}
-                Count of campanies by seed round.
+                Distribution of campanies by country
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                seed rounds with most companies
+                More dense countries appear darker
                 {/* $59,342.32 */}
               </Typography>
             </Box>
