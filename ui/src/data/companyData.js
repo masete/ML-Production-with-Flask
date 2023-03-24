@@ -206,7 +206,7 @@ export const companyVCHQ = [
         },
         {
           id: "AGO",
-          value: 0,
+          value: 230000,
         },
         {
           id: "ALB",
@@ -322,7 +322,7 @@ export const companyVCHQ = [
         },
         {
           id: "CMR",
-          value: 0,
+          value: 160000,
         },
         {
           id: "COG",
@@ -378,7 +378,7 @@ export const companyVCHQ = [
         },
         {
           id: "EGY",
-          value: 260,
+          value: 2600000,
         },
         {
           id: "ERI",
@@ -426,7 +426,7 @@ export const companyVCHQ = [
         },
         {
           id: "GHA",
-          value: 135,
+          value: 1350000,
         },
         {
           id: "GIN",
@@ -522,7 +522,7 @@ export const companyVCHQ = [
         },
         {
           id: "KEN",
-          value: 487,
+          value: 4870000,
         },
         {
           id: "KGZ",
@@ -578,7 +578,7 @@ export const companyVCHQ = [
         },
         {
           id: "MAR",
-          value: 0,
+          value: 110000,
         },
         {
           id: "MDA",
@@ -642,7 +642,7 @@ export const companyVCHQ = [
         },
         {
           id: "NGA",
-          value: 584,
+          value: 5840000,
         },
         {
           id: "NIC",
@@ -718,19 +718,19 @@ export const companyVCHQ = [
         },
         {
           id: "RWA",
-          value: 136781,
+          value: 200000,
         },
         {
           id: "ESH",
-          value: 0,
+          value: 140000,
         },
         {
           id: "SAU",
-          value: 646,
+          value: 6460000,
         },
         {
           id: "SDN",
-          value: 927112,
+          value: 170000,
         },
         {
           id: "SDS",
@@ -738,7 +738,7 @@ export const companyVCHQ = [
         },
         {
           id: "SEN",
-          value: 0,
+          value: 160000,
         },
         {
           id: "SLB",
@@ -792,29 +792,29 @@ export const companyVCHQ = [
           id: "TGO",
           value: 0,
         },
-        {
-          id: "THA",
-          value: 0,
-        },
-        {
-          id: "TJK",
-          value: 0,
-        },
-        {
-          id: "TKM",
-          value: 0,
-        },
-        {
-          id: "TLS",
-          value: 0,
-        },
-        {
-          id: "TTO",
-          value: 0,
-        },
+        // {
+        //   id: "THA",
+        //   value: 0,
+        // },
+        // {
+        //   id: "TJK",
+        //   value: 0,
+        // },
+        // {
+        //   id: "TKM",
+        //   value: 0,
+        // },
+        // {
+        //   id: "TLS",
+        //   value: 0,
+        // },
+        // {
+        //   id: "TTO",
+        //   value: 0,
+        // },
         {
           id: "TUN",
-          value: 0,
+          value: 250000,
         },
         {
           id: "TUR",
@@ -826,63 +826,63 @@ export const companyVCHQ = [
         },
         {
           id: "TZA",
-          value: 0,
+          value: 250000,
         },
         {
           id: "UGA",
-          value: 62,
+          value: 620000,
         },
-        {
-          id: "UKR",
-          value: 0,
-        },
+        // {
+        //   id: "UKR",
+        //   value: 0,
+        // },
         {
           id: "URY",
           value: 0,
         },
         {
           id: "USA",
-          value: 0,
+          value: 110000,
         },
-        {
-          id: "UZB",
-          value: 0,
-        },
-        {
-          id: "VEN",
-          value: 0,
-        },
-        {
-          id: "VNM",
-          value: 538907,
-        },
-        {
-          id: "VUT",
-          value: 650646,
-        },
-        {
-          id: "PSE",
-          value: 476078,
-        },
-        {
-          id: "YEM",
-          value: 957751,
-        },
-        {
-          id: "ZAF",
-          value: 836949,
-        },
+        // {
+        //   id: "UZB",
+        //   value: 0,
+        // },
+        // {
+        //   id: "VEN",
+        //   value: 0,
+        // },
+        // {
+        //   id: "VNM",
+        //   value: 0,
+        // },
+        // {
+        //   id: "VUT",
+        //   value: 0,
+        // },
+        // {
+        //   id: "PSE",
+        //   value: 0,
+        // },
+        // {
+        //   id: "YEM",
+        //   value: 0,
+        // },
+        // {
+        //   id: "ZAF",
+        //   value: 0,
+        // },
         {
           id: "ZMB",
-          value: 714503,
+          value: 140000,
         },
         {
           id: "ZWE",
-          value: 405217,
+          value: 140000,
         },
-        {
-          id: "KOR",
-          value: 171135,
-        },
+        // {
+        //   id: "KOR",
+        //   value: 0,
+        // },
       ];
       

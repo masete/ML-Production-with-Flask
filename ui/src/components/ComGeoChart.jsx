@@ -2,7 +2,7 @@ import { useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoFeatures } from "../data/mockGeoFeatures";
 import { tokens } from "../theme";
-import { mockGeographyData as data } from "../data/mockData";
+import { CompGeographyData as data } from "../data/companyData";
 
 const ComGeographyChart = ({ isDashboard = false }) => {
   const theme = useTheme();
