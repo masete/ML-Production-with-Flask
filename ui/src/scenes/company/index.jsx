@@ -347,14 +347,14 @@ const Company = () => {
                 color={colors.grey[100]}
               >
                 {/* Investment Deals */}
-                Count of campanies by seed round.
+                Count of campanies by funding round.
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                seed rounds with most companies
+                Founding rounds with most companies
                 {/* $59,342.32 */}
               </Typography>
             </Box>
