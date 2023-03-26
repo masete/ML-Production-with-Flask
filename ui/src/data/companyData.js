@@ -890,22 +890,22 @@ export const companyVCHQ = [
 
       export const pressTransactions = [
         {
-          txId: "01e4dsa",
-          user: "johndoe",
-          date: "2021-09-01",
-          cost: "43.95",
+          txId: "Jumia Group",
+          user: "Nigeria",
+          date: "2012.0",
+          cost: "409806000",
         },
         {
-          txId: "0315dsaa",
-          user: "jackdower",
-          date: "2022-04-01",
-          cost: "133.45",
+          txId: "Andela",
+          user: "United States",
+          date: "2014.0",
+          cost: "100000000",
         },
         {
-          txId: "01e4dsa",
-          user: "aberdohnny",
-          date: "2021-09-01",
-          cost: "43.95",
+          txId: "Takealot",
+          user: "South Africa",
+          date: "2011.0",
+          cost: "100000000",
         },
         {
           txId: "51034szv",
@@ -938,4 +938,27 @@ export const companyVCHQ = [
           cost: "133.45",
         },
       ];
+
+//       ,1_Company_name,18_Amount,7.1_Country HQ,4_Year_founded
+// 0,Jumia Group,409806000,Nigeria,2012.0
+// 1,Andela,100000000,United States,2014.0
+// 2,Takealot,100000000,South Africa,2011.0
+// 3,Zola Electric ,55000000,Tanzania,2011.0
+// 4,d.light,50000000,Kenya,2007.0
+// 5,Swvl,8000000,Egypt,2017.0
+// 6,Konga,41000000,Nigeria,2012.0
+// 7,Jumo,52000000,South Africa,2014.0
+// 8,M-Kopa,80000000,Kenya,2011.0
+// 9,Cellulant,47500000,Kenya,2004.0
+// 10,African Leadership Academy,30000000,South Africa,2008.0
+// 11,OPay,50000000,Nigeria,2018.0
+// 12,CarePay,45000000,Kenya,2015.0
+// 13,Powerhive,20000000,Kenya,2011.0
+// 14,Travelstart,40000000,South Africa,1999.0
+// 15,Paga,13000000,Nigeria,2009.0
+// 16,One Africa Media,10000000,South Africa,2012.0
+// 17,iROKOtv,19000000,Nigeria,2010.0
+// 18,Twiga Foods,10300000,Kenya,2013.0
+// 19,PEG Africa,25000000,Ghana,2013.0
+// 20,Azuri Technologies,26000000,United Kingdom,2012.0
       
