@@ -320,14 +320,14 @@ export const mockTransactions = [
 export const mockBarData = [
   {
     country: "AD",
-    "hot dog": 137,
-    "hot dogColor": "hsl(229, 70%, 50%)",
+    // "hot dog": 137,
+    // "hot dogColor": "hsl(229, 70%, 50%)",
     // burger: 96,
     // burgerColor: "hsl(296, 70%, 50%)",
     // kebab: 72,
     // kebabColor: "hsl(97, 70%, 50%)",
-    // donut: 140,
-    // donutColor: "hsl(340, 70%, 50%)",
+    donut: 140,
+    donutColor: "hsl(340, 70%, 50%)",
   },
   {
     country: "AE",
