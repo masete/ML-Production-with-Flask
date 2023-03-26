@@ -1,9 +1,10 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
-import Contacts from "../../components/DealsList";
+// import Contacts from "../../components/DealsList";
 import CPieChart from "../../components/ComPieChart";
 import ComBarChart from "../../components/ComBarChart";
 import { mockTransactions } from "../../data/mockData";
+import { pressTransactions } from "../../data/companyData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
