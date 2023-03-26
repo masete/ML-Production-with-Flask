@@ -189,7 +189,7 @@ const Company = () => {
               Countries with most companies
             </Typography>
           </Box>
-          {mockTransactions.map((transaction, i) => (
+          {pressTransactions.map((transaction, i) => (
             <Box
               key={`${transaction.txId}-${i}`}
               display="flex"
