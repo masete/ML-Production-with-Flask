@@ -186,7 +186,7 @@ const Company = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Countries with most companies
+              Companies with most funding and their country of origin.
             </Typography>
           </Box>
           {pressTransactions.map((transaction, i) => (
