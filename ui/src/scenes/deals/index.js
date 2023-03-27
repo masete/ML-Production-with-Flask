@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography, useTheme, Paper } from "@mui/material";
+import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 // import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -14,7 +14,7 @@ import DealsPieChart from "../../components/DealsPieChart";
 import DealsBarChart from "../../components/DealsBarChart";
 import Contacts from "../../components/DealsList";
 import GeographyChart from "../../components/GeographyChart";
-import BarChart from "../../components/BarChart";
+// import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 
