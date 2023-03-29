@@ -38,8 +38,8 @@ const Deals = () => {
               padding: "10px 20px",
             }}
           >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
+            ADD A NEW DEAL
           </Button>
         </Box>
       </Box>
