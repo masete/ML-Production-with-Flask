@@ -9,6 +9,7 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 // import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 // import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -202,7 +203,8 @@ const Sidebar = () => {
             <Item
               title="Probability to Series A"
               to="/predict"
-              icon={<PersonOutlinedIcon />}
+              // icon={<PersonOutlinedIcon />}
+              icon={<AutoGraphIcon />}
               selected={selected}
               setSelected={setSelected}
             />
