@@ -13,7 +13,7 @@ const Form = () => {
 
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Header title="ADD YOUR DEAL" subtitle="Allow us document your journey to success" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -48,7 +48,7 @@ const Form = () => {
                 name="firstName"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -61,7 +61,7 @@ const Form = () => {
                 name="lastName"
                 error={!!touched.lastName && !!errors.lastName}
                 helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -74,7 +74,7 @@ const Form = () => {
                 name="email"
                 error={!!touched.email && !!errors.email}
                 helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -87,7 +87,7 @@ const Form = () => {
                 name="contact"
                 error={!!touched.contact && !!errors.contact}
                 helperText={touched.contact && errors.contact}
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -100,7 +100,7 @@ const Form = () => {
                 name="address1"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -113,12 +113,90 @@ const Form = () => {
                 name="address2"
                 error={!!touched.address2 && !!errors.address2}
                 helperText={touched.address2 && errors.address2}
-                sx={{ gridColumn: "span 4" }}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Address 2"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.address2}
+                name="address2"
+                error={!!touched.address2 && !!errors.address2}
+                helperText={touched.address2 && errors.address2}
+                sx={{ gridColumn: "span 1" }}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Create New Deal
               </Button>
             </Box>
           </form>
