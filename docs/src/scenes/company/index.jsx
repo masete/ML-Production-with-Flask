@@ -25,6 +25,13 @@ const Company = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/company-form`; 
+    navigate(path);
+
+  }
+
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -40,6 +47,7 @@ const Company = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={routeChange}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
              ADD A NEW COMPANY
