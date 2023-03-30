@@ -119,12 +119,12 @@ const Company = () => {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
+            title="$1086.6M"
+            subtitle="Largest Investment"
             progress="0.80"
             increase="+43%"
             icon={
-              <TrafficIcon
+              <FunctionsIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
