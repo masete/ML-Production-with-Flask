@@ -30,6 +30,7 @@ const Deals = () => {
 
         <Box>
           <Button
+          
             sx={{
               backgroundColor: colors.blueAccent[700],
               color: colors.grey[100],
@@ -37,6 +38,7 @@ const Deals = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            to="/predict"
           >
             {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
             ADD A NEW DEAL
