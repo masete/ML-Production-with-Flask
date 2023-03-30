@@ -108,7 +108,7 @@ const Predict = () => {
                 name="Last_funding_round_raised_amount"
                 error={!!touched.Last_funding_round_raised_amount && !!errors.Last_funding_round_raised_amount}
                 helperText={touched.Last_funding_round_raised_amount && errors.Last_funding_round_raised_amount}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -121,7 +121,7 @@ const Predict = () => {
                 name="age_of_company"
                 error={!!touched.age_of_company && !!errors.age_of_company}
                 helperText={touched.age_of_company && errors.age_of_company}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -134,7 +134,7 @@ const Predict = () => {
                 name="Amount_of_the_last_funding_type"
                 error={!!touched.Amount_of_the_last_funding_type && !!errors.Amount_of_the_last_funding_type}
                 helperText={touched.Amount_of_the_last_funding_type && errors.Amount_of_the_last_funding_type}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -147,7 +147,7 @@ const Predict = () => {
                 name="Companies_Information_Level_of_Completeness"
                 error={!!touched.Companies_Information_Level_of_Completeness && !!errors.Companies_Information_Level_of_Completeness}
                 helperText={touched.Companies_Information_Level_of_Completeness && errors.Companies_Information_Level_of_Completeness}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -160,7 +160,7 @@ const Predict = () => {
                 name="Stage_DA_Classified_Early"
                 error={!!touched.Stage_DA_Classified_Early && !!errors.Stage_DA_Classified_Early}
                 helperText={touched.Stage_DA_Classified_Early && errors.Stage_DA_Classified_Early}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -173,7 +173,7 @@ const Predict = () => {
                 name="number_of_founders"
                 error={!!touched.number_of_founders && !!errors.number_of_founders}
                 helperText={touched.number_of_founders && errors.number_of_founders}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -186,7 +186,7 @@ const Predict = () => {
                 name="number_of_bussiness_categories"
                 error={!!touched.number_of_bussiness_categories && !!errors.number_of_bussiness_categories}
                 helperText={touched.number_of_bussiness_categories && errors.number_of_bussiness_categories}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -199,7 +199,7 @@ const Predict = () => {
                 name="number_of_market_countires"
                 error={!!touched.number_of_market_countires && !!errors.number_of_market_countires}
                 helperText={touched.number_of_market_countires && errors.number_of_market_countires}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -212,7 +212,7 @@ const Predict = () => {
                 name="Female_Co_Founder"
                 error={!!touched.Female_Co_Founder && !!errors.Female_Co_Founder}
                 helperText={touched.Female_Co_Founder && errors.Female_Co_Founder}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -225,7 +225,7 @@ const Predict = () => {
                 name="Average_time_of_rounds"
                 error={!!touched.Average_time_of_rounds && !!errors.Average_time_of_rounds}
                 helperText={touched.Average_time_of_rounds && errors.Average_time_of_rounds}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -238,7 +238,7 @@ const Predict = () => {
                 name="number_of_investors"
                 error={!!touched.number_of_investors && !!errors.number_of_investors}
                 helperText={touched.number_of_investors && errors.number_of_investors}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -251,7 +251,7 @@ const Predict = () => {
                 name="Sector_Information_Technology"
                 error={!!touched.Sector_Information_Technology && !!errors.Sector_Information_Technology}
                 helperText={touched.Sector_Information_Technology && errors.Sector_Information_Technology}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
@@ -264,7 +264,7 @@ const Predict = () => {
                 name="Business_model_B2C"
                 error={!!touched.Business_model_B2C && !!errors.Business_model_B2C}
                 helperText={touched.Business_model_B2C && errors.Business_model_B2C}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
