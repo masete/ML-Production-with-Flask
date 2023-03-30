@@ -1,5 +1,6 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
+import { useNavigate } from "react-router-dom";
 // import Contacts from "../../components/DealsList";
 import CPieChart from "../../components/ComPieChart";
 import ComBarChart from "../../components/ComBarChart";

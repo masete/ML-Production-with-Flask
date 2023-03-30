@@ -1,5 +1,6 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
+import { useNavigate } from "react-router-dom";
 // import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
@@ -20,7 +21,7 @@ import GeographyChart from "../../components/GeographyChart";
 // import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
-import { useNavigate } from "react-router-dom";
+
 
 const Deals = () => {
   const theme = useTheme();
