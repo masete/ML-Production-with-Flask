@@ -41,7 +41,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
+                label="DATE"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
@@ -54,7 +54,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Last Name"
+                label="COMPANY NAME"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.lastName}
@@ -67,7 +67,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Email"
+                label="AMOUNT"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -80,7 +80,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Number"
+                label="ROUND"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
@@ -93,7 +93,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 1"
+                label="INVESTORS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address1}
@@ -106,7 +106,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="COUNTRY"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -119,7 +119,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="COUNTRYHQ"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -132,7 +132,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="CATEGORY"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -145,7 +145,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="SECTOR"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
