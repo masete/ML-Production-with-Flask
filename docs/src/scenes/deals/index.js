@@ -4,8 +4,10 @@ import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import TrafficIcon from "@mui/icons-material/Traffic";
+import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
+// import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LegendToggleIcon from '@mui/icons-material/LegendToggle';
+// import TrafficIcon from "@mui/icons-material/Traffic";
 import FunctionsIcon from '@mui/icons-material/Functions';
 import Header from "../../components/Header";
 // import { Box, Grid, Paper  } from "@mui/material";
@@ -76,7 +78,7 @@ const Deals = () => {
             progress="0.75"
             increase="+14%"
             icon={
-              <EmailIcon
+              <AlignVerticalBottomIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -114,7 +116,7 @@ const Deals = () => {
             progress="0.30"
             increase="+5%"
             icon={
-              <PersonAddIcon
+              <LegendToggleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
