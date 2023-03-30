@@ -3,6 +3,8 @@ import { tokens } from "../../theme";
 // import { mockTransactions } from "../../data/mockData";
 import { pressTransactions } from "../../data/companyData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
+import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
+import LegendToggleIcon from '@mui/icons-material/LegendToggle';
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -13,6 +15,7 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import FunctionsIcon from '@mui/icons-material/Functions';
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -56,12 +59,12 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
+            title="1,279"
+            subtitle="Total No. of deals"
             progress="0.75"
             increase="+14%"
             icon={
-              <EmailIcon
+              <AlignVerticalBottomIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -75,8 +78,8 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
+            title="$5,280M+"
+            subtitle="Total investment"
             progress="0.50"
             increase="+21%"
             icon={
@@ -94,12 +97,12 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
-            subtitle="New Clients"
+            title="$4.1M"
+            subtitle="Avg. Investment"
             progress="0.30"
             increase="+5%"
             icon={
-              <PersonAddIcon
+              <LegendToggleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -113,12 +116,12 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
+            title="$1086.6M"
+            subtitle="Largest Investment"
             progress="0.80"
             increase="+43%"
             icon={
-              <TrafficIcon
+              <FunctionsIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
