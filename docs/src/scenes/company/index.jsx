@@ -8,7 +8,8 @@ import { pressTransactions } from "../../data/companyData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LegendToggleIcon from '@mui/icons-material/LegendToggle';
+// import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
@@ -99,12 +100,12 @@ const Company = () => {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
-            subtitle="New Clients"
+            title="$4.1M"
+            subtitle="Avg. Investment"
             progress="0.30"
             increase="+5%"
             icon={
-              <PersonAddIcon
+              <LegendToggleIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
