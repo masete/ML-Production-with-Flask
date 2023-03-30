@@ -6,7 +6,7 @@ import ComBarChart from "../../components/ComBarChart";
 // import { mockTransactions } from "../../data/mockData";
 import { pressTransactions } from "../../data/companyData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import EmailIcon from "@mui/icons-material/Email";
+import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
@@ -61,12 +61,12 @@ const Company = () => {
           justifyContent="center"
         >
           <StatBox
-            title="12,361"
-            subtitle="Emails Sent"
+            title="1,279"
+            subtitle="Total No. of deals"
             progress="0.75"
             increase="+14%"
             icon={
-              <EmailIcon
+              <AlignVerticalBottomIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
