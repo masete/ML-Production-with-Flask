@@ -8,6 +8,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
 // import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 // import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -164,7 +165,8 @@ const Sidebar = () => {
             <Item
               title="Founders"
               to="/founders"
-              icon={<PeopleOutlinedIcon />}
+              // icon={<PeopleOutlinedIcon />}
+              icon={<CoPresentIcon />}
               selected={selected}
               setSelected={setSelected}
             />
