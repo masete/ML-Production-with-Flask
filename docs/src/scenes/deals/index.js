@@ -6,6 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import TrafficIcon from "@mui/icons-material/Traffic";
+import FunctionsIcon from '@mui/icons-material/Functions';
 import Header from "../../components/Header";
 // import { Box, Grid, Paper  } from "@mui/material";
 // import Header from "../../components/Header";
@@ -45,9 +46,8 @@ const Deals = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
-            // onClick={navigateNewDealForm}
             onClick={routeChange}
-            // to="/form"
+            
           >
             {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
             ADD A NEW DEAL
@@ -133,7 +133,7 @@ const Deals = () => {
             progress="0.80"
             increase="+43%"
             icon={
-              <TrafficIcon
+              <FunctionsIcon
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
