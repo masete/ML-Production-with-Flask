@@ -34,7 +34,7 @@ const Investor = () => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            ADD AN INVESTOR
           </Button>
         </Box>
       </Box>

@@ -34,7 +34,7 @@ const Founders = () => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+            ADD A FOUNDER
           </Button>
         </Box>
       </Box>

@@ -42,7 +42,7 @@ const Company = () => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
+             ADD A NEW COMPANY
           </Button>
         </Box>
       </Box>
