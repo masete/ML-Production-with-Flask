@@ -17,10 +17,17 @@ import GeographyChart from "../../components/GeographyChart";
 // import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { useNavigate } from "react-router-dom";
 
 const Deals = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/form`; 
+    navigate(path);
+  }
 
   return (
     <Box m="20px">
@@ -38,7 +45,9 @@ const Deals = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
-            to="/predict"
+            // onClick={navigateNewDealForm}
+            onClick={routeChange}
+            // to="/form"
           >
             {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
             ADD A NEW DEAL
