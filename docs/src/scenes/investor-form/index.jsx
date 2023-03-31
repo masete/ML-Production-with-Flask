@@ -13,7 +13,7 @@ const InvestorForm = () => {
 
   return (
     <Box m="20px">
-      <Header title="ADD NEW COMPANY" subtitle="Allow us document your journey to success" />
+      <Header title="ADD NEW INVESTER" subtitle="Allow us document your journey to success" />
 
       <Formik
         onSubmit={handleFormSubmit}

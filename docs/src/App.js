@@ -12,6 +12,8 @@ import Investor from "./scenes/investors";
 import Founders from "./scenes/founders";
 import Bar from "./scenes/bar";
 import CompanyForm from "./scenes/company-form";
+import InvestorForm from "./scenes/investor-form";
+import FoundersForm from "./scenes/founders-form";
 import Form from "./scenes/form";
 import Predict from "./scenes/predict";
 import Line from "./scenes/line";
@@ -46,6 +48,8 @@ function App() {
               <Route path="/founders" element={<Founders />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
+              <Route path="/company-form" element={<CompanyForm />} />
+              <Route path="/founders-form" element={<FoundersForm />} />
               <Route path="/company-form" element={<CompanyForm />} />
               <Route path="/predict" element={<Predict />} />
               <Route path="/bar" element={<Bar />} />

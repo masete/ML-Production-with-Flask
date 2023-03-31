@@ -21,7 +21,7 @@ const Investor = () => {
 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `/company-form`; 
+    let path = `/investor-form`; 
     navigate(path);
   }
 
