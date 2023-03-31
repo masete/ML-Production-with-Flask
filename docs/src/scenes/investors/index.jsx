@@ -12,6 +12,7 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { useNavigate } from "react-router-dom";
 
 const Investor = () => {
   const theme = useTheme();
@@ -39,6 +40,7 @@ const Investor = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={routeChange}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             ADD AN INVESTOR
