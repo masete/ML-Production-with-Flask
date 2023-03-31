@@ -17,6 +17,13 @@ const Investor = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/company-form`; 
+    navigate(path);
+  }
+
   return (
     <Box m="20px">
       {/* HEADER */}
