@@ -50,7 +50,7 @@ function App() {
               <Route path="/form" element={<Form />} />
               <Route path="/company-form" element={<CompanyForm />} />
               <Route path="/founders-form" element={<FoundersForm />} />
-              <Route path="/company-form" element={<CompanyForm />} />
+              <Route path="/investor-form" element={<InvestorForm />} />
               <Route path="/predict" element={<Predict />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
