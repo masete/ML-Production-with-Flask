@@ -41,7 +41,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="DATE"
+                label="COMPANY NAME"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
@@ -54,7 +54,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="COMPANY NAME"
+                label="COMPANY DISCRIPTION"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.lastName}
@@ -67,7 +67,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="AMOUNT"
+                label="STATUS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -80,7 +80,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="ROUND"
+                label="YEAR FOUNDED "
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
@@ -93,7 +93,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="INVESTORS"
+                label="HEADQUARTERS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address1}
@@ -119,7 +119,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="COUNTRYHQ"
+                label="COUNTRIES OF OPERATION"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -132,7 +132,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="CATEGORY"
+                label="TOTAL VENTURE FUNDING"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -145,7 +145,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="SECTOR"
+                label="FUNDING ROUNDS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -158,7 +158,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="NUMBER OF VENTURE FUNDING ROUNDS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -171,7 +171,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="INVESTORS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -184,7 +184,7 @@ const CompanyForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="COMPANY VALUATIONS"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
