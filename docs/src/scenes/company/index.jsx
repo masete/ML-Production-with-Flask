@@ -50,7 +50,7 @@ const Company = () => {
             }}
             onClick={routeChange}
           >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+            {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
              ADD A NEW COMPANY
           </Button>
         </Box>

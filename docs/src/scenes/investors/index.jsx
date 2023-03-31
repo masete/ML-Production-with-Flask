@@ -42,7 +42,7 @@ const Investor = () => {
             }}
             onClick={routeChange}
           >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+            {/* <DownloadOutlinedIcon sx={{ mr: "10px" }} /> */}
             ADD AN INVESTOR
           </Button>
         </Box>
