@@ -12,10 +12,17 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import { useNavigate } from "react-router-dom";
 
 const Founders = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/company-form`; 
+    navigate(path);
+  }
 
   return (
     <Box m="20px">
@@ -32,6 +39,7 @@ const Founders = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={routeChange}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             ADD A FOUNDER
