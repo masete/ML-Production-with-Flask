@@ -20,7 +20,7 @@ const Founders = () => {
 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `/company-form`; 
+    let path = `/founders-form`; 
     navigate(path);
   }
 
