@@ -171,7 +171,7 @@ const FoundersForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="blank"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
@@ -184,7 +184,7 @@ const FoundersForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 2"
+                label="blank"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address2}
