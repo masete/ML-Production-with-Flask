@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-const Predict = () => {
+const PredInvst = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [values, setValues] =useState({})
   const [result, setResult] = useState("")
@@ -374,4 +374,4 @@ const initialValues = {
   Business_model_B2C: ""
 };
 
-export default Predict;
+export default PredInvst;
