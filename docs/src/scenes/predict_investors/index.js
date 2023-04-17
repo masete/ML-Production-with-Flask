@@ -101,7 +101,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="16_Last funding round raised amount"
+                label="Deals Information, Level of Completeness"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Last_funding_round_raised_amount}
@@ -114,7 +114,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="age_of_company"
+                label="Disclosed"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.age_of_company}
@@ -127,7 +127,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Amount of the last funding type"
+                label="Founded"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Amount_of_the_last_funding_type}
@@ -140,7 +140,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Companies Information, Level of Completeness"
+                label="Total  Disclosed Funding"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Companies_Information_Level_of_Completeness}
@@ -153,7 +153,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Stage, DA Classified_Early"
+                label="DA Classification_African Company (Yes = 0; No = 1)"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Stage_DA_Classified_Early}
@@ -166,7 +166,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="number of founders"
+                label="Number of Founders"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.number_of_founders}
@@ -179,7 +179,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="number of bussiness categories"
+                label="Year"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.number_of_bussiness_categories}
@@ -192,7 +192,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="number of market countires"
+                label="Month"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.number_of_market_countires}
@@ -205,7 +205,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Female_Co-Founder"
+                label="Month"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Female_Co_Founder}
@@ -218,7 +218,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Average time of rounds(days)"
+                label="Quarter"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Average_time_of_rounds}
@@ -231,7 +231,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="number of investors"
+                label="Half"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.number_of_investors}
@@ -244,7 +244,7 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Sector_Information Technology"
+                label="Number of Investors"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Sector_Information_Technology}
@@ -257,7 +257,34 @@ const Predict = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Business_model_B2C"
+                label="Main Sector"
+                onBlur={handleBlur}
+                onChange={(e)=>handleChange(e)}
+                value={values.Business_model_B2C}
+                name="Business_model_B2C"
+                error={!!touched.Business_model_B2C && !!errors.Business_model_B2C}
+                helperText={touched.Business_model_B2C && errors.Business_model_B2C}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Funding Round"
+                onBlur={handleBlur}
+                onChange={(e)=>handleChange(e)}
+                value={values.Business_model_B2C}
+                name="Business_model_B2C"
+                error={!!touched.Business_model_B2C && !!errors.Business_model_B2C}
+                helperText={touched.Business_model_B2C && errors.Business_model_B2C}
+                sx={{ gridColumn: "span 1" }}
+              />
+
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Country"
                 onBlur={handleBlur}
                 onChange={(e)=>handleChange(e)}
                 value={values.Business_model_B2C}
