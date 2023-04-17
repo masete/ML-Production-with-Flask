@@ -70,7 +70,7 @@ const PredInvst = () => {
 
   return (
     <Box m="20px">
-      <Header title="SERIES A" subtitle="Predicting the probability in reaching series A financing" />
+      <Header title="Predicitng Investors" subtitle="Predicting investors likely to invest in a given startup." />
 
       <Formik
         // onSubmit={handleFormSubmit}

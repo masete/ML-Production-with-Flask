@@ -16,6 +16,7 @@ import InvestorForm from "./scenes/investor-form";
 import FoundersForm from "./scenes/founders-form";
 import Form from "./scenes/form";
 import Predict from "./scenes/predict";
+import PredInvst from "./scenes/predict_investors";
 import Line from "./scenes/line";
 import DealsLineChart from "./scenes/deals";
 import Pie from "./scenes/pie";
@@ -52,6 +53,7 @@ function App() {
               <Route path="/founders-form" element={<FoundersForm />} />
               <Route path="/investor-form" element={<InvestorForm />} />
               <Route path="/predict" element={<Predict />} />
+              <Route path="/predict_investors" element={<PredInvst />} />
               <Route path="/bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
