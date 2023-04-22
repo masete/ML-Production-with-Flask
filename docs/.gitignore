@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.netlify/
+/api/vir_env/
+/api/ystemctl status mysqld
 
 # testing
 /coverage
