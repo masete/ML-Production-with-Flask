@@ -7,6 +7,7 @@ import Team from "./scenes/team";
 // import Deals from "./scenes/deals/PieChart";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
+import InvestorsConfidence from "./scenes/invest_conf_contacts";
 import Company from "./scenes/company";
 import Investor from "./scenes/investors";
 import Founders from "./scenes/founders";
@@ -44,6 +45,7 @@ function App() {
               <Route path="/team" element={<Team />} />
               <Route path="/deals" element={<DealsLineChart />} />
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/invest_conf_contacts" element={<InvestorsConfidence />} />
               <Route path="/company" element={<Company />} />
               <Route path="/investors" element={<Investor />} />
               <Route path="/founders" element={<Founders />} />
