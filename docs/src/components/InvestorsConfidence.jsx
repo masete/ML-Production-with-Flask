@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
-import { DealsListData } from "../data/mockData";
+import { investConfData } from "../data/InvestorsConfData";
 import Header from "../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -19,8 +19,8 @@ const InvestorsConf = ({ isCustomLineColors = false, isDashboard = false }) => {
     //   cellClassName: "DATE-column--cell",
     // },
     {
-      field: "STARTUP NAME",
-      headerName: "STARTUP NAME",
+      field: "STARTUPNAME",
+      headerName: "STARTUPNAME",
       type: "number",
       headerAlign: "left",
       align: "left",
@@ -104,7 +104,7 @@ const InvestorsConf = ({ isCustomLineColors = false, isDashboard = false }) => {
         }}
       >
         <DataGrid
-          rows={DealsListData}
+          rows={investConfData}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
