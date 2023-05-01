@@ -1,5 +1,5 @@
 from api.models.database import DatabaseConnection
-from flask import jsonify
+# from flask import jsonify
 
 
 cursor = DatabaseConnection().cursor
@@ -18,6 +18,12 @@ class Acquisitions:
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
+
+    def get_all_acquisitions(self):
+        get_all_acquisitions = "SELECT * FROM Acquisitions"
+        self.cursor.execute(get_all_acquisitions)
+        results = self.cursor.fetchall()
+        return results
 
 #     def to_dict(self):
 #         """A method to Convert the acquisitions instance to a dictionary"""
