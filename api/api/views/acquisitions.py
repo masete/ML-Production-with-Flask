@@ -1,13 +1,21 @@
 """order.py holding my parcel order views"""
 from flask import Blueprint, jsonify, request
 from api.models.models import Acquisitions
-# from api.Helpers.validations import Validation
-# from api.Helpers.error_handlers import InvalidUsage
-# from api.models.auth import Users
-# from flask_jwt_extended import (jwt_required, get_jwt_identity)
-# from flasgger import swag_from
 
 acquisition = Acquisitions()
 # val = Validation()
 
-parcel_blueprint = Blueprint("acquisition", __name__)
+acquisition_blueprint = Blueprint("acquisition", __name__)
+
+
+@acquisition_blueprint.route('/api/v1/acquisition', methods=['GET'], strict_slashes=False)
+# @jwt_required
+def get_all_acquisitions():
+    """
+    endpoint to get all acquisition 
+    :return:
+    """
+    # user_id = get_jwt_identity()
+
+    acq = acquisition.get_all_acquisitions()
+    return jsonify({"acquisition": acq})

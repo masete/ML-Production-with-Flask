@@ -2,7 +2,7 @@ from flask import Flask
 
 from api.views.user import user_blueprint as user_blueprint
 # from api.views.orders import parcel_blueprint as parcel_blueprint
-from api.views.acquisitions import aquisitions_blueprint as aquisitions_blueprint
+from api.views.acquisitions import acquisition_blueprint as acquisition_blueprint
 
 
 def create_app():
@@ -13,6 +13,6 @@ def create_app():
     # JWTManager(app)
 
     app.register_blueprint(user_blueprint)
-    app.register_blueprint(parcel_blueprint)
+    app.register_blueprint(acquisition_blueprint)
 
     return app
