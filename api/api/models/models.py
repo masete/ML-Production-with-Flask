@@ -1,7 +1,14 @@
-class Acquisitions:
-    Acquisitions = []
+from api.models.database import DatabaseConnection
+from flask import jsonify
 
-    def __init__(self, id, when, acquired, acquiring, amount, source, created_at, updated_at, user_id):
+
+cursor = DatabaseConnection().cursor
+
+acquisitions = []
+
+class Acquisitions:
+
+    def __init__(self, id=None, when=None, acquired=None, acquiring=None, amount=None, source=None, created_at=None, updated_at=None, user_id=None):
         self.id = id
         self.when = when
         self.acquired = acquired
@@ -12,17 +19,17 @@ class Acquisitions:
         self.updated_at = updated_at
         self.user_id = user_id
 
-    def to_dict(self):
-        """A method to Convert the acquisitions instance to a dictionary"""
-        acquisition = {
-            'id': self.id,
-            'when': self.when,
-            'acquired': self.acquired,
-            'acquiring': self.acquiring,
-            'amount': self.amount,
-            'source': self.source,
-            'created_at': self.created_at,
-            'updated_at': self.updated_at,
-            'user_id': self.user_id
-        }
-        return acquisition
+#     def to_dict(self):
+#         """A method to Convert the acquisitions instance to a dictionary"""
+#         acquisition = {
+#             'id': self.id,
+#             'when': self.when,
+#             'acquired': self.acquired,
+#             'acquiring': self.acquiring,
+#             'amount': self.amount,
+#             'source': self.source,
+#             'created_at': self.created_at,
+#             'updated_at': self.updated_at,
+#             'user_id': self.user_id
+#         }
+#         return acquisition
