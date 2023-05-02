@@ -1,60 +1,15 @@
-# from lib2to3.pytree import convert
-from flask import Flask, request, jsonify, render_template, make_response
-from flask_mysqldb import MySQL
-import MySQLdb.cursors
+from flask import Blueprint, request, jsonify, render_template, make_response
 import pickle
 import numpy as np
 import json
 import os
 
-ACL_ORIGIN = 'Access-Control-Allow-Origin'
-
-app = Flask(__name__)
-
-# Enter your database connection details below
-
-# Intialize MySQL
-mysql = MySQL(app)
-
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
-def convert(o):
-    if isinstance(o, np.generic):
-        return o.item()
-    raise TypeError
+to_series_A = Blueprint('to_series_A',__name__)
 
-@app.route("/api/v1/acquisition/<int:id>", methods=["GET","POST"])
-def get_one_acquisitions(id):
-    print('Masete N')
-        
-    # try:
-        # if request.method == "POST":
-	
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM acquisitions')
-    results = cursor.fetchone()
-    return results
-
-@app.route("/api/v1/acquisition/", methods=["GET","POST"])
-def get_all_acquisitions():
-    print('Masete N')
-        
-    # try:
-        # if request.method == "POST":
-	
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('SELECT * FROM acquisitions')
-    results = cursor.fetchall()
-    return jsonify({"acquisitions": results})
-    # return results
-
-
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
-
-@app.route("/predict_series_A", methods=["GET", "POST"])
+@to_series_A.route("/predict_series_A", methods=["GET", "POST"])
 def predictSeriesA():
 
     try:
@@ -92,7 +47,3 @@ def predictSeriesA():
         
     except:
         return json.dumps({"error":"Please Enter Valid Data"})
-  
-
-if __name__ == "__main__":
-    app.run(debug=True)
