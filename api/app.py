@@ -1,5 +1,7 @@
 # from lib2to3.pytree import convert
 from flask import Flask, request, jsonify, render_template, make_response
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
 import pickle
 import numpy as np
 import json

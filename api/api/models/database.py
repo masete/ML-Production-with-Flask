@@ -7,10 +7,11 @@ class DatabaseConnection:
     """
 
     # Configure MySQL database settings
-    app.config['MYSQL_HOST'] = 'digestafrica-do-user-4558844-0.b.db.ondigitalocean.com'
-    app.config['MYSQL_USER'] = 'doadmin'
-    app.config['MYSQL_PASSWORD'] = 'AVNS_Osw-cqyH-pc7-_kHDkd'
-    app.config['MYSQL_DB'] = 'defaultdb'
+    
+    # app.config['MYSQL_HOST'] = 'digestafrica-do-user-4558844-0.b.db.ondigitalocean.com'
+    # app.config['MYSQL_USER'] = 'doadmin'
+    # app.config['MYSQL_PASSWORD'] = 'AVNS_Osw-cqyH-pc7-_kHDkd'
+    # app.config['MYSQL_DB'] = 'defaultdb'
 
     # Initialize the MySQL extension
     # mysql = MySQL(app)
