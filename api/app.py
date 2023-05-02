@@ -11,6 +11,15 @@ ACL_ORIGIN = 'Access-Control-Allow-Origin'
 
 app = Flask(__name__)
 
+# Enter your database connection details below
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = '*****'
+app.config['MYSQL_PASSWORD'] = '*****'
+app.config['MYSQL_DB'] = '****'
+
+# Intialize MySQL
+mysql = MySQL(app)
+
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
