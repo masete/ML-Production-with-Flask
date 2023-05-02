@@ -20,6 +20,15 @@ app.config['MYSQL_DB'] = '****'
 # Intialize MySQL
 mysql = MySQL(app)
 
+@app.route('/api/v1/acquisition', methods=['GET'], strict_slashes=False)
+def get_all_acquisitions():
+
+	
+	c = mysql.db.cursor()
+	c.execute('SELECT * FROM acquisition')
+	results = c.fetchall()
+	return results
+
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
 
