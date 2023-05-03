@@ -1,4 +1,4 @@
-# Flask with Blueprints + MySQL basic template
+# Flask with Blueprints + MySQL 
 This is a simple template for creating flask apps with mysql support.
 
 **NOTE:** MySQL must be already installed in your system! Moreover, the following example assumes that sample content exists in mysql db. Check subfolder `data` for details.
