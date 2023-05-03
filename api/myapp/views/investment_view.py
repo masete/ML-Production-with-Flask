@@ -10,7 +10,7 @@ deals = Blueprint("deals",__name__)
 def get_all_deals():
 
 	
-	c = mysql.db.cursor()
-	c.execute('SELECT * FROM investment')
-	results = c.fetchall()
+	cursor = mysql.db.cursor()
+	cursor.execute('SELECT * FROM investments')
+	results = cursor.fetchall()
 	return jsonify({"all deals": results})
