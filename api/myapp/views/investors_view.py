@@ -15,3 +15,12 @@ def get_one_investor(id):
 	results = c.fetchone()
 	return jsonify({"single investor": results})
 
+@investor.route("/api/v1/investor/")
+def get_all_investor():
+
+	
+	c = mysql.db.cursor()
+	c.execute('SELECT * FROM investors_v3')
+	results = c.fetchall()
+	return jsonify({"single investor": results})
+
