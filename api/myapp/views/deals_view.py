@@ -14,7 +14,7 @@ def get_year(dt):
 def get_inv_analysis():
 
 	query = '''
-        SELECT YEAR(updated_at) AS year, COUNT(*) AS deal_count
+        SELECT YEAR(when) AS year, COUNT(*) AS deal_count
         FROM investments
         GROUP BY year
     '''
