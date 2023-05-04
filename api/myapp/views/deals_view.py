@@ -18,7 +18,9 @@ def get_inv_analysis():
 	df['year'] = df['updated_at'].map(get_year)
 	Unique_deals_df = df.drop_duplicates()
 
-	yrVposts = Unique_deals_df.year.value_counts()
+	json_str = Unique_deals_df.to_json(orient='records')
 
-	return jsonify({"deals counts by year": yrVposts})
+	# yrVposts = Unique_deals_df.year.value_counts()
+
+	return jsonify({"deals counts by year": json_str})
 
