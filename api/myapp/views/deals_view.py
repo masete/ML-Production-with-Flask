@@ -17,3 +17,5 @@ def get_inv_analysis():
 	df['year'] = df['1_post_date'].map(get_year)
 	Unique_deals_df = df.drop_duplicates()
 
+	yrVposts = Unique_deals_df.year.value_counts()
+
