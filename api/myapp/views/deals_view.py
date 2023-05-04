@@ -19,3 +19,5 @@ def get_inv_analysis():
 
 	yrVposts = Unique_deals_df.year.value_counts()
 
+	return yrVposts
+
