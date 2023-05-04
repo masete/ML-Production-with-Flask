@@ -15,4 +15,5 @@ def get_inv_analysis():
 	df = pd.read_sql("SELECT * FROM investments", con=mysql.db)
 
 	df['year'] = df['1_post_date'].map(get_year)
+	Unique_deals_df = df.drop_duplicates()
 
