@@ -1,11 +1,23 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { yVposts as data } from "../data/mockData";
+// import { yVposts as data } from "../data/mockData";
 
 const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [data, setData] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/v1/dealsByYear_linePlot/')
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
   return (
     <ResponsiveLine
