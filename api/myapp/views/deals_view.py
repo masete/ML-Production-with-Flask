@@ -13,11 +13,19 @@ def get_year(dt):
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
 
+	# query = '''
+    #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+    #     FROM investments
+    #     GROUP BY year
+    # '''
+
 	query = '''
-        SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-        FROM investments
-        GROUP BY year
+        SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
+		FROM investments
+		GROUP BY year
+
     '''
+	
     
 	df = pd.read_sql_query(query, con=mysql.db)
 
