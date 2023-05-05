@@ -19,11 +19,21 @@ def get_inv_analysis():
     #     GROUP BY year
     # '''
 
+	# query = '''
+	# 	SET NOCOUNT ON;
+    #     SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
+	# 	FROM investments
+	# 	GROUP BY year
+
+    # '''
 	query = '''
-		SET NOCOUNT ON;
-        SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
-		FROM investments
-		GROUP BY year
+		SELECT @id := @id + 1 AS id, year, deal_count
+		FROM (
+  			SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+  			FROM investments
+  			GROUP BY year
+			) AS subq, (SELECT @id := 0) AS init
+
 
     '''
 	
