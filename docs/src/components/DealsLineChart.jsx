@@ -15,8 +15,8 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/v1/dealsByYear_linePlot/');
-      const dataWithId = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
-      setData(dataWithId);
+      const data = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
+      setData(data);
     };
 
     fetchData();
@@ -33,13 +33,13 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
     //         });
     // }, []);
 
-    if (!dataWithId) {
+    if (!data) {
       return <div>Loading...</div>;
     }
 
   return (
     <ResponsiveLine
-      data={dataWithId}
+      data={data}
       theme={{
         axis: {
           domain: {
