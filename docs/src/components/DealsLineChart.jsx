@@ -12,20 +12,20 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
   const [data, setData] = useState([]);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/dealsByYear_linePlot/');
-      const data = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
-      setData(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/dealsByYear_linePlot/');
+  //     const data = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
+  //     setData(data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
     // useEffect(() => {
     //     axios.get('/api/v1/dealsByYear_linePlot/')
     //         .then(response => {
-    //           const dataWithId = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
+    //           // const dataWithId = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
     //             setData(response.data);
     //         })
     //         .catch(error => {
@@ -33,13 +33,35 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
     //         });
     // }, []);
 
-    if (!data) {
-      return <div>Loading...</div>;
-    }
+    useEffect(() => {
+      axios.get('/api/v1/dealsByYear_linePlot/')
+        .then(response => {
+          const dataWithId = response.data.map((d, i) => ({
+            id: `series-${i}`,
+            data: [
+              { x: d.year, y: d.deal_count },
+            ],
+          }));
+          setData(dataWithId);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }, []);
+
+    // if (!data) {
+    //   return <div>Loading...</div>;
+    // }
 
   return (
     <ResponsiveLine
-      data={data}
+      // data={data}
+      data={[
+        {
+          id: 'deals_count',
+          data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
+        }
+      ]}
       theme={{
         axis: {
           domain: {
