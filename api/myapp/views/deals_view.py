@@ -20,6 +20,7 @@ def get_inv_analysis():
     # '''
 
 	query = '''
+		SET NOCOUNT ON;
         SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
 		FROM investments
 		GROUP BY year
