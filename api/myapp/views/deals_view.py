@@ -20,16 +20,11 @@ def get_inv_analysis():
     '''
     
 	df = pd.read_sql_query(query, con=mysql.db)
-	# df = pd.read_sql("SELECT * FROM investments", con=mysql.db)
-	
 
-	# df['year'] = df['updated_at'].map(get_year)
-	# new_df=df.groupby(['year'])['Pclass'].count()
-	# Unique_deals_df = df.drop_duplicates()
-
-	json_str = df.to_json(orient='records')
+	# json_str = df.to_json(orient='records')
+	data = df.to_dict(orient='records')
 
 	# yrVposts = Unique_deals_df.year.value_counts()
 
-	return jsonify({"deals counts by year": json_str})
+	return jsonify({"deals counts by year": data})
 
