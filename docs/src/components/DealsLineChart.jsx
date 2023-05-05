@@ -14,12 +14,16 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
     useEffect(() => {
         axios.get('/api/v1/dealsByYear_linePlot/')
             .then(response => {
-                setData(response.data);
+                setData(response.data.data);
             })
             .catch(error => {
                 console.error(error);
             });
     }, []);
+
+    if (!data) {
+      return <div>Loading...</div>;
+    }
 
   return (
     <ResponsiveLine
