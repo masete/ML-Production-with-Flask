@@ -11,13 +11,24 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        "https://example.com/api/quarterly-data"
-      );
-      setData(result.data);
+      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+      const data = response.data.map((d, i) => ({
+        id: `series-${i}`,
+        ...d
+      }));
+      setData(data);
     };
+  
     fetchData();
   }, []);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const result = await axios("/api/v1/quarteryValueOfInvestment/");
+//       setData(result.data);
+//     };
+//     fetchData();
+//   }, []);
 
   return (
     <ResponsiveLine
