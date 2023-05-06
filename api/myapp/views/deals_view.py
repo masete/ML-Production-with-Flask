@@ -7,8 +7,8 @@ from ..app import mysql
 deals = Blueprint("deals",__name__)
 
 #Add year column from 1_post_date
-def get_year(dt):
-	return dt.year
+# def get_year(dt):
+# 	return dt.year
 
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
@@ -27,18 +27,17 @@ def get_inv_analysis():
 
     # '''
 	query = '''
-		SELECT @id := @id + 1 AS id, year, deal_count
-		FROM (
-  			SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-  			FROM investments
-  			GROUP BY year
-			) AS subq, (SELECT @id := 0) AS init
-
-
+		SELECT 
+  			ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, 
+  			YEAR(`when`) AS year, 
+  			COUNT(*) AS deal_count
+		FROM investments
+		GROUP BY year
     '''
 	
     
 	df = pd.read_sql_query(query, con=mysql.db)
+
 
 	# json_str = df.to_json(orient='records')
 	data = df.to_dict(orient='records')
@@ -47,3 +46,7 @@ def get_inv_analysis():
 
 	return data
 
+
+@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+def get_valueOfDeals():
+	
