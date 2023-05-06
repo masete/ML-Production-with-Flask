@@ -11,44 +11,21 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
 
   const [data, setData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('/api/v1/dealsByYear_linePlot/');
+      const data = response.data.map((d, i) => ({
+        id: `series-${i}`,
+        ...d
+      }));
+      setData(data);
+    };
+  
+    fetchData();
+  }, []);
+  
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get('/api/v1/dealsByYear_linePlot/');
-  //     const data = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
-  //     setData(data);
-  //   };
 
-  //   fetchData();
-  // }, []);
-
-    // useEffect(() => {
-    //     axios.get('/api/v1/dealsByYear_linePlot/')
-    //         .then(response => {
-    //           // const dataWithId = response.data.map((d, i) => ({ id: `series-${i}`, ...d }));
-    //             setData(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-    // }, []);
-
-    useEffect(() => {
-      axios.get('/api/v1/dealsByYear_linePlot/')
-        .then(response => {
-          const dataWithId = response.data.map((d, i) => ({
-            id: `series-${i}`,
-            data: [
-              { x: d.year, y: d.deal_count },
-            ],
-          }));
-          setData(dataWithId);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }, []);
-    console.log(data)
 
     // if (!data) {
     //   return <div>Loading...</div>;
@@ -65,6 +42,10 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
           // console.log(data)
         }
       ]}
+
+      // data={data.map(({ year, deal_count }) => ({ year, "Number of Deals": deal_count }))}
+      // keys={['Number of Deals']}
+      // indexBy="year"
       theme={{
         axis: {
           domain: {
