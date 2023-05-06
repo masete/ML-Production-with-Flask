@@ -10,33 +10,33 @@ const DealsBarChart = ({ isDashboard = false }) => {
   const colors = tokens(theme.palette.mode);
 
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/valueOfDealsByCountry_barPlot/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/valueOfDealsByCountry_barPlot/');
+  //     const data = response.data.map((d, i) => ({
+  //       id: `series-${i}`,
+  //       ...d
+  //     }));
+  //     setData(data);
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
   
 
 
   return (
     <ResponsiveBar
-      // data={data}
-      data={[
-        {
-          id: 'deal_amount',
-          data: data.map(({ year, deal_amount }) => ({ x: year, y: deal_amount }))
-          // console.log(data)
-        }
-      ]}
+      data={data}
+      // data={[
+      //   {
+      //     id: 'deal_amount',
+      //     data: data.map(({ year, deal_amount }) => ({ x: year, y: deal_amount }))
+      //     // console.log(data)
+      //   }
+      // ]}
       theme={{
         // added
         axis: {
