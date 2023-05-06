@@ -7,9 +7,30 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        "https://example.com/api/quarterly-data"
+      );
+      setData(result.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <ResponsiveLine
-      data={data}
+    //   data={data}
+    data={[
+        {
+          id: "quarterly_value",
+          data: data.map((item) => ({
+            x: new Date(item.quarter + "-01"),
+            y: item.quarterly_value,
+          })),
+        },
+      ]}
       theme={{
         axis: {
           domain: {
