@@ -49,4 +49,20 @@ def get_inv_analysis():
 
 @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 def get_valueOfDeals():
-	
+	query = '''
+
+		SELECT YEAR(`when`) AS year, SUM(amount) AS deal_amount
+		FROM investments
+		GROUP BY year
+
+	'''
+
+	df = pd.read_sql_query(query, con=mysql.db)
+
+
+	# json_str = df.to_json(orient='records')
+	data = df.to_dict(orient='records')
+
+	# yrVposts = Unique_deals_df.year.value_counts()
+
+	return data
