@@ -66,3 +66,27 @@ def get_valueOfDeals():
 	# yrVposts = Unique_deals_df.year.value_counts()
 
 	return data
+
+@deals.route("/api/v1/quarteryValueOfInvestment/")
+def get_valueOfDealsByQuarter():
+	query = '''
+
+		SELECT
+    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+    		SUM(amount) AS quarterly_value
+		FROM
+    		investments
+		GROUP BY
+    		quarter
+
+	'''
+
+	df = pd.read_sql_query(query, con=mysql.db)
+
+
+	# json_str = df.to_json(orient='records')
+	data = df.to_dict(orient='records')
+
+	# yrVposts = Unique_deals_df.year.value_counts()
+
+	return data
