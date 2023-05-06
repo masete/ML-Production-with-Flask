@@ -7,6 +7,7 @@ const DealsBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+
   return (
     <ResponsiveBar
       data={data}

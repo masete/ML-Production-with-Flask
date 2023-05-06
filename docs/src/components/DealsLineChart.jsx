@@ -47,7 +47,7 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
         .catch(error => {
           console.error(error);
         });
-    }, [data]);
+    }, []);
     console.log(data)
 
     // if (!data) {
