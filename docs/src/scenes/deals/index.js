@@ -169,7 +169,7 @@ const Deals = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Number of deals by year from 2007 to 2018
+                Number of deals by year
               </Typography>
             </Box>
             <Box>
@@ -211,7 +211,7 @@ const Deals = () => {
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                Value of deals(Millions) by country between 2007 and 2018
+                Value of deals(Millions) by country
               </Typography>
             </Box>
             <Box>
@@ -300,7 +300,7 @@ const Deals = () => {
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $5,280M+ Value sum of deals from 2007 to 2018
+              $5,280M+ Value sum of deals
             </Typography>
             {/* <Typography>Includes extra misc expenditures and costs</Typography> */}
             {/* < /> */}
