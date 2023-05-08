@@ -39,10 +39,9 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         {
           id: "quarterly_value",
           data: data.map((item) => ({
-            x: new Date(item.quarter + "-01"),
+            x: new Date(item.quarter + "-01").toLocaleDateString(),
             y: item.quarterly_value,
           })),
-        //   color: "blue" // set a default color for the line
         },
       ]}
       theme={{
