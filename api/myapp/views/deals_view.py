@@ -32,14 +32,28 @@ def get_inv_analysis():
 
 @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 def get_valueOfDeals():
+
+
+	# query = '''
+
+	# 	SELECT
+  	# 		SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  	# 		SUM(amount) as total_amount
+	# 	FROM
+  	# 		companies_v3
+  	# 		INNER JOIN investments ON companies_v3.company_name = investments.company_name
+	# 	GROUP BY
+  	# 		country;
+
+	# '''
 	query = '''
 
 		SELECT
   			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-  			SUM(amount) as total_amount
+  			SUM(investments.amount) as total_amount
 		FROM
   			investments
-  			INNER JOIN companies_v3 ON investments.company_name = companies_v3.company_name
+  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
 		GROUP BY
   			country;
 
