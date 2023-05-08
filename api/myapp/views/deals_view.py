@@ -13,28 +13,11 @@ deals = Blueprint("deals",__name__)
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
 
-	# query = '''
-    #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-    #     FROM investments
-    #     GROUP BY year
-    # '''
-
-	# query = '''
-	# 	SET NOCOUNT ON;
-    #     SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
-	# 	FROM investments
-	# 	GROUP BY year
-
-    # '''
 	query = '''
-		SELECT 
-  			ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, 
-  			YEAR(`when`) AS year, 
-  			COUNT(*) AS deal_count
-		FROM investments
-		GROUP BY year
+        SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+        FROM investments
+        GROUP BY year
     '''
-	
     
 	df = pd.read_sql_query(query, con=mysql.db)
 
@@ -51,9 +34,14 @@ def get_inv_analysis():
 def get_valueOfDeals():
 	query = '''
 
-		SELECT YEAR(`when`) AS year, SUM(amount) AS deal_amount
-		FROM investments
-		GROUP BY year
+		SELECT
+  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  			SUM(amount) as total_amount
+		FROM
+  			investments
+  			INNER JOIN companies_v3 ON investments.company_name = companies_v3.company_name
+		GROUP BY
+  			country;
 
 	'''
 
@@ -69,6 +57,36 @@ def get_valueOfDeals():
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
 def get_valueOfDealsByQuarter():
+	query = '''
+
+		SELECT
+    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+    		SUM(amount) AS quarterly_value
+		FROM
+    		investments
+		GROUP BY
+    		quarter
+
+	'''
+	
+	df = pd.read_sql_query(query, con=mysql.db)
+
+
+	# json_str = df.to_json(orient='records')
+	data = df.to_dict(orient='records')
+
+	# colors = ["#FFC107", "#2196F3", "#4CAF50", "#FF5722"]
+	# color_index = 0
+	# for point in data:
+	# 	point["color"] = colors[color_index]
+	# 	color_index = (color_index + 1) % len(colors)
+
+	# yrVposts = Unique_deals_df.year.value_counts()
+
+	return data
+
+@deals.route("/api/v1/dealsList/")
+def get_all_dealsList():
 	query = '''
 
 		SELECT
