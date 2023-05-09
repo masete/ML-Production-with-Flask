@@ -5,7 +5,7 @@ from ..app import mysql
 
 
 deals = Blueprint("deals",__name__)
-
+con=mysql.db
 #Add year column from 1_post_date
 # def get_year(dt):
 # 	return dt.year
@@ -19,7 +19,7 @@ def get_inv_analysis():
         GROUP BY year
     '''
     
-	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con)
 
 	con.close() 
 
@@ -55,7 +55,7 @@ def get_valueOfDeals():
 
 	'''
 
-	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con)
 
 	con.close() 
 
@@ -83,7 +83,7 @@ def get_valueOfDealsByQuarter():
 
 	'''
 	
-	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con)
 
 	con.close() 
 
