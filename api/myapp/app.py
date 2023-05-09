@@ -25,7 +25,7 @@ class MySQL:
 						  db=db)
 			
 			# Add this line to fix "Commands out of sync" error
-			self.db.autocommit(True)
+			# self.db.autocommit(True)
 			
 
 

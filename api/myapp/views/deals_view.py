@@ -21,31 +21,27 @@ def get_inv_analysis():
     
 	df = pd.read_sql_query(query, con=mysql.db)
 
+	con.close() 
+
+	con = con.cursor() 
+
+	# mysql_free_result(query)
+
 
 	# json_str = df.to_json(orient='records')
 	data = df.to_dict(orient='records')
 
+
 	# yrVposts = Unique_deals_df.year.value_counts()
 
 	return data
+	
 
 
 @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 def get_valueOfDeals():
 
 
-	# query = '''
-
-	# 	SELECT
-  	# 		SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-  	# 		SUM(amount) as total_amount
-	# 	FROM
-  	# 		companies_v3
-  	# 		INNER JOIN investments ON companies_v3.company_name = investments.company_name
-	# 	GROUP BY
-  	# 		country;
-
-	# '''
 	query = '''
 
 		SELECT
@@ -60,6 +56,10 @@ def get_valueOfDeals():
 	'''
 
 	df = pd.read_sql_query(query, con=mysql.db)
+
+	con.close() 
+
+	con = con.cursor() 
 
 
 	# json_str = df.to_json(orient='records')
@@ -85,6 +85,10 @@ def get_valueOfDealsByQuarter():
 	
 	df = pd.read_sql_query(query, con=mysql.db)
 
+	con.close() 
+
+	con = con.cursor() 
+
 
 	# json_str = df.to_json(orient='records')
 	data = df.to_dict(orient='records')
@@ -99,26 +103,30 @@ def get_valueOfDealsByQuarter():
 
 	return data
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
-	query = '''
+# @deals.route("/api/v1/dealsList/")
+# def get_all_dealsList():
+# 	query = '''
 
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) AS quarterly_value
-		FROM
-    		investments
-		GROUP BY
-    		quarter
+# 		SELECT
+#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+#     		SUM(amount) AS quarterly_value
+# 		FROM
+#     		investments
+# 		GROUP BY
+#     		quarter
 
-	'''
+# 	'''
 
-	df = pd.read_sql_query(query, con=mysql.db)
+# 	df = pd.read_sql_query(query, con=mysql.db)
+
+# 	con.close() 
+
+# 	con = cnx.cursor() 
 
 
-	# json_str = df.to_json(orient='records')
-	data = df.to_dict(orient='records')
+# 	# json_str = df.to_json(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	# yrVposts = Unique_deals_df.year.value_counts()
+# 	# yrVposts = Unique_deals_df.year.value_counts()
 
-	return data
+# 	return data
