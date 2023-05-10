@@ -38,6 +38,9 @@ def get_inv_analysis():
 	rows = mysql.db.fetchall()
 	for row in rows:
 		print(row)
+		df = pd.read_sql_query(query, con=mysql.db)
+		data = df.to_dict(orient='records')
+		return data
 
 	# close the cursor and database connection
 	mysql.db.close()
