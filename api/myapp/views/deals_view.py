@@ -32,19 +32,21 @@ def get_inv_analysis():
 
 	# execute the simplified query
 	query = "SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count FROM investments GROUP BY year;"
-	mysql.db.execute(query)
+	df = pd.read_sql_query(query, con=mysql.db)
+	mysql.db.close()
+	# mysql.db.close()
+	# mysql.db.execute(query)
 
 	# fetch all the rows and print them
-	rows = mysql.db.fetchall()
-	for row in rows:
-		print(row)
-		df = pd.read_sql_query(query, con=mysql.db)
-		data = df.to_dict(orient='records')
-		return data
+	# rows = mysql.db.fetchall()
+	# for row in rows:
+	# 	print(row)
+		
+	data = df.to_dict(orient='records')
+	return data
 
 	# close the cursor and database connection
-	mysql.db.close()
-	mysql.db.close()
+	
 	
 
 
