@@ -14,17 +14,27 @@ deals = Blueprint("deals",__name__)
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
 
-	query = '''
-        SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-        FROM investments
-        GROUP BY year
-    '''
-    
-	df = pd.read_sql_query(query, con=mysql.db)
-	mysql.db.close()
 
-	data = df.to_dict(orient='records')
+	c = mysql.db.cursor()
+	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+        FROM investments
+        GROUP BY year''')
+	results = c.fetchall()
+
+	data = results.to_dict(orient='records')
+
 	return data
+	# query = '''
+    #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+    #     FROM investments
+    #     GROUP BY year
+    # '''
+    
+	# df = pd.read_sql_query(query, con=mysql.db)
+	# mysql.db.close()
+
+	# data = df.to_dict(orient='records')
+	# return data
 
     
 	# df = pd.read_sql_query(query, con=mysql.db)
@@ -54,30 +64,30 @@ def get_inv_analysis():
 	
 
 
-@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
-def get_valueOfDeals():
+# @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+# def get_valueOfDeals():
 
 
-	query = '''
+# 	query = '''
 
-		SELECT
-  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-  			SUM(investments.amount) as total_amount
-		FROM
-  			investments
-  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
-		GROUP BY
-  			country;
+# 		SELECT
+#   			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+#   			SUM(investments.amount) as total_amount
+# 		FROM
+#   			investments
+#   			INNER JOIN companies_v3 ON investments.company = companies_v3.name
+# 		GROUP BY
+#   			country;
 
-	'''
+# 	'''
 
-	df = pd.read_sql_query(query, con=mysql.db)
-	mysql.db.close()
+# 	df = pd.read_sql_query(query, con=mysql.db)
+# 	mysql.db.close()
 
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	return data
+# 	return data
 
 # @deals.route("/api/v1/quarteryValueOfInvestment/")
 # def get_valueOfDealsByQuarter():
@@ -110,24 +120,24 @@ def get_valueOfDeals():
 
 # 	return data
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
-	query = '''
+# @deals.route("/api/v1/dealsList/")
+# def get_all_dealsList():
+# 	query = '''
 
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) AS quarterly_value
-		FROM
-    		investments
-		GROUP BY
-    		quarter
+# 		SELECT
+#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+#     		SUM(amount) AS quarterly_value
+# 		FROM
+#     		investments
+# 		GROUP BY
+#     		quarter
 
-	'''
+# 	'''
 
-	df = pd.read_sql_query(query, con=mysql.db)
-
-
-	data = df.to_dict(orient='records')
+# 	df = pd.read_sql_query(query, con=mysql.db)
 
 
-	return data
+# 	data = df.to_dict(orient='records')
+
+
+# 	return data
