@@ -21,7 +21,11 @@ def get_inv_analysis():
         GROUP BY year''')
 	results = c.fetchall()
 
-	data = results.to_dict(orient='records')
+	columns = [desc[0] for desc in c.description]  # Get column names from description
+
+	df = pd.DataFrame(results, columns=columns)
+
+	data = df.to_dict(orient='records')
 
 	return data
 	# query = '''
