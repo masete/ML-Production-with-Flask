@@ -68,20 +68,41 @@ def get_inv_analysis():
 	
 
 
-# @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
-# def get_valueOfDeals():
+@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+def get_valueOfDeals():
+
+	c = mysql.db.cursor()
+	
+	c.execute('''SELECT
+  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  			SUM(investments.amount) as total_amount
+		FROM
+  			investments
+  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
+		GROUP BY
+  			country
+			''')
+	results = c.fetchall()
+
+	columns = [desc[0] for desc in c.description]  # Get column names from description
+
+	df = pd.DataFrame(results, columns=columns)
+
+	data = df.to_dict(orient='records')
+
+	return data
 
 
 # 	query = '''
 
-# 		SELECT
-#   			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-#   			SUM(investments.amount) as total_amount
-# 		FROM
-#   			investments
-#   			INNER JOIN companies_v3 ON investments.company = companies_v3.name
-# 		GROUP BY
-#   			country;
+		# SELECT
+  		# 	SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  		# 	SUM(investments.amount) as total_amount
+		# FROM
+  		# 	investments
+  		# 	INNER JOIN companies_v3 ON investments.company = companies_v3.name
+		# GROUP BY
+  		# 	country;
 
 # 	'''
 
