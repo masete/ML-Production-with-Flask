@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
-import { DealsListData } from "../data/mockData";
+// import { DealsListData } from "../data/mockData";
 import Header from "../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -136,7 +138,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
         }}
       >
         <DataGrid
-          rows={DealsListData}
+          rows={data}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
