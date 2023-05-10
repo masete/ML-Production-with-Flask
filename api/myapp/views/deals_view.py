@@ -110,27 +110,24 @@ def get_valueOfDeals():
 
 # 	return data
 
-# @deals.route("/api/v1/dealsList/")
-# def get_all_dealsList():
-# 	query = '''
+@deals.route("/api/v1/dealsList/")
+def get_all_dealsList():
+	query = '''
 
-# 		SELECT
-#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-#     		SUM(amount) AS quarterly_value
-# 		FROM
-#     		investments
-# 		GROUP BY
-#     		quarter
+		SELECT
+    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+    		SUM(amount) AS quarterly_value
+		FROM
+    		investments
+		GROUP BY
+    		quarter
 
-# 	'''
+	'''
 
-# 	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con=mysql.db)
 
 
+	data = df.to_dict(orient='records')
 
-# 	# json_str = df.to_json(orient='records')
-# 	data = df.to_dict(orient='records')
 
-# 	# yrVposts = Unique_deals_df.year.value_counts()
-
-# 	return data
+	return data
