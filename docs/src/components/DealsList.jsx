@@ -9,6 +9,21 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+      const data = response.data.map((d, i) => ({
+        id: `series-${i}`,
+        ...d
+      }));
+      setData(data);
+    };
+  
+    fetchData();
+  }, []);
+
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     // { field: "registrarId", headerName: "Registrar ID" },
