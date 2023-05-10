@@ -50,33 +50,30 @@ def get_inv_analysis():
 	
 
 
-# @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
-# def get_valueOfDeals():
+@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+def get_valueOfDeals():
 
 
-# 	query = '''
+	query = '''
 
-# 		SELECT
-#   			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-#   			SUM(investments.amount) as total_amount
-# 		FROM
-#   			investments
-#   			INNER JOIN companies_v3 ON investments.company = companies_v3.name
-# 		GROUP BY
-#   			country;
+		SELECT
+  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  			SUM(investments.amount) as total_amount
+		FROM
+  			investments
+  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
+		GROUP BY
+  			country;
 
-# 	'''
+	'''
 
-# 	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con=mysql.db)
+	mysql.db.close()
 
 
+	data = df.to_dict(orient='records')
 
-# 	# json_str = df.to_json(orient='records')
-# 	data = df.to_dict(orient='records')
-
-# 	# yrVposts = Unique_deals_df.year.value_counts()
-
-# 	return data
+	return data
 
 # @deals.route("/api/v1/quarteryValueOfInvestment/")
 # def get_valueOfDealsByQuarter():
