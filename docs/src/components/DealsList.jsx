@@ -15,7 +15,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+      const response = await axios.get('/api/v1/dealsList/');
       const data = response.data.map((d, i) => ({
         id: `series-${i}`,
         ...d
@@ -25,6 +25,22 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
   
     fetchData();
   }, []);
+
+//   const [data, setData] = useState([]);
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const response = await axios.get('/api/v1/dealsList/');
+//     const data = response.data.map((d, i) => ({
+//       id: i + 1,
+//       ...d,
+//     }));
+//     setData(data);
+//   };
+
+//   fetchData();
+// }, []);
+
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
