@@ -14,11 +14,18 @@ deals = Blueprint("deals",__name__)
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
 
-	# query = '''
-    #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-    #     FROM investments
-    #     GROUP BY year
-    # '''
+	query = '''
+        SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+        FROM investments
+        GROUP BY year
+    '''
+    
+	df = pd.read_sql_query(query, con=mysql.db)
+	mysql.db.close()
+
+	data = df.to_dict(orient='records')
+	return data
+
     
 	# df = pd.read_sql_query(query, con=mysql.db)
 
@@ -31,9 +38,8 @@ def get_inv_analysis():
 	# return data
 
 	# execute the simplified query
-	query = "SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count FROM investments GROUP BY year;"
-	df = pd.read_sql_query(query, con=mysql.db)
-	mysql.db.close()
+	# query = "SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count FROM investments GROUP BY year;"
+	
 	# mysql.db.close()
 	# mysql.db.execute(query)
 
@@ -42,8 +48,6 @@ def get_inv_analysis():
 	# for row in rows:
 	# 	print(row)
 		
-	data = df.to_dict(orient='records')
-	return data
 
 	# close the cursor and database connection
 	
