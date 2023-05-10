@@ -7,9 +7,6 @@ from ..app import mysql
 
 deals = Blueprint("deals",__name__)
 
-#Add year column from 1_post_date
-# def get_year(dt):
-# 	return dt.year
 
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
@@ -68,29 +65,40 @@ def get_inv_analysis():
 	
 
 
-@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
-def get_valueOfDeals():
+# @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+# def get_valueOfDeals():
 
-	c = mysql.db.cursor()
-	
-	c.execute('''SELECT
-  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
-  			SUM(investments.amount) as total_amount
-		FROM
-  			investments
-  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
-		GROUP BY
-  			country
-			''')
-	results = c.fetchall()
+# 	c = mysql.db.cursor()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	c.execute('''SELECT
+#   			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+#   			SUM(investments.amount) as total_amount
+# 		FROM
+#   			investments
+#   			INNER JOIN companies_v3 ON investments.company = companies_v3.name
+# 		GROUP BY
+#   			country
+# 			''')
+# 	results = c.fetchall()
 
-	df = pd.DataFrame(results, columns=columns)
+# 	if results:
+# 		columns = [desc[0] for desc in c.description]  # Get column names from description
+# 		data = [dict(zip(columns, row)) for row in results]  # Convert rows to dictionaries
+# 		df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+# 		data = df.to_dict(orient='records')
 
-	return data
+# 		return data
+# 	else:
+# 		data = []
+
+	# columns = [desc[0] for desc in c.description]  # Get column names from description
+
+	# df = pd.DataFrame(results, columns=columns)
+
+	# data = df.to_dict(orient='records')
+
+	# return data
 
 
 # 	query = '''
@@ -145,24 +153,16 @@ def get_valueOfDeals():
 
 # 	return data
 
-# @deals.route("/api/v1/dealsList/")
-# def get_all_dealsList():
-# 	query = '''
+@deals.route("/api/v1/dealsList/")
+def get_all_dealsList():
+	c = mysql.db.cursor()
+	c.execute('''SELECT * FROM investments''')
+	results = c.fetchall()
 
-# 		SELECT
-#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-#     		SUM(amount) AS quarterly_value
-# 		FROM
-#     		investments
-# 		GROUP BY
-#     		quarter
+	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-# 	'''
+	df = pd.DataFrame(results, columns=columns)
 
-# 	df = pd.read_sql_query(query, con=mysql.db)
+	data = df.to_dict(orient='records')
 
-
-# 	data = df.to_dict(orient='records')
-
-
-# 	return data
+	return data
