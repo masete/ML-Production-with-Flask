@@ -24,7 +24,7 @@ deals = Blueprint("deals",__name__)
 
 # 	data = df.to_dict(orient='records')
 
-# 	return data
+# 	return jsonify(data)
 	# query = '''
     #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
     #     FROM investments
