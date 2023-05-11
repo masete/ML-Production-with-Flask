@@ -8,23 +8,23 @@ from ..app import mysql
 deals = Blueprint("deals",__name__)
 
 
-@deals.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+# @deals.route("/api/v1/dealsByYear_linePlot/")
+# def get_inv_analysis():
 
 
-	c = mysql.db.cursor()
-	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-        FROM investments
-        GROUP BY year''')
-	results = c.fetchall()
+# 	c = mysql.db.cursor()
+# 	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+#         FROM investments
+#         GROUP BY year''')
+# 	results = c.fetchall()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	df = pd.DataFrame(results, columns=columns)
+# 	df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	return data
+# 	return data
 	# query = '''
     #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
     #     FROM investments
@@ -165,4 +165,4 @@ def get_all_dealsList():
 
 	data = df.to_dict(orient='records')
 
-	return data
+	return jsonify(data)
