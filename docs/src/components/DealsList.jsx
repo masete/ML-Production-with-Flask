@@ -16,10 +16,10 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/v1/dealsList/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
+      // const data = response.data.map((d, i) => ({
+      //   id: `series-${i}`,
+      //   ...d
+      // }));
       setData(data);
     };
   
