@@ -26,6 +26,24 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
     fetchData();
   }, []);
 
+
+  const columns = [
+    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "when", headerName: "when", flex: 1, cellClassName: "when-column--cell" },
+    { field: "company", headerName: "company", type: "number", headerAlign: "left", align: "left", flex: 1 },
+    { field: "amount", headerName: "amount", flex: 1 },
+    { field: "funding_round", headerName: "funding_round", flex: 1 },
+    { field: "investors", headerName: "investors", flex: 1 },
+    { field: "source", headerName: "source", flex: 1 },
+    { field: "created_at", headerName: "created_at", flex: 1 },
+    { field: "updated_at", headerName: "updated_at", flex: 1 },
+    { field: "user_id", headerName: "user_id", flex: 1 },
+    { field: "company_slug", headerName: "company_slug", flex: 1 },
+    { field: "email", headerName: "email", flex: 1 },
+    { field: "publish", headerName: "publish", flex: 1 },
+    { field: "valuation_note", headerName: "valuation_note", flex: 1 },
+  ];
+
   // useEffect(() => {
   //   axios.get('YOUR_API_ENDPOINT')
   //     .then(response => {
@@ -52,78 +70,78 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 // }, []);
 
 
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    // { field: "registrarId", headerName: "Registrar ID" },
-    {
-      field: "when",
-      headerName: "when",
-      flex: 1,
-      cellClassName: "when-column--cell",
-    },
-    {
-      field: "company",
-      headerName: "company",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "amount",
-      headerName: "amount",
-      flex: 1,
-    },
-    {
-      field: "funding_round",
-      headerName: "funding_round",
-      flex: 1,
-    },
-    {
-      field: "investors",
-      headerName: "investors",
-      flex: 1,
-    },
-    {
-      field: "source",
-      headerName: "source",
-      flex: 1,
-    },
-    {
-      field: "created_at",
-      headerName: "created_at",
-      flex: 1,
-    },
-    {
-        field: "updated_at",
-        headerName: "updated_at",
-        flex: 1,
-    },
-    {
-        field: "user_id",
-        headerName: "user_id",
-        flex: 1,
-    },
-    {
-      field: "company_slug",
-      headerName: "company_slug",
-      flex: 1,
-  },
-  {
-    field: "email",
-    headerName: "email",
-    flex: 1,
-},  
-{
-  field: "publish",
-  headerName: "publish",
-  flex: 1,
-},    
-{
-  field: "valuation_note",
-  headerName: "valuation_note",
-  flex: 1,
-},
-  ];
+//   const columns = [
+//     { field: "id", headerName: "ID", flex: 0.5 },
+//     // { field: "registrarId", headerName: "Registrar ID" },
+//     {
+//       field: "when",
+//       headerName: "when",
+//       flex: 1,
+//       cellClassName: "when-column--cell",
+//     },
+//     {
+//       field: "company",
+//       headerName: "company",
+//       type: "number",
+//       headerAlign: "left",
+//       align: "left",
+//     },
+//     {
+//       field: "amount",
+//       headerName: "amount",
+//       flex: 1,
+//     },
+//     {
+//       field: "funding_round",
+//       headerName: "funding_round",
+//       flex: 1,
+//     },
+//     {
+//       field: "investors",
+//       headerName: "investors",
+//       flex: 1,
+//     },
+//     {
+//       field: "source",
+//       headerName: "source",
+//       flex: 1,
+//     },
+//     {
+//       field: "created_at",
+//       headerName: "created_at",
+//       flex: 1,
+//     },
+//     {
+//         field: "updated_at",
+//         headerName: "updated_at",
+//         flex: 1,
+//     },
+//     {
+//         field: "user_id",
+//         headerName: "user_id",
+//         flex: 1,
+//     },
+//     {
+//       field: "company_slug",
+//       headerName: "company_slug",
+//       flex: 1,
+//   },
+//   {
+//     field: "email",
+//     headerName: "email",
+//     flex: 1,
+// },  
+// {
+//   field: "publish",
+//   headerName: "publish",
+//   flex: 1,
+// },    
+// {
+//   field: "valuation_note",
+//   headerName: "valuation_note",
+//   flex: 1,
+// },
+//   ];
 
   return (
     <Box m="1px">
