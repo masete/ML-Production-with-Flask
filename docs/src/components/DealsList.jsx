@@ -15,16 +15,26 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('/api/v1/dealsList/');
-      // const data = response.data.map((d, i) => ({
-      //   id: `series-${i}`,
-      //   ...d
-      // }));
-      setData(data);
+      try {
+        const response = await axios.get('/api/v1/dealsList/');
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     };
   
     fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   axios.get('YOUR_API_ENDPOINT')
+  //     .then(response => {
+  //       setRows(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
 //   const [data, setData] = useState([]);
 
