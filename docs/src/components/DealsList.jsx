@@ -18,6 +18,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
       try {
         const response = await axios.get('/api/v1/dealsList/');
         setData(response.data);
+        print(response.data)
       } catch (error) {
         console.log(error);
       }
