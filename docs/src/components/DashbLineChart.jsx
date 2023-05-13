@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
 // import { mockLineData as data } from "../data/mockData";
 
-const QLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
+const QLineChart = ({ isCustomLineColors = True, isDashboard = True }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
