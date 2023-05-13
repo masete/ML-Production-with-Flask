@@ -1,15 +1,15 @@
-// import React, { useState, useEffect } from "react";
-// import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockLineData as data } from "../data/mockData";
+// import { mockLineData as data } from "../data/mockData";
 
 const QLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -24,13 +24,13 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   //   fetchData();
   // }, []);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios("/api/v1/quarteryValueOfInvestment/");
-//       setData(result.data);
-//     };
-//     fetchData();
-//   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios("/api/v1/quarteryValueOfInvestment/");
+      setData(result.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <ResponsiveLine
