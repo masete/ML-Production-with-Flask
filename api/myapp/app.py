@@ -19,10 +19,16 @@ class MySQL:
 			user = app.config['MYSQL_USER']
 			passwd = app.config['MYSQL_PASSWORD']
 			db = app.config['MYSQL_DB']
+			connect_timeout = 5  # set timeout to 5 seconds
+
+			self.db = MySQLdb.connect(
+			host=host, port=port, user=user, passwd=passwd, db=db,
+			connect_timeout=connect_timeout
+		)
 			
-			self.db = MySQLdb.connect(host=host,port=port,
-						  user=user,passwd=passwd,
-						  db=db)
+			# self.db = MySQLdb.connect(host=host,port=port,
+			# 			  user=user,passwd=passwd,db=db
+			# 			  connect_timeout=connect_timeout)
 			
 			# Add this line to fix "Commands out of sync" error
 			# self.db.autocommit(True)

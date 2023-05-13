@@ -8,23 +8,23 @@ from ..app import mysql
 deals = Blueprint("deals",__name__)
 
 
-@deals.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+# @deals.route("/api/v1/dealsByYear_linePlot/")
+# def get_inv_analysis():
 
 
-	c = mysql.db.cursor()
-	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-        FROM investments
-        GROUP BY year''')
-	results = c.fetchall()
+# 	c = mysql.db.cursor()
+# 	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+#         FROM investments
+#         GROUP BY year''')
+# 	results = c.fetchall()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	df = pd.DataFrame(results, columns=columns)
+# 	df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	return jsonify(data)
+# 	return jsonify(data)
 
 # @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 # def get_valueOfDeals():
@@ -116,16 +116,16 @@ def get_valueOfDealsByQuarter():
 
 	return jsonify(data)
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
-	c = mysql.db.cursor()
-	c.execute('''SELECT * FROM investments''')
-	results = c.fetchall()
+# @deals.route("/api/v1/dealsList/")
+# def get_all_dealsList():
+# 	c = mysql.db.cursor()
+# 	c.execute('''SELECT * FROM investments''')
+# 	results = c.fetchall()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	df = pd.DataFrame(results, columns=columns)
+# 	df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	return jsonify(data)
+# 	return jsonify(data)
