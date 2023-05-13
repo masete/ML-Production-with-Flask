@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template, jsonify
 import pandas as pd
-# from mysql.connector import cnx
+
 
 from ..app import mysql
 
@@ -25,45 +25,6 @@ def get_inv_analysis():
 	data = df.to_dict(orient='records')
 
 	return jsonify(data)
-	# query = '''
-    #     SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-    #     FROM investments
-    #     GROUP BY year
-    # '''
-    
-	# df = pd.read_sql_query(query, con=mysql.db)
-	# mysql.db.close()
-
-	# data = df.to_dict(orient='records')
-	# return data
-
-    
-	# df = pd.read_sql_query(query, con=mysql.db)
-
-
-	# data = df.to_dict(orient='records')
-
-
-	# yrVposts = Unique_deals_df.year.value_counts()
-
-	# return data
-
-	# execute the simplified query
-	# query = "SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count FROM investments GROUP BY year;"
-	
-	# mysql.db.close()
-	# mysql.db.execute(query)
-
-	# fetch all the rows and print them
-	# rows = mysql.db.fetchall()
-	# for row in rows:
-	# 	print(row)
-		
-
-	# close the cursor and database connection
-	
-	
-
 
 # @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 # def get_valueOfDeals():
@@ -122,26 +83,28 @@ def get_inv_analysis():
 
 # 	return data
 
-# @deals.route("/api/v1/quarteryValueOfInvestment/")
-# def get_valueOfDealsByQuarter():
-# 	query = '''
+@deals.route("/api/v1/quarteryValueOfInvestment/")
+def get_valueOfDealsByQuarter():
+	query = '''
 
-# 		SELECT
-#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-#     		SUM(amount) AS quarterly_value
-# 		FROM
-#     		investments
-# 		GROUP BY
-#     		quarter
+		SELECT
+    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+    		SUM(amount) AS quarterly_value
+		FROM
+    		investments
+		GROUP BY
+    		quarter
 
-# 	'''
+	'''
 	
-# 	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con=mysql.db)
 
+	df['year'] = df['quarter'].str.extract('^(\d{4})')
+	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
 
+	df = df.groupby(['year', 'quarter']).sum().reset_index()
 
-# 	# json_str = df.to_json(orient='records')
-# 	data = df.to_dict(orient='records')
+	data = df.to_dict(orient='records')
 
 # 	# colors = ["#FFC107", "#2196F3", "#4CAF50", "#FF5722"]
 # 	# color_index = 0
@@ -151,7 +114,7 @@ def get_inv_analysis():
 
 # 	# yrVposts = Unique_deals_df.year.value_counts()
 
-# 	return data
+	return jsonify(data)
 
 @deals.route("/api/v1/dealsList/")
 def get_all_dealsList():
