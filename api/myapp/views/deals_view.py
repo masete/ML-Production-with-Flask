@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template, jsonify
 import pandas as pd
-
+import random
 
 from ..app import mysql
 
@@ -104,15 +104,15 @@ def get_valueOfDealsByQuarter():
 
 	df = df.groupby(['year', 'quarter']).sum().reset_index()
 
+
 	data = df.to_dict(orient='records')
 
-# 	# colors = ["#FFC107", "#2196F3", "#4CAF50", "#FF5722"]
-# 	# color_index = 0
-# 	# for point in data:
-# 	# 	point["color"] = colors[color_index]
-# 	# 	color_index = (color_index + 1) % len(colors)
+	# generate list of colors
+	colors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845']
 
-# 	# yrVposts = Unique_deals_df.year.value_counts()
+	# assign random color to each data point
+	for d in data:
+		d['color'] = random.choice(colors)
 
 	return jsonify(data)
 
