@@ -105,7 +105,7 @@ const QBarChart = ({ isDashboard = false }) => {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
+        tickRotation: 20,
         legend: isDashboard ? undefined : "country", // changed
         legendPosition: "middle",
         legendOffset: 32,
