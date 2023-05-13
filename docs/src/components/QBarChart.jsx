@@ -24,7 +24,16 @@ const QBarChart = ({ isDashboard = false }) => {
 
   return (
     <ResponsiveBar
-      data={data}
+    //   data={data}
+      data={[
+        {
+          id: "quarterly_value",
+          data: data.map((item) => ({
+            x: new Date(item.quarter + "-01").toLocaleDateString(),
+            y: item.quarterly_value,
+          })),
+        },
+      ]}
       theme={{
         // added
         axis: {
