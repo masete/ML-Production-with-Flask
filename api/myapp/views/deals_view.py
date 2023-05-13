@@ -99,7 +99,7 @@ def get_valueOfDealsByQuarter():
 	query = '''
 		SELECT
     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) DIV 1000000 AS quarterly_value_millions
+    		SUM(amount) DIV 1000000 AS quarterly_value
 		FROM
     		investments
 		WHERE
