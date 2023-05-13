@@ -85,16 +85,28 @@ deals = Blueprint("deals",__name__)
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
 def get_valueOfDealsByQuarter():
-	query = '''
+	# query = '''
 
+	# 	SELECT
+    # 		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+    # 		SUM(amount) AS quarterly_value
+	# 	FROM
+    # 		investments
+	# 	GROUP BY
+    # 		quarter
+
+	# '''
+	query = '''
 		SELECT
     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
     		SUM(amount) AS quarterly_value
 		FROM
     		investments
+		WHERE
+    		`when` >= '2019-01-01' AND `when` < '2023-01-01'
 		GROUP BY
     		quarter
-
+	
 	'''
 	
 	df = pd.read_sql_query(query, con=mysql.db)
