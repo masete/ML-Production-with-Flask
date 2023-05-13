@@ -15,17 +15,21 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
+      // try {
         const response = await axios.get('/api/v1/dealsList/');
         setData(response.data);
         console.log(response.data)
-      } catch (error) {
-        console.log(error);
-      }
+      // } catch (error) {
+      //   console.log(error);
+      // }
     };
   
     fetchData();
   }, []);
+
+    if (!data) {
+      return <div>Loading...</div>;
+    }
 
 
   const columns = [
