@@ -14,28 +14,30 @@ const QBarChart = ({ isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
+      // const data = response.data.map((d, i) => ({
+      //   id: `series-${i}`,
+      //   ...d
+      // }));
+      setData(response.data);
     };
   
     fetchData();
   }, []);
+  console.log(data)
 
   return (
     <ResponsiveBar
-    //   data={data}
-      data={[
-        {
-          id: "quarterly_value",
-          data: data.map((item) => ({
-            x: new Date(item.quarter + "-01").toLocaleDateString(),
-            y: item.quarterly_value,
-          })),
-        },
-      ]}
+      data={data}
+     
+      // data={[
+      //   {
+      //     id: "quarterly_value",
+      //     data: data.map((item) => ({
+      //       x: new Date(item.quarter + "-01").toLocaleDateString(),
+      //       y: item.quarterly_value,
+      //     })),
+      //   },
+      // ]}
       theme={{
         // added
         axis: {
@@ -65,8 +67,10 @@ const QBarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="country"
+       keys={['quarterly_value']}
+       indexBy={'quarter'}
+      // keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
+      // indexBy="country"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
