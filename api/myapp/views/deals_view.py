@@ -108,11 +108,17 @@ def get_valueOfDealsByQuarter():
 	data = df.to_dict(orient='records')
 
 	# generate list of colors
-	colors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845']
-
+	# colors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845']
+	colors = {}
 	# assign random color to each data point
-	for d in data:
-		d['color'] = random.choice(colors)
+	# for d in data:
+	# 	d['color'] = random.choice(colors)
+	for row in data:
+		quarter = row["quarter"]
+		if quarter not in colors:
+			# generate a random color for each unique quarter
+			colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
+		row["color"] = colors[quarter]
 
 	return jsonify(data)
 
