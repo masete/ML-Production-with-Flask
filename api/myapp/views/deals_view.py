@@ -103,7 +103,7 @@ def get_valueOfDealsByQuarter():
 		FROM
     		investments
 		WHERE
-    		`when` >= '2019-01-01' AND `when` < '2023-01-01'
+    		`when` >= '2020-01-01' AND `when` < '2023-01-01'
 		GROUP BY
     		quarter
 	
