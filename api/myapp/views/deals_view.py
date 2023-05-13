@@ -99,11 +99,11 @@ def get_valueOfDealsByQuarter():
 	query = '''
 		SELECT
     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) AS quarterly_value
+    		SUM(amount) DIV 1000000 AS quarterly_value_millions
 		FROM
     		investments
 		WHERE
-    		`when` >= '2020-01-01' AND `when` < '2023-01-01'
+    		`when` BETWEEN '2019-01-01' AND '2023-12-31'
 		GROUP BY
     		quarter
 	
