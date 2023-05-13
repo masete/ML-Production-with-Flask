@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as data } from "../data/mockData";
+// import { mockBarData as data } from "../data/mockData";
 
 const QBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
