@@ -18,6 +18,9 @@ def get_inv_analysis():
         GROUP BY year''')
 	results = c.fetchall()
 
+	# close cursor
+	c.close()
+
 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
 	df = pd.DataFrame(results, columns=columns)
@@ -139,6 +142,9 @@ def get_all_dealsList():
 	c = mysql.db.cursor()
 	c.execute('''SELECT * FROM investments''')
 	results = c.fetchall()
+
+	# close cursor
+	c.close()
 
 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
