@@ -48,6 +48,9 @@ def create_app():
 
     return app
 
+mysql = MySQL()	
+app = create_app()
+
 
 def connect_to_db(app):
     with app.app_context():
