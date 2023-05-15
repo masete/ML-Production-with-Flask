@@ -28,6 +28,14 @@ class MySQL:
                 'charset': 'utf8mb4'
             }
 				self.db = await aiomysql.connect(**config)
+
+				return self.db
+			
+			async def close_db(self):
+				if self.db is not None:
+					self.db.close()
+					await self.db.wait_closed()
+					self.db = None
 			
 			# 	host = app.config['MYSQL_HOST']
 			# 	port = app.config['MYSQL_PORT']
