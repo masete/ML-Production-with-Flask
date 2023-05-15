@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from db_utils import get_db_connection
+from .db import get_db_connection
 import pandas as pd
 import random
 import asyncio

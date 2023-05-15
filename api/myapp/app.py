@@ -1,9 +1,7 @@
 import os
 from flask import Flask
-import asyncio
-# import aiohttp
-import aiomysql
 import MySQLdb
+import threading
 
 
 class MySQL:
@@ -13,28 +11,21 @@ class MySQL:
             self.init_app(app)
 
     def init_app(self, app):
-        async def get_db():
-            if self.db is None:
-                config = {
-                    'host': app.config['MYSQL_HOST'],
-                    'port': app.config['MYSQL_PORT'],
-                    'user': app.config['MYSQL_USER'],
-                    'password': app.config['MYSQL_PASSWORD'],
-                    'db': app.config['MYSQL_DB'],
-                    'connect_timeout': 5,
-                    'charset': 'utf8mb4'
-                }
-                self.db = await aiomysql.connect(**config)
-            return self.db
+        if not self.db:
+            host = app.config['MYSQL_HOST']
+            port = app.config['MYSQL_PORT']
+            user = app.config['MYSQL_USER']
+            passwd = app.config['MYSQL_PASSWORD']
+            db = app.config['MYSQL_DB']
+            connect_timeout = 5
 
-        async def close_db():
-            if self.db is not None:
-                self.db.close()
-                await self.db.wait_closed()
-                self.db = None
+            self.db = MySQLdb.connect(
+                host=host, port=port, user=user, passwd=passwd, db=db,
+                connect_timeout=connect_timeout
+            )
 
-        app.get_db = get_db
-        app.close_db = close_db
+            # Add this line to fix "Commands out of sync" error
+            # self.db.autocommit(True)
 
 
 def create_app():
@@ -58,16 +49,18 @@ def create_app():
     return app
 
 
-# async def get_inv_analysis():
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get('http://localhost:5000/api/v1/dealsByYear_linePlot/') as response:
-#             data = await response.json()
-#             return data
+def connect_to_db(app):
+    with app.app_context():
+        mysql.init_app(app)
+        # Perform your database operations
 
 
-mysql = MySQL()
-app = create_app()
+def start_app():
+    app = create_app()
+    thread = threading.Thread(target=connect_to_db, args=(app,))
+    thread.start()
+    app.run()
 
-loop = asyncio.get_event_loop()
-# data = loop.run_until_complete(get_inv_analysis())
-# print(data)
+
+if __name__ == '__main__':
+    start_app()

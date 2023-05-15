@@ -1,5 +1,5 @@
-import asyncio
-import aiomysql
+# import asyncio
+# import aiomysql
 from myapp import app
 
 async def get_db_connection():
