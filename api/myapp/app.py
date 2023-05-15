@@ -1,7 +1,8 @@
 import os
-
 from flask import Flask
 import MySQLdb
+import asyncio
+import aiomysql
 
 
 class MySQL:

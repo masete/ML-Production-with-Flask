@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, jsonify
+from flask import Blueprint, jsonify
 import pandas as pd
 import random
 
