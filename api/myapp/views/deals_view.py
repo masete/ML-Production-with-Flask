@@ -4,6 +4,8 @@ import random
 import asyncio
 
 from ..app import app
+# from myapp.app import app
+
 
 
 deals = Blueprint("deals",__name__)
