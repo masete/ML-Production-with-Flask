@@ -1,18 +1,18 @@
 from flask import Blueprint, jsonify
 import pandas as pd
 import random
+import asyncio
 
-from ..app import mysql
+from ..app import app
 
 
 deals = Blueprint("deals",__name__)
 
 
-@deals.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+async def get_inv_analysis():
 
 
-	c = mysql.db.cursor()
+	c = app.db.cursor()
 	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
         FROM investments
         GROUP BY year''')
@@ -28,6 +28,10 @@ def get_inv_analysis():
 	data = df.to_dict(orient='records')
 
 	return jsonify(data)
+
+@deals.route("/api/v1/dealsByYear_linePlot/")
+def deals_by_year_line_plot():
+    return asyncio.run(get_inv_analysis())
 
 # @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 # def get_valueOfDeals():
@@ -112,7 +116,7 @@ def get_valueOfDealsByQuarter():
 	
 	'''
 	
-	df = pd.read_sql_query(query, con=mysql.db)
+	df = pd.read_sql_query(query, con=app.db)
 
 	df['year'] = df['quarter'].str.extract('^(\d{4})')
 	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
@@ -139,7 +143,7 @@ def get_valueOfDealsByQuarter():
 
 @deals.route("/api/v1/dealsList/")
 def get_all_dealsList():
-	c = mysql.db.cursor()
+	c = app.db.cursor()
 	c.execute('''SELECT * FROM investments''')
 	results = c.fetchall()
 
