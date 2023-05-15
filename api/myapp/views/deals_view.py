@@ -90,70 +90,56 @@ def deals_by_year_line_plot():
 
 # 	return data
 
-@deals.route("/api/v1/quarteryValueOfInvestment/")
-def get_valueOfDealsByQuarter():
-	# query = '''
-
-	# 	SELECT
-    # 		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    # 		SUM(amount) AS quarterly_value
-	# 	FROM
-    # 		investments
-	# 	GROUP BY
-    # 		quarter
-
-	# '''
-	query = '''
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) DIV 1000000 AS quarterly_value
-		FROM
-    		investments
-		WHERE
-    		`when` BETWEEN '2019-01-01' AND '2023-12-31'
-		GROUP BY
-    		quarter
+# @deals.route("/api/v1/quarteryValueOfInvestment/")
+# def get_valueOfDealsByQuarter():
 	
-	'''
+# 	query = '''
+# 		SELECT
+#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+#     		SUM(amount) DIV 1000000 AS quarterly_value
+# 		FROM
+#     		investments
+# 		WHERE
+#     		`when` BETWEEN '2019-01-01' AND '2023-12-31'
+# 		GROUP BY
+#     		quarter
 	
-	df = pd.read_sql_query(query, con=app.db)
+# 	'''
+	
+# 	df = pd.read_sql_query(query, con=app.db)
 
-	df['year'] = df['quarter'].str.extract('^(\d{4})')
-	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
+# 	df['year'] = df['quarter'].str.extract('^(\d{4})')
+# 	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
 
-	df = df.groupby(['year', 'quarter']).sum().reset_index()
+# 	df = df.groupby(['year', 'quarter']).sum().reset_index()
 
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	# generate list of colors
-	# colors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845']
-	colors = {}
-	# assign random color to each data point
-	# for d in data:
-	# 	d['color'] = random.choice(colors)
-	for row in data:
-		quarter = row["quarter"]
-		if quarter not in colors:
-			# generate a random color for each unique quarter
-			colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
-		row["color"] = colors[quarter]
+# 	colors = {}
 
-	return jsonify(data)
+# 	for row in data:
+# 		quarter = row["quarter"]
+# 		if quarter not in colors:
+# 			# generate a random color for each unique quarter
+# 			colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
+# 		row["color"] = colors[quarter]
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
-	c = app.db.cursor()
-	c.execute('''SELECT * FROM investments''')
-	results = c.fetchall()
+# 	return jsonify(data)
 
-	# close cursor
-	c.close()
+# @deals.route("/api/v1/dealsList/")
+# def get_all_dealsList():
+# 	c = app.db.cursor()
+# 	c.execute('''SELECT * FROM investments''')
+# 	results = c.fetchall()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	# close cursor
+# 	c.close()
 
-	df = pd.DataFrame(results, columns=columns)
+# 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	data = df.to_dict(orient='records')
+# 	df = pd.DataFrame(results, columns=columns)
 
-	return jsonify(data)
+# 	data = df.to_dict(orient='records')
+
+# 	return jsonify(data)
