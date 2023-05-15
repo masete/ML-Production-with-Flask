@@ -3,7 +3,7 @@ import pandas as pd
 import random
 import asyncio
 
-from ..app import mysql
+from ..app import mysql, get_db
 # from myapp.app import app
 
 
@@ -14,7 +14,7 @@ deals = Blueprint("deals",__name__)
 async def get_inv_analysis():
 
 
-	c = mysql.db.cursor()
+	c = mysql.db.get_db()
 	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
         FROM investments
         GROUP BY year''')
