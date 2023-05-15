@@ -15,26 +15,51 @@ deals = Blueprint("deals",__name__)
 async def get_inv_analysis():
     db = await get_db_connection()
     
-	 # Create a cursor object
+    # Create a cursor object
     cursor = await db.cursor()
-
-
-	c = mysql.db.get_db()
-	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+    
+    try:
+        # Execute a query
+        await cursor.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
         FROM investments
-        GROUP BY year''')
-	results = c.fetchall()
+        GROUP BY year
+        
+        ''')
+        
+        # Fetch all rows
+        rows = await cursor.fetchall()
+        columns = [desc[0] for desc in cursor.description] # Get column names from description
+        df = pd.DataFrame(rows, columns=columns)
+        data = df.to_dict(orient='records')
+        return jsonify(data)
+        # Process the rows as needed
+        # for row in rows:
+            # Access row data using indexing or column names
+            # column1_value = row[0]
+            # column2_value = row["column_name"]
+            # Process the values
+            
+    finally:
+        # Close the cursor
+        await cursor.close()
+
+
+	# c = mysql.db.get_db()
+	# c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+    #     FROM investments
+    #     GROUP BY year''')
+	# results = c.fetchall()
 
 	# close cursor
-	c.close()
+	# c.close()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+	# columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	df = pd.DataFrame(results, columns=columns)
+	# df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+	# data = df.to_dict(orient='records')
 
-	return jsonify(data)
+	# return jsonify(data)
 
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def deals_by_year_line_plot():
