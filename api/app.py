@@ -1,4 +1,5 @@
 import os
+import threading
 from flask import Flask
 from myapp.views.deals import deals
 from myapp.mysql_connection import MySQL
@@ -22,7 +23,18 @@ def create_app():
 
     return app
 
+def connect_to_db(app):
+    with app.app_context():
+        mysql = app.config['MYSQL']
+        # Perform your database operations
+
 
 if __name__ == '__main__':
     app = create_app()
+
+     # Create a separate thread for database connection
+    db_thread = threading.Thread(target=connect_to_db, args=(app,))
+    db_thread.start()
+
+    # Run the Flask application in the main thread
     app.run()
