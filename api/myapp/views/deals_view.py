@@ -25,7 +25,6 @@ def get_inv_analysis():
 
     return jsonify(data)
 
-
 # from flask import Blueprint, jsonify, current_app
 # from .db import get_db_connection
 # import pandas as pd

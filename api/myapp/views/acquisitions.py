@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template, jsonify
 
-from ..app import app
+from ...app import app
 
 
 # hello = Blueprint('hello',__name__)
