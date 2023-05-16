@@ -17,9 +17,10 @@ def get_inv_analysis():
         db = mysql.db
 
     c = db.cursor()
-    c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-                 FROM investments
-                 GROUP BY year''')
+    c.execute('''SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
+                    FROM investments
+                    GROUP BY year;
+                    ''')
     results = c.fetchall()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
