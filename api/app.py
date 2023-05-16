@@ -1,6 +1,6 @@
 import os
 import threading
-from flask import Flask
+from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.mysql_connection import MySQL
 
@@ -23,9 +23,25 @@ def create_app():
 
     return app
 
+def get_db(app):
+    if 'db' not in g:
+        mysql = app.config['MYSQL']
+        g.db = mysql.db
+    return g.db
+
+def close_db(error):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
 def connect_to_db(app):
     with app.app_context():
-        mysql = app.config['MYSQL']
+        db = get_db(app)
+        # Perform your database operations
+
+# def connect_to_db(app):
+#     with app.app_context():
+#         mysql = app.config['MYSQL']
         # Perform your database operations
 
 
