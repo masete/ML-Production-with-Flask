@@ -4,6 +4,11 @@ import pandas as pd
 deals = Blueprint("deals", __name__)
 mysql = current_app.config['MYSQL']
 
+@deals.before_app_first_request
+def setup_mysql():
+    global mysql
+    mysql = current_app.config['MYSQL']
+
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
     
@@ -28,7 +33,7 @@ def get_inv_analysis():
 
 @deals.route("/api/v1/dealsList/")
 def get_all_dealsList():
-    
+
     db = mysql.db
 
     c = db.cursor()
