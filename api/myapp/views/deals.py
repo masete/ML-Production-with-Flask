@@ -41,7 +41,7 @@ def get_valueOfDealsByQuarter():
 
     c = db.cursor()
 	
-    query = '''
+    c.execute( '''
 		SELECT
     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
     		SUM(amount) DIV 1000000 AS quarterly_value
@@ -52,9 +52,11 @@ def get_valueOfDealsByQuarter():
 		GROUP BY
     		quarter
 	
-	'''
+	''')
+    results = c.fetchall()
 	
-    df = pd.read_sql_query(query, con=c)
+    df = pd.DataFrame(results)
+    # df = pd.read_sql_query(query, con=c.execute)
 
     df['year'] = df['quarter'].str.extract('^(\d{4})')
     df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
