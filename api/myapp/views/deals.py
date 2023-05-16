@@ -22,9 +22,6 @@ def get_inv_analysis():
                  GROUP BY year''')
     results = c.fetchall()
 
-    # close cursor
-    # c.close()
-
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
     df = pd.DataFrame(results, columns=columns)
@@ -32,6 +29,43 @@ def get_inv_analysis():
     data = df.to_dict(orient='records')
 
     return jsonify(data)
+
+
+@deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+def get_valueOfDeals():
+
+	c = mysql.db.cursor()
+
+	c.execute('''SELECT
+  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  			SUM(investments.amount) as total_amount
+		FROM
+  			investments
+  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
+		GROUP BY
+  			country
+			''')
+	results = c.fetchall()
+
+	if results:
+		columns = [desc[0] for desc in c.description]  # Get column names from description
+		data = [dict(zip(columns, row)) for row in results]  # Convert rows to dictionaries
+		df = pd.DataFrame(results, columns=columns)
+
+		data = df.to_dict(orient='records')
+
+		return data
+	else:
+		data = []
+
+	columns = [desc[0] for desc in c.description]  # Get column names from description
+
+	df = pd.DataFrame(results, columns=columns)
+
+	data = df.to_dict(orient='records')
+
+	return data
+
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
 def get_valueOfDealsByQuarter():
