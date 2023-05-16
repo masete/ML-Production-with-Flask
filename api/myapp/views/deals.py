@@ -53,10 +53,10 @@ def get_valueOfDealsByQuarter():
     		quarter
 	
 	''')
-    results = c.fetchall()
-	
-    df = pd.DataFrame(results)
-    # df = pd.read_sql_query(query, con=c.execute)
+    
+    columns = [desc[0] for desc in c.description]
+    df = pd.DataFrame(c.fetchall(), columns = columns)
+
 
     df['year'] = df['quarter'].str.extract('^(\d{4})')
     df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
