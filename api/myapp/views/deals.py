@@ -12,7 +12,8 @@ def setup_mysql():
 @deals.route("/api/v1/dealsByYear_linePlot/")
 def get_inv_analysis():
     
-    db = mysql.db
+    with current_app.app_context():
+        db = mysql.db
 
     c = db.cursor()
     c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
@@ -34,7 +35,8 @@ def get_inv_analysis():
 @deals.route("/api/v1/dealsList/")
 def get_all_dealsList():
 
-    db = mysql.db
+    with current_app.app_context():
+        db = mysql.db
 
     c = db.cursor()
     c.execute('''SELECT * FROM investments''')
