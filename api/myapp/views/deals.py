@@ -73,8 +73,8 @@ def get_valueOfDeals():
 	df = pd.DataFrame(results, columns=columns)
 
 	data = df.to_dict(orient='records')
-    
-    # c.close()
+    # c.close()  # Close the cursor
+    # mysql.db.close()  # Close the MySQL connection
 
 	return data
 
@@ -101,7 +101,7 @@ def get_valueOfDealsByQuarter():
     		quarter
 	
 	''')
-    c.close()
+   
     
     columns = [desc[0] for desc in c.description]
     df = pd.DataFrame(c.fetchall(), columns = columns)
@@ -124,6 +124,7 @@ def get_valueOfDealsByQuarter():
             colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
         row["color"] = colors[quarter]
 
+    # c.close()
     return jsonify(data)
 
 @deals.route("/api/v1/dealsList/")
@@ -132,8 +133,11 @@ def get_all_dealsList():
     with current_app.app_context():
         db = mysql.db
 
+    items_per_page = 10  # Number of items per page
+    offset = (page - 1) * items_per_page
+
     c = db.cursor()
-    c.execute('''SELECT * FROM investments''')
+    c.execute('''SELECT * FROM investments LIMIT 10''')
     results = c.fetchall()
 
     c.close()
