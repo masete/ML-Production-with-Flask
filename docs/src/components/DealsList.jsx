@@ -25,6 +25,10 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
     fetchData();
   }, []);
 
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
 
   const columns = [
     { field: "amount", headerName: "amount", flex: 1 },
@@ -86,6 +90,14 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
+      </Box>
+
+      <Box>
+          <Pagination
+            count={10} // Replace with the actual total number of pages
+            page={currentPage}
+            onChange={handlePageChange}
+          />
       </Box>
     </Box>
   );
