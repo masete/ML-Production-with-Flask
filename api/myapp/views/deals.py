@@ -17,11 +17,18 @@ def get_inv_analysis():
         db = mysql.db
 
     c = db.cursor()
-    c.execute('''SELECT ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id, YEAR(`when`) AS year, COUNT(*) AS deal_count
-                    FROM investments
-                    GROUP BY year;
+    c.execute('''SELECT
+                    ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id,
+                    COUNT(*) AS deal_count,
+                    YEAR(`when`) AS year
+                FROM
+                    investments
+                GROUP BY
+                    year;
                     ''')
     results = c.fetchall()
+
+    c.close()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
@@ -46,7 +53,9 @@ def get_valueOfDeals():
 		GROUP BY
   			country
 			''')
+    
 	results = c.fetchall()
+
 
 	if results:
 		columns = [desc[0] for desc in c.description]  # Get column names from description
@@ -64,8 +73,12 @@ def get_valueOfDeals():
 	df = pd.DataFrame(results, columns=columns)
 
 	data = df.to_dict(orient='records')
+    
+    # c.close()
 
 	return data
+
+    # c.close()
 
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
@@ -88,6 +101,7 @@ def get_valueOfDealsByQuarter():
     		quarter
 	
 	''')
+    c.close()
     
     columns = [desc[0] for desc in c.description]
     df = pd.DataFrame(c.fetchall(), columns = columns)
@@ -121,6 +135,8 @@ def get_all_dealsList():
     c = db.cursor()
     c.execute('''SELECT * FROM investments''')
     results = c.fetchall()
+
+    c.close()
 
 	# close cursor
 	# c.close()
