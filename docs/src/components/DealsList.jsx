@@ -1,9 +1,9 @@
-// import React, { useState, useEffect } from "react";
-// import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
-import { DealsListData as data } from "../data/mockData";
+// import { DealsListData as data } from "../data/mockData";
 import Header from "../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -11,22 +11,19 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //       const response = await axios.get('/api/v1/dealsList/');
-  //       setData(response.data);
-  //       console.log(response.data)
+  useEffect(() => {
+    const fetchData = async () => {
+        const response = await axios.get('/api/v1/dealsList/');
+        setData(response.data);
+        console.log(response.data)
       
-  //   };
+    };
   
-  //   fetchData();
-  // }, []);
-
-    // if (!data) {
-    //   return <div>Loading...</div>;
-    // }
+    fetchData();
+  }, []);
 
 
   const columns = [

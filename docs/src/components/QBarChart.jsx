@@ -14,10 +14,6 @@ const QBarChart = ({ isDashboard = false }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
-      // const data = response.data.map((d, i) => ({
-      //   id: `series-${i}`,
-      //   ...d
-      // }));
       setData(response.data);
     };
   
@@ -29,15 +25,7 @@ const QBarChart = ({ isDashboard = false }) => {
     <ResponsiveBar
       data={data}
      
-      // data={[
-      //   {
-      //     id: "quarterly_value",
-      //     data: data.map((item) => ({
-      //       x: new Date(item.quarter + "-01").toLocaleDateString(),
-      //       y: item.quarterly_value,
-      //     })),
-      //   },
-      // ]}
+    
       theme={{
         // added
         axis: {
