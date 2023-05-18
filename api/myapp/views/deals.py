@@ -127,8 +127,8 @@ def get_valueOfDealsByQuarter():
     # c.close()
     return jsonify(data)
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
+@deals.route("/api/v1/dealsList/<int:page>")
+def get_all_dealsList(page):
 
     with current_app.app_context():
         db = mysql.db
@@ -137,10 +137,10 @@ def get_all_dealsList():
     offset = (page - 1) * items_per_page
 
     c = db.cursor()
-    c.execute('''SELECT * FROM investments LIMIT 10''')
+    c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
     results = c.fetchall()
 
-    c.close()
+    # c.close()
 
 	# close cursor
 	# c.close()
