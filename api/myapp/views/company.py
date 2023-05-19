@@ -10,8 +10,8 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
-@company.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+@company.route("/api/v1/countOfCompPerCountry/")
+def get_company_count():
     
     with current_app.app_context():
         db = mysql.db
