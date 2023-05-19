@@ -45,7 +45,7 @@ def get_invByCountry():
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
-    df = pd.DataFrame(results, columns=columns)
+    # df = pd.DataFrame(results, columns=columns)
 
     # c.close()
 
@@ -56,3 +56,31 @@ def get_invByCountry():
     data = df.to_dict(orient='records')
 
     return jsonify(data)
+
+@investors.route("/api/v1/investorsBySector/")
+def get_invBySector():
+    
+    with current_app.app_context():
+        db = mysql.db
+
+    c = db.cursor()
+    c.execute('''SELECT sector_of_focus, COUNT(*) AS investor_count
+                    FROM investors_v3
+                    GROUP BY sector_of_focus;
+                    ''')
+    results = c.fetchall()
+
+    columns = [desc[0] for desc in c.description]  # Get column names from description
+
+    # df = pd.DataFrame(results, columns=columns)
+
+    # c.close()
+
+    columns = [desc[0] for desc in c.description]  # Get column names from description
+
+    df = pd.DataFrame(results, columns=columns)
+
+    data = df.to_dict(orient='records')
+
+    return jsonify(data)
+
