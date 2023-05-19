@@ -64,7 +64,9 @@ def get_invBySector():
         db = mysql.db
 
     c = db.cursor()
-    c.execute('''SELECT
+    c.execute('''
+
+    SELECT
                     TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(sector_of_focus, ',', n.n), ',', -1)) AS sector_of_focus,
                     COUNT(*) AS investor_count
                 FROM investors_v3
@@ -72,7 +74,6 @@ def get_invBySector():
                     SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 -- Add more numbers based on the maximum number of sectors in a row
                 ) n ON CHAR_LENGTH(sector_of_focus) - CHAR_LENGTH(REPLACE(sector_of_focus, ',', '')) >= n.n - 1
                 GROUP BY TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(sector_of_focus, ',', n.n), ',', -1));
-
 
                     ''')
     results = c.fetchall()
