@@ -16,12 +16,18 @@ def get_invByCountry():
         db = mysql.db
 
     c = db.cursor()
-    c.execute('''SELECT headquarters, COUNT(*) AS investor_count
+    c.execute('''SELECT TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) AS country, COUNT(*) AS investor_count
                     FROM investors_v3
-                    GROUP BY headquarters;
+                    GROUP BY country
+                    ORDER BY investor_count DESC
+                    LIMIT 20;
 
                     ''')
     results = c.fetchall()
+
+    columns = [desc[0] for desc in c.description]  # Get column names from description
+
+    df = pd.DataFrame(results, columns=columns)
 
     # c.close()
 

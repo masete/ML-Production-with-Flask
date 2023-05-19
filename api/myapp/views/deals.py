@@ -45,7 +45,7 @@ def get_valueOfDeals():
 	c = mysql.db.cursor()
 
 	c.execute('''SELECT
-  			SUBSTRING_INDEX(countries_of_operation, ',', 1) as country,
+  			SUBSTRING_INDEX(countries_of_operation, ',', 2) as country,
   			SUM(investments.amount) as total_amount
 		FROM
   			investments
