@@ -1,33 +1,95 @@
-from flask import Blueprint, jsonify
-import pandas as pd
-import random
+# from flask import Blueprint, jsonify, current_app
+# import pandas as pd
 
-from ..app import mysql
+# deals = Blueprint("deals", __name__)
+
+# @deals.route("/api/v1/dealsByYear_linePlot/")
+# def get_inv_analysis():
+#     mysql = current_app.config['MYSQL']
+#     db = mysql.db
+
+#     c = db.cursor()
+#     c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+#                  FROM investments
+#                  GROUP BY year''')
+#     results = c.fetchall()
+
+#     # close cursor
+#     c.close()
+
+#     columns = [desc[0] for desc in c.description]  # Get column names from description
+
+#     df = pd.DataFrame(results, columns=columns)
+
+#     data = df.to_dict(orient='records')
+
+#     return jsonify(data)
+
+# from flask import Blueprint, jsonify, current_app
+# from .db import get_db_connection
+# import pandas as pd
+# import random
+# import asyncio
+# from ..app import mysql
+# # from myapp.app import app
 
 
-deals = Blueprint("deals",__name__)
+
+# deals = Blueprint("deals",__name__)
 
 
-@deals.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+# async def get_inv_analysis():
+#     db = await get_db_connection()
+    
+#     # Create a cursor object
+#     cursor = await db.cursor()
+    
+#     try:
+#         # Execute a query
+#         await cursor.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+#         FROM investments
+#         GROUP BY year
+        
+#         ''')
+        
+#         # Fetch all rows
+#         rows = await cursor.fetchall()
+#         columns = [desc[0] for desc in cursor.description] # Get column names from description
+#         df = pd.DataFrame(rows, columns=columns)
+#         data = df.to_dict(orient='records')
+#         return jsonify(data)
+#         # Process the rows as needed
+#         # for row in rows:
+#             # Access row data using indexing or column names
+#             # column1_value = row[0]
+#             # column2_value = row["column_name"]
+#             # Process the values
+            
+#     finally:
+#         # Close the cursor
+#         await cursor.close()
 
 
-	c = mysql.db.cursor()
-	c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
-        FROM investments
-        GROUP BY year''')
-	results = c.fetchall()
+# 	# c = mysql.db.get_db()
+# 	# c.execute('''SELECT YEAR(`when`) AS year, COUNT(*) AS deal_count
+#     #     FROM investments
+#     #     GROUP BY year''')
+# 	# results = c.fetchall()
 
-	# close cursor
-	c.close()
+# 	# close cursor
+# 	# c.close()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	# columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	df = pd.DataFrame(results, columns=columns)
+# 	# df = pd.DataFrame(results, columns=columns)
 
-	data = df.to_dict(orient='records')
+# 	# data = df.to_dict(orient='records')
 
-	return jsonify(data)
+# 	# return jsonify(data)
+
+# @deals.route("/api/v1/dealsByYear_linePlot/")
+# def deals_by_year_line_plot():
+#     return asyncio.run(get_inv_analysis())
 
 # @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
 # def get_valueOfDeals():
@@ -86,70 +148,56 @@ def get_inv_analysis():
 
 # 	return data
 
-@deals.route("/api/v1/quarteryValueOfInvestment/")
-def get_valueOfDealsByQuarter():
-	# query = '''
-
-	# 	SELECT
-    # 		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    # 		SUM(amount) AS quarterly_value
-	# 	FROM
-    # 		investments
-	# 	GROUP BY
-    # 		quarter
-
-	# '''
-	query = '''
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) DIV 1000000 AS quarterly_value
-		FROM
-    		investments
-		WHERE
-    		`when` BETWEEN '2019-01-01' AND '2023-12-31'
-		GROUP BY
-    		quarter
+# @deals.route("/api/v1/quarteryValueOfInvestment/")
+# def get_valueOfDealsByQuarter():
 	
-	'''
+# 	query = '''
+# 		SELECT
+#     		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+#     		SUM(amount) DIV 1000000 AS quarterly_value
+# 		FROM
+#     		investments
+# 		WHERE
+#     		`when` BETWEEN '2019-01-01' AND '2023-12-31'
+# 		GROUP BY
+#     		quarter
 	
-	df = pd.read_sql_query(query, con=mysql.db)
+# 	'''
+	
+# 	df = pd.read_sql_query(query, con=app.db)
 
-	df['year'] = df['quarter'].str.extract('^(\d{4})')
-	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
+# 	df['year'] = df['quarter'].str.extract('^(\d{4})')
+# 	df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
 
-	df = df.groupby(['year', 'quarter']).sum().reset_index()
+# 	df = df.groupby(['year', 'quarter']).sum().reset_index()
 
 
-	data = df.to_dict(orient='records')
+# 	data = df.to_dict(orient='records')
 
-	# generate list of colors
-	# colors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845']
-	colors = {}
-	# assign random color to each data point
-	# for d in data:
-	# 	d['color'] = random.choice(colors)
-	for row in data:
-		quarter = row["quarter"]
-		if quarter not in colors:
-			# generate a random color for each unique quarter
-			colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
-		row["color"] = colors[quarter]
+# 	colors = {}
 
-	return jsonify(data)
+# 	for row in data:
+# 		quarter = row["quarter"]
+# 		if quarter not in colors:
+# 			# generate a random color for each unique quarter
+# 			colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
+# 		row["color"] = colors[quarter]
 
-@deals.route("/api/v1/dealsList/")
-def get_all_dealsList():
-	c = mysql.db.cursor()
-	c.execute('''SELECT * FROM investments''')
-	results = c.fetchall()
+# 	return jsonify(data)
 
-	# close cursor
-	c.close()
+# @deals.route("/api/v1/dealsList/")
+# def get_all_dealsList():
+# 	c = app.db.cursor()
+# 	c.execute('''SELECT * FROM investments''')
+# 	results = c.fetchall()
 
-	columns = [desc[0] for desc in c.description]  # Get column names from description
+# 	# close cursor
+# 	c.close()
 
-	df = pd.DataFrame(results, columns=columns)
+# 	columns = [desc[0] for desc in c.description]  # Get column names from description
 
-	data = df.to_dict(orient='records')
+# 	df = pd.DataFrame(results, columns=columns)
 
-	return jsonify(data)
+# 	data = df.to_dict(orient='records')
+
+# 	return jsonify(data)

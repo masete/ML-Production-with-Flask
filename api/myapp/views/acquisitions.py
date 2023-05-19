@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template, jsonify
 
-from ..app import mysql
+from ...app import app
 
 
 # hello = Blueprint('hello',__name__)
@@ -12,7 +12,7 @@ def get_one_acquisition(id):
 	print("masete n")
 
 	
-	c = mysql.db.cursor()
+	c = app.db.cursor()
 	c.execute('SELECT * FROM acquisitions')
 	results = c.fetchone()
 	return jsonify({"single acquisition": results})

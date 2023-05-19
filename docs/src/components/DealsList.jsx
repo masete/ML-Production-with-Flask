@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Box } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
-// import { DealsListData } from "../data/mockData";
+// import { DealsListData as data } from "../data/mockData";
 import Header from "../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -12,24 +12,22 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
   const colors = tokens(theme.palette.mode);
 
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
-      // try {
         const response = await axios.get('/api/v1/dealsList/');
         setData(response.data);
         console.log(response.data)
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      
     };
   
     fetchData();
   }, []);
 
-    if (!data) {
-      return <div>Loading...</div>;
-    }
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
 
   const columns = [
@@ -92,6 +90,14 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
+      </Box>
+
+      <Box>
+          <Pagination
+            count={10} // Replace with the actual total number of pages
+            page={currentPage}
+            onChange={handlePageChange}
+          />
       </Box>
     </Box>
   );

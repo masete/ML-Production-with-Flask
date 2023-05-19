@@ -1,5 +1,5 @@
-// import React, { useState, useEffect } from "react";
-// import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
@@ -32,7 +32,7 @@ const DealsBarChart = ({ isDashboard = false }) => {
       data={data}
       // data={[
       //   {
-      //     id: 'total_amount',
+      //     id: 'id',
       //     data: data.map(({ country, total_amount }) => ({ x: country, y: total_amount }))
       //     // console.log(data)
       //   }

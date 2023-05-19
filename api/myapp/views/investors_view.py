@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template, jsonify
 
-from ..app import mysql
+from ...app import mysql
 
 
 investor = Blueprint("investor",__name__)
