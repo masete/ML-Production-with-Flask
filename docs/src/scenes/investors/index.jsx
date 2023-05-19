@@ -308,14 +308,14 @@ const Investor = () => {
                 fontWeight="600"
                 color={colors.grey[100]}
               >
-                {/* Investment Deals */}
+                Investor Distribution by country
               </Typography>
               <Typography
                 variant="h3"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
-                {/* Number of deals by year from 2007 to 2018 */}
+                Top 20 countries with most investors
               </Typography>
             </Box>
             {/* <Box>
