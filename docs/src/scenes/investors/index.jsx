@@ -14,6 +14,7 @@ import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import { useNavigate } from "react-router-dom";
 import InvestorsConf from "../../components/InvestorsConfidence";
+import ILineChart from "../../components/InvCount"
 
 const Investor = () => {
   const theme = useTheme();
@@ -283,7 +284,8 @@ const Investor = () => {
             Geography Based Traffic
           </Typography>
           <Box height="200px">
-            <GeographyChart isDashboard={true} />
+            {/* <GeographyChart isDashboard={true} /> */}
+            <ILineChart isDashboard={true} />
           </Box>
         </Box>
 
