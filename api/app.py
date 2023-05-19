@@ -2,6 +2,7 @@ import os
 import threading
 from flask import Flask, g
 from myapp.views.deals import deals
+from myapp.views.investors import investors
 from myapp.mysql_connection import MySQL
 
 def create_app():
@@ -20,6 +21,7 @@ def create_app():
 
     # register the blueprint
     app.register_blueprint(deals)
+    app.register_blueprint(investors)
 
     return app
 

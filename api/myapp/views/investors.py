@@ -23,7 +23,7 @@ def get_invByCountry():
                     ''')
     results = c.fetchall()
 
-    c.close()
+    # c.close()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
