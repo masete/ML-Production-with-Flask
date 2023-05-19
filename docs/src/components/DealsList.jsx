@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Box } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
 // import { DealsListData as data } from "../data/mockData";
@@ -94,7 +94,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
       <Box>
           <Pagination
-            count={10} // Replace with the actual total number of pages
+            count={100} // Replace with the actual total number of pages
             page={currentPage}
             onChange={handlePageChange}
           />
