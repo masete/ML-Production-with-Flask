@@ -19,7 +19,7 @@ const QBarChart = ({ isDashboard = false }) => {
   
     fetchData();
   }, []);
-  console.log(data)
+  
 
   return (
     <ResponsiveBar

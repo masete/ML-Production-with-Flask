@@ -14,36 +14,31 @@ const ILineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/v1/investorsByCountry/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
+    //   const data = response.data.map((d, i) => ({
+    //     id: `series-${i}`,
+    //     ...d
+    //   }));
+      setData(response.data);
     };
   
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios("/api/v1/quarteryValueOfInvestment/");
-  //     setData(result.data);
-  //   };
-  //   fetchData();
-  // }, []);
+  console.log(data)
+
 
   return (
     <ResponsiveLine
-      // data={data}
-    data={[
-        {
-          id: "investor_count",
-          data: data.map((item) => ({
-            x: new Date(item.country + "-01").toLocaleDateString(),
-            y: item.investor_count,
-          })),
-        },
-      ]}
+      data={data}
+    // data={[
+    //     {
+    //       id: "investor_count",
+    //       data: data.map((item) => ({
+    //         x: new Date(item.country + "-01").toLocaleDateString(),
+    //         y: item.investor_count,
+    //       })),
+    //     },
+    //   ]}
       theme={{
         axis: {
           domain: {
@@ -96,7 +91,7 @@ const ILineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
         tickSize: 0,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation", // added
+        legend: isDashboard ? undefined : "country", // added
         legendOffset: 36,
         legendPosition: "middle",
       }}
