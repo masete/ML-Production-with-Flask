@@ -161,9 +161,14 @@ def get_dealsVsStage():
 
     c = db.cursor()
     c.execute('''
-                SELECT YEAR(`when`) AS Year, COUNT(*) AS DealCount, funding_round AS FundingRoundStage
-                        FROM investments
-                        GROUP BY Year, funding_round
+                    SELECT YEAR(`when`) AS Year, COUNT(*) AS DealCount, 
+        CASE 
+            WHEN funding_round = '' THEN 'undisclosed'
+            ELSE funding_round
+        END AS FundingRoundStage
+    FROM investments
+    GROUP BY Year, FundingRoundStage
+
 
 
     ''')
