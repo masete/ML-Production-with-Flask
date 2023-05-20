@@ -152,3 +152,32 @@ def get_all_dealsList(page):
     data = df.to_dict(orient='records')
 
     return jsonify(data)
+
+@deals.route("/api/v1/dealsVsStage/")
+def get_dealsVsStage():
+
+    with current_app.app_context():
+        db = mysql.db
+
+    c = db.cursor()
+    c.execute('''
+                SELECT YEAR(`when`) AS Year, COUNT(*) AS DealCount, funding_round AS FundingRoundStage
+                        FROM investments
+                        GROUP BY Year, funding_round
+
+
+    ''')
+    results = c.fetchall()
+
+    # c.close()
+
+	# close cursor
+	# c.close()
+
+    columns = [desc[0] for desc in c.description]  # Get column names from description
+
+    df = pd.DataFrame(results, columns=columns)
+
+    data = df.to_dict(orient='records')
+
+    return jsonify(data)
