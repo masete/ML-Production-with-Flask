@@ -16,6 +16,7 @@ import Header from "../../components/Header";
 import QBarChart from "../../components/QBarChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
+import FRBarChart from "../../components/Deals_FR_BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import FunctionsIcon from '@mui/icons-material/Functions';
@@ -308,7 +309,8 @@ const Dashboard = () => {
             Sales Quantity
           </Typography>
           <Box height="250px" mt="-20px">
-            <BarChart isDashboard={true} />
+            {/* <BarChart isDashboard={true} /> */}
+            <FRBarChart isDashboard={true} />
           </Box>
         </Box>
         <Box

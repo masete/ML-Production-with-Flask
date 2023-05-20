@@ -1,9 +1,11 @@
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as data } from "../data/mockData";
+// import { mockBarData as data } from "../data/mockData";
 
-const BarChart = ({ isDashboard = false }) => {
+const FRBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -62,9 +64,10 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["Angel","Initial Coin Offering","Pre-seed","Seed", "Grant", "Venture ","Convertible Note","Private Equity","Corporate",
+      keys={["Angel","Initial Coin Offering","Pre-seed","Seed", "Seed II","Grant", "Venture ","Convertible Note","Private Equity",
+      "Corporate","Accelerator","Mergers and Acquisitions","Late Stage","Bridge","Fund","Prizes","Equity Crowdfunding",
        "Unspecified","Pre-Series A","Series A","Series A II" ,"Pre-Series B","Series B","Series B II","Post Series B", "Series C","Series D",
-       "Series D II","Series E","Debt Financing","Debt Financing I","Debt Financing II", "Debt Financing III","Equity Crowdfunding"]}
+       "Series D II","Series E","Debt Financing","Debt Financing I","Debt Financing II", "Debt Financing III","Debt Financing IV"]}
       indexBy="Year"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
@@ -152,4 +155,4 @@ const BarChart = ({ isDashboard = false }) => {
   );
 };
 
-export default BarChart;
+export default FRBarChart;
