@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-// import { valueVcountry as data } from "../data/mockData";
+import { mockBarData as data } from "../data/mockData";
 
-const DealsBarChart = ({ isDashboard = false }) => {
+const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('/api/v1/valueOfDealsByCountry_barPlot/');
+      const response = await axios.get('/api/v1/dealsVsStage/');
       const data = response.data.map((d, i) => ({
         id: `series-${i}`,
         ...d
@@ -24,12 +21,11 @@ const DealsBarChart = ({ isDashboard = false }) => {
   
     fetchData();
   }, []);
-  
-
 
   return (
     <ResponsiveBar
-      // data={data}
+    //   data={data}
+
       data={[
         {
           id: 'id',
@@ -66,8 +62,10 @@ const DealsBarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["amount"]}
-      indexBy="country"
+      keys={["Angel","Initial Coin Offering","Pre-seed","Seed", "Grant", "Venture ","Convertible Note","Private Equity","Corporate",
+       "Unspecified","Pre-Series A","Series A","Series A II" ,"Pre-Series B","Series B","Series B II","Post Series B", "Series C","Series D",
+       "Series D II","Series E","Debt Financing","Debt Financing I","Debt Financing II", "Debt Financing III","Equity Crowdfunding"]}
+      indexBy="Year"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -103,7 +101,7 @@ const DealsBarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "country", // changed
+        legend: isDashboard ? undefined : "Year", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -111,7 +109,7 @@ const DealsBarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "Amount", // changed
+        legend: isDashboard ? undefined : "Deals Count", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}
@@ -154,4 +152,4 @@ const DealsBarChart = ({ isDashboard = false }) => {
   );
 };
 
-export default DealsBarChart;
+export default BarChart;
