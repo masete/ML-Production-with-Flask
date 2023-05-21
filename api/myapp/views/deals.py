@@ -52,6 +52,9 @@ def get_valueOfDeals():
   			INNER JOIN companies_v3 ON investments.company = companies_v3.name
 		GROUP BY
   			country
+        ORDER BY
+            total_amount DESC
+        LIMIT 10;
 			''')
     
 	results = c.fetchall()

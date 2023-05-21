@@ -4,9 +4,13 @@ from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.mysql_connection import MySQL
+from flask_cors import CORS, cross_origin
+
 
 def create_app():
     app = Flask(__name__)
+    cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     # mysql connection details
     app.config['MYSQL_HOST'] = os.environ.get('MY_APP_DB_HOST', 'digestafrica-do-user-4558844-0.b.db.ondigitalocean.com')
