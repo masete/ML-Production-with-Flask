@@ -90,15 +90,16 @@ def get_valueOfDealsByQuarter():
     c = db.cursor()
 	
     c.execute( '''
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) DIV 1000000 AS quarterly_value
-		FROM
-    		investments
-		WHERE
-    		`when` BETWEEN '2019-01-01' AND '2023-12-31'
-		GROUP BY
-    		quarter
+                SELECT
+            CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
+            SUM(amount) DIV 1000000 AS quarterly_value
+        FROM
+            investments
+        WHERE
+            `when` BETWEEN '2019-01-01' AND '2023-12-31'
+        GROUP BY
+            CONCAT(YEAR(`when`), '-Q', QUARTER(`when`))
+
 	
 	''')
    
@@ -161,15 +162,14 @@ def get_dealsVsStage():
 
     c = db.cursor()
     c.execute('''
-                    SELECT YEAR(`when`) AS Year, COUNT(*) AS DealCount, 
-        CASE 
-            WHEN funding_round = '' THEN 'undisclosed'
-            ELSE funding_round
-        END AS FundingRoundStage
-    FROM investments
-    GROUP BY Year, FundingRoundStage
-
-
+            SELECT DATE_FORMAT(`when`, '%Y') AS Year, COUNT(*) AS DealCount, 
+       CASE 
+           WHEN funding_round = '' THEN 'undisclosed'
+           ELSE funding_round
+       END AS FundingRoundStage
+        FROM investments
+        WHERE `when` >= '2019-01-01'
+        GROUP BY Year, FundingRoundStage
 
     ''')
     results = c.fetchall()
