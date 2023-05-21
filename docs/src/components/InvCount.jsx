@@ -3,40 +3,40 @@ import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-// import { mockLineData as data } from "../data/mockData";
+import { mockLineData as data } from "../data/mockData";
 
 const ILineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/investorsByCountry/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/investorsByCountry/');
+  //     const data = response.data.map((d, i) => ({
+  //       id: `series-${i}`,
+  //       ...d
+  //     }));
+  //     setData(data);
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  console.log(data)
+  // console.log(data)
 
 
   return (
     <ResponsiveLine
-    
-    data={[
-        {
-          id: 'investor_count',
-          data: data.map(({ country, investor_count }) => ({ x: country, y: investor_count }))
+    data={data}
+    // data={[
+    //     {
+    //       id: 'investor_count',
+    //       data: data.map(({ country, investor_count }) => ({ x: country, y: investor_count }))
           
-        }
-      ]}
+    //     }
+    //   ]}
    
       theme={{
         axis: {

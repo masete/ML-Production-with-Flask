@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-// import { valueVcountry as data } from "../data/mockData";
+import { valueVcountry as data } from "../data/mockData";
 
 const DealsBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
@@ -32,7 +32,7 @@ const DealsBarChart = ({ isDashboard = false }) => {
       // data={data}
       data={[
         {
-          id: 'id',
+          id: 'total_amount',
           data: data.map(({ country, total_amount }) => ({ x: country, y: total_amount }))
           // console.log(data)
         }

@@ -3,58 +3,42 @@ import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";  
 import { tokens } from "../theme";
-// import { yVposts as data } from "../data/mockData";
+import { yVposts as data } from "../data/mockData";
 
 const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
  
                             
-  useEffect(() => {
-    const fetchData = async () => {
-      // try {
-        const response = await axios.get('/api/v1/dealsByYear_linePlot/');
-        const data = response.data.map((d, i) => ({
-                id: `series-${i}`,
-                ...d
-              }));
-        setData(data);
-      // } catch (error) {
-      //   console.error('Error fetching data:', error);
-      // }
-    };
-  
-    fetchData();
-  }, []);
-  
-
   // useEffect(() => {
-  //   if (data.length > 0) {
-  //     console.log(data);
-  //   }
-  // }, [data]);
-  // console.log(data)
+  //   const fetchData = async () => {
+    
+  //       const response = await axios.get('/api/v1/dealsByYear_linePlot/');
+  //       const data = response.data.map((d, i) => ({
+  //               id: `series-${i}`,
+  //               ...d
+  //             }));
+  //       setData(data);
   
-
-
-
-    // if (!data) {
-    //   return <div>Loading...</div>;
-    // }
+  //   };
+  
+  //   fetchData();
+  // }, []);
+  
 
   return (
     <ResponsiveLine
-      // data={data}
+      data={data}
       
-      data={[
-        {
-          id: 'deals_count',
-          data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
-          // console.log(data)
-        }
-      ]}
+      // data={[
+      //   {
+      //     id: 'deals_count',
+      //     data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
+          
+      //   }
+      // ]}
 
 
       theme={{
