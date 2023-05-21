@@ -4,7 +4,7 @@ from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.mysql_connection import MySQL
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 
 def create_app():
@@ -59,4 +59,4 @@ if __name__ == '__main__':
     db_thread.start()
 
     # Run the Flask application in the main thread
-    app.run()
+    app.run(debug=True)

@@ -30,7 +30,6 @@ def get_inv_analysis():
                     ''')
     results = c.fetchall()
 
-    c.close()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
