@@ -73,12 +73,11 @@ def get_valueOfDeals():
 	df = pd.DataFrame(results, columns=columns)
 
 	data = df.to_dict(orient='records')
-    # c.close()  # Close the cursor
-    # mysql.db.close()  # Close the MySQL connection
+ 
 
 	return data
 
-    # c.close()
+
 
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
@@ -96,7 +95,7 @@ def get_valueOfDealsByQuarter():
         FROM
             investments
         WHERE
-            `when` BETWEEN '2019-01-01' AND '2023-12-31'
+            `when` BETWEEN '2020-01-01' AND '2023-12-31'
         GROUP BY
             CONCAT(YEAR(`when`), '-Q', QUARTER(`when`))
 
@@ -116,16 +115,6 @@ def get_valueOfDealsByQuarter():
 
     data = df.to_dict(orient='records')
 
-    colors = {}
-
-    for row in data:
-        quarter = row["quarter"]
-        if quarter not in colors:
-			# generate a random color for each unique quarter
-            colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
-        row["color"] = colors[quarter]
-
-    # c.close()
     return jsonify(data)
 
 @deals.route("/api/v1/dealsList/<int:page>")
@@ -134,17 +123,14 @@ def get_all_dealsList(page):
     with current_app.app_context():
         db = mysql.db
 
-    items_per_page = 10  # Number of items per page
+    items_per_page = 6 # Number of items per page
     offset = (page - 1) * items_per_page
 
     c = db.cursor()
     c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
+
+    # c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
     results = c.fetchall()
-
-    # c.close()
-
-	# close cursor
-	# c.close()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
@@ -173,11 +159,6 @@ def get_dealsVsStage():
 
     ''')
     results = c.fetchall()
-
-    # c.close()
-
-	# close cursor
-	# c.close()
 
     columns = [desc[0] for desc in c.description]  # Get column names from description
 
