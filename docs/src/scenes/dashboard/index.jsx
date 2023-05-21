@@ -175,6 +175,51 @@ const Dashboard = () => {
             <QBarChart isDashboard={true} />
           </Box>
         </Box>
+
+            {/* ROW 3
+        <Box
+          gridColumn="span 8"
+          gridRow="span 4"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="0px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                Quarterly value of deals in Millions.
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                In the past 5 years.
+              </Typography>
+            </Box>
+            {/* <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box> */}
+          {/* </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            {/* <QLineChart isDashboard={true} /> */}
+            {/* <QBarChart isDashboard={true} /> */}
+            {/* <FRBarChart isDashboard={true} /> */}
+          {/* </Box> */}
+        {/* </Box> */} 
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -309,8 +354,8 @@ const Dashboard = () => {
             Sales Quantity
           </Typography>
           <Box height="250px" mt="-20px">
-            {/* <BarChart isDashboard={true} /> */}
-            <FRBarChart isDashboard={true} />
+            <BarChart isDashboard={true} />
+            {/* <FRBarChart isDashboard={true} /> */}
           </Box>
         </Box>
         <Box

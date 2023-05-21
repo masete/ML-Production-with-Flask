@@ -16,7 +16,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await axios.get('/api/v1/dealsList/');
+        const response = await axios.get('/api/v1/dealsList/${currentPage}');
         setData(response.data);
         console.log(response.data)
       
