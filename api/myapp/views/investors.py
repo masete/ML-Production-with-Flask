@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, current_app
+from flask_cors import cross_origin
 import pandas as pd
 
 investors = Blueprint("investors", __name__)
@@ -10,6 +11,7 @@ def setup_mysql():
     mysql = current_app.config['MYSQL']
 
 @investors.route("/api/v1/investorsByCountry/")
+@cross_origin()
 def get_invByCountry():
     
     with current_app.app_context():

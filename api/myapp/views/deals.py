@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, current_app
+from flask_cors import cross_origin
 import pandas as pd
-import random
+
 
 deals = Blueprint("deals", __name__)
 mysql = None
@@ -11,6 +12,7 @@ def setup_mysql():
     mysql = current_app.config['MYSQL']
 
 @deals.route("/api/v1/dealsByYear_linePlot/")
+@cross_origin()
 def get_inv_analysis():
     
     with current_app.app_context():
@@ -40,6 +42,7 @@ def get_inv_analysis():
 
 
 @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+@cross_origin()
 def get_valueOfDeals():
 
 	c = mysql.db.cursor()
@@ -84,6 +87,7 @@ def get_valueOfDeals():
 
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
+@cross_origin()
 def get_valueOfDealsByQuarter():
         
     with current_app.app_context():
@@ -121,6 +125,7 @@ def get_valueOfDealsByQuarter():
     return jsonify(data)
 
 @deals.route("/api/v1/dealsList/<int:page>")
+@cross_origin()
 def get_all_dealsList(page):
 
     with current_app.app_context():
@@ -144,6 +149,7 @@ def get_all_dealsList(page):
     return jsonify(data)
 
 @deals.route("/api/v1/dealsVsStage/")
+@cross_origin()
 def get_dealsVsStage():
 
     with current_app.app_context():
