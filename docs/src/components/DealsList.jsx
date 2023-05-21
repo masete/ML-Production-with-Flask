@@ -16,14 +16,14 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await axios.get('/api/v1/dealsList/${currentPage}');
+        const response = await axios.get('/api/v1/dealsList/' + currentPage);
         setData(response.data);
         console.log(response.data)
       
     };
   
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
