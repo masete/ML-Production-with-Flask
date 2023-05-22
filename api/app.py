@@ -5,7 +5,10 @@ from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
+# from datetime import timedelta
 
+
+# timeout = timedelta(seconds=10)
 
 def create_app():
     app = Flask(__name__)
@@ -18,6 +21,9 @@ def create_app():
     app.config['MYSQL_USER'] = os.environ['MY_APP_DBUSER_NAME']
     app.config['MYSQL_PASSWORD'] = os.environ['MY_APP_DBUSER_PASSWORD']
     app.config['MYSQL_DB'] = os.environ['MY_APP_DB_NAME']
+    # connect_timeout=timeout.total_seconds()
+    
+
 
     # create MySQL instance and assign it to app.config
     mysql = MySQL(app)
@@ -43,12 +49,12 @@ def close_db(error):
 def connect_to_db(app):
     with app.app_context():
         db = get_db(app)
-        # Perform your database operations
+#         Perform your database operations
 
 # def connect_to_db(app):
 #     with app.app_context():
 #         mysql = app.config['MYSQL']
-        # Perform your database operations
+#         Perform your database operations
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, current_app
+from flask import Blueprint, jsonify, current_app, g
 from flask_cors import cross_origin
 import pandas as pd
 
@@ -16,6 +16,8 @@ def setup_mysql():
 def get_inv_analysis():
 
     try:
+
+        # db = g.db  # Access the database connection from the Flask g object
     
         with current_app.app_context():
             db = mysql.db
