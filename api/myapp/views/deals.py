@@ -11,30 +11,68 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
-# @deals.route("/api/v1/update_inv/")
-# @cross_origin()
-# def update_inv_analysis1():
-#     try:
+@deals.route("/api/v1/update_inv/")
+@cross_origin()
+def update_inv_analysis1():
+    try:
     
-#         with current_app.app_context():
-#             db = mysql.db
+        with current_app.app_context():
+            db = mysql.db
 
-#         c = db.cursor()
-#         c.execute('''  
-#         UPDATE investments
-# INNER JOIN companies_v3 ON investments.company = companies_v3.name
-# SET investments.selected_country = SUBSTRING_INDEX(companies_v3.countries_of_operation, ',', 2);
+        c = db.cursor()
+
+            # Execute the SELECT query to fetch the results
+        c.execute("SELECT selected_headqtrs FROM investors_v3")
+
+            # Fetch all the rows
+        rows = c.fetchall()
+
+            # Create a new cursor for the UPDATE statement
+        update_cursor = db.cursor()
+
+            # Update the values in the selected_headqtrs column
+        update_cursor.execute("""
+            UPDATE investors_v3
+            SET selected_headqtrs =
+                CASE
+                    WHEN selected_headqtrs = 'Lagos' THEN 'Nigeria'
+                    WHEN selected_headqtrs = 'Johannesburg' THEN 'South Africa'
+                    WHEN selected_headqtrs = 'California' THEN 'USA'
+                    WHEN selected_headqtrs = 'Cape Town' THEN 'South Africa'
+                    WHEN selected_headqtrs = 'Nairobi' THEN 'Kenya'
+                    WHEN selected_headqtrs = 'Washington' THEN 'USA'
+                    WHEN selected_headqtrs = 'San Francisco' THEN 'USA'
+                    WHEN selected_headqtrs = 'New York' THEN 'USA'
+                    WHEN selected_headqtrs = 'Cairo' THEN 'Egypt'
+                    WHEN selected_headqtrs = 'Paris' THEN 'France'
+                    WHEN selected_headqtrs = 'Dubai' THEN 'United Arab Emirates'
+                    WHEN selected_headqtrs = 'London' THEN 'UK'
+                    ELSE selected_headqtrs
+                END
+        """)
+
+            # Commit the changes
+        db.commit()
+
+            # Close the cursors
+        c.close()
+        update_cursor.close()
 
 
+#         ALTER TABLE investors_v3
+# ADD selected_headqtrs VARCHAR(255);
 
-#           ''')
-#         db.commit()
 
-#         return jsonify({'message': 'Update successful'})
+#  UPDATE investors_v3
+# SET selected_headqtrs = TRIM(SUBSTRING_INDEX(headquarters, ',', -1));
+        #   ''')
+        # db.commit()
 
-#     except Exception as e:
-#         print(f"Error: {e}")
-#         return jsonify({'error': 'An error occurred'}), 500
+        return jsonify({'message': 'Update successful'})
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({'error': 'An error occurred'}), 500
 
 @deals.route("/api/v1/get_all_inv/")
 @cross_origin()
@@ -45,7 +83,7 @@ def get_inv_analysis1():
             db = mysql.db
 
         c = db.cursor()
-        c.execute('''SELECT * FROM investments''')
+        c.execute('''SELECT * FROM investors_v3''')
         results = c.fetchall()
 
 
@@ -236,14 +274,14 @@ def get_dealsVsStage():
 
         c = db.cursor()
         c.execute('''
-                SELECT DATE_FORMAT(`when`, '%Y') AS Year, COUNT(*) AS DealCount, 
+                SELECT year AS Year, COUNT(*) AS DealCount, 
         CASE 
             WHEN funding_round = '' THEN 'undisclosed'
             ELSE funding_round
         END AS FundingRoundStage
-            FROM investments
-            WHERE `when` >= '2019-01-01'
-            GROUP BY Year, FundingRoundStage
+FROM investments
+GROUP BY Year, FundingRoundStage;
+
 
         ''')
         results = c.fetchall()

@@ -20,30 +20,16 @@ def get_invByCountry():
             db = mysql.db
 
         c = db.cursor()
-        c.execute('''SELECT 
-                        CASE 
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = '' OR headquarters IS NULL THEN 'Unknown'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Lagos' THEN 'Nigeria'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Johannesburg' THEN 'South Africa'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'California' THEN 'USA'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Cape Town' THEN 'South Africa'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Nairobi' THEN 'Kenya'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Washington' THEN 'USA'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'San Francisco' THEN 'USA'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'New York' THEN 'USA'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Cairo' THEN 'Egypt'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Paris' THEN 'France'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'Dubai' THEN 'United Arab Emirates'
-                            WHEN TRIM(SUBSTRING_INDEX(headquarters, ',', -1)) = 'London' THEN 'UK'
-                            ELSE TRIM(SUBSTRING_INDEX(headquarters, ',', -1))
-                        END AS country,
+        c.execute('''SELECT
+                        selected_headqtrs AS country,
                         COUNT(*) AS investor_count
-                        FROM investors_v3
-                        GROUP BY country
-                        ORDER BY investor_count DESC
-                        LIMIT 20;
-
-
+                    FROM
+                        investors_v3
+                    GROUP BY
+                        selected_headqtrs
+                    ORDER BY
+                        investor_count DESC
+                    LIMIT 20;
                         ''')
         results = c.fetchall()
 
