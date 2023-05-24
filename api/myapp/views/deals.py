@@ -164,17 +164,16 @@ def get_valueOfDealsByQuarter():
         c = db.cursor()
         
         c.execute( '''
-                    SELECT
-                CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-                SUM(amount) DIV 1000000 AS quarterly_value
-            FROM
-                investments
-            WHERE
-                `when` BETWEEN '2020-01-01' AND '2023-12-31'
-            GROUP BY
-                CONCAT(YEAR(`when`), '-Q', QUARTER(`when`))
-
-        
+                                    SELECT
+                                    CONCAT(year,'-',quarter) AS quarter,
+                                        selected_country,
+                                    SUM(amount) AS total_amount
+                                    FROM
+                                        investments
+                                    GROUP BY
+                                        year, quarter, selected_country
+                                    ORDER BY
+                                        year, quarter;
         ''')
     
         
@@ -183,10 +182,10 @@ def get_valueOfDealsByQuarter():
         df = pd.DataFrame(c.fetchall(), columns = columns)
 
 
-        df['year'] = df['quarter'].str.extract('^(\d{4})')
-        df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
+        # df['year'] = df['quarter'].str.extract('^(\d{4})')
+        # df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
 
-        df = df.groupby(['year', 'quarter']).sum().reset_index()
+        # df = df.groupby(['year', 'quarter']).sum().reset_index()
 
 
         data = df.to_dict(orient='records')
