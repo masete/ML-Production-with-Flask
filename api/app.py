@@ -21,6 +21,7 @@ def create_app():
     app.config['MYSQL_USER'] = os.environ['MY_APP_DBUSER_NAME']
     app.config['MYSQL_PASSWORD'] = os.environ['MY_APP_DBUSER_PASSWORD']
     app.config['MYSQL_DB'] = os.environ['MY_APP_DB_NAME']
+    app.config['MYSQL_CONNECT_TIMEOUT'] = 20
     # connect_timeout=timeout.total_seconds()
     
 

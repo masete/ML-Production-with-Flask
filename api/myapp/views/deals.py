@@ -11,26 +11,76 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
+# @deals.route("/api/v1/update_inv/")
+# @cross_origin()
+# def update_inv_analysis1():
+#     try:
+    
+#         with current_app.app_context():
+#             db = mysql.db
+
+#         c = db.cursor()
+#         c.execute('''  
+#         UPDATE investments
+# INNER JOIN companies_v3 ON investments.company = companies_v3.name
+# SET investments.selected_country = SUBSTRING_INDEX(companies_v3.countries_of_operation, ',', 2);
+
+
+
+#           ''')
+#         db.commit()
+
+#         return jsonify({'message': 'Update successful'})
+
+#     except Exception as e:
+#         print(f"Error: {e}")
+#         return jsonify({'error': 'An error occurred'}), 500
+
+@deals.route("/api/v1/get_all_inv/")
+@cross_origin()
+def get_inv_analysis1():
+    try:
+    
+        with current_app.app_context():
+            db = mysql.db
+
+        c = db.cursor()
+        c.execute('''SELECT * FROM investments''')
+        results = c.fetchall()
+
+
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
+
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+
 @deals.route("/api/v1/dealsByYear_linePlot/")
 @cross_origin()
 def get_inv_analysis():
 
     try:
 
-        # db = g.db  # Access the database connection from the Flask g object
     
         with current_app.app_context():
             db = mysql.db
 
         c = db.cursor()
-        c.execute('''SELECT
-                        ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id,
+        c.execute('''   SELECT
+                        ROW_NUMBER() OVER (ORDER BY year) AS id,
                         COUNT(*) AS deal_count,
-                        YEAR(`when`) AS year
-                    FROM
-                        investments
-                    GROUP BY
-                        year;
+                            year
+                        FROM
+                            investments
+                        GROUP BY
+                            year;
+
                         ''')
         results = c.fetchall()
 
@@ -60,16 +110,16 @@ def get_valueOfDeals():
         c = mysql.db.cursor()
 
         c.execute('''SELECT
-                SUBSTRING_INDEX(countries_of_operation, ',', 2) as country,
-                SUM(investments.amount) as total_amount
-            FROM
-                investments
-                INNER JOIN companies_v3 ON investments.company = companies_v3.name
-            GROUP BY
-                country
-            ORDER BY
-                total_amount DESC
-            LIMIT 10;
+                        SUBSTRING_INDEX(investments.selected_country, ',', 1) AS country,
+                        SUM(investments.amount) AS total_amount
+                    FROM
+                        investments
+                    GROUP BY
+                        country
+                    ORDER BY
+                        total_amount DESC
+                    LIMIT 10;
+
                 ''')
         
         results = c.fetchall()
@@ -162,7 +212,6 @@ def get_all_dealsList(page):
         c = db.cursor()
         c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
 
-        # c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
         results = c.fetchall()
 
         columns = [desc[0] for desc in c.description]  # Get column names from description
