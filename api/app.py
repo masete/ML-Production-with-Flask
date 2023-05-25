@@ -3,6 +3,8 @@ import threading
 from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.views.investors import investors
+from myapp.swagger import swagger_bp, swagger_blueprint
+
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
 
@@ -33,6 +35,9 @@ def create_app():
     # register the blueprint
     app.register_blueprint(deals)
     app.register_blueprint(investors)
+    app.register_blueprint(swagger_bp)
+    app.register_blueprint(swagger_blueprint, url_prefix=SWAGGER_URL)
+
     # app.register_blueprint(swagger_bp)
 
 
