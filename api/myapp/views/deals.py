@@ -38,43 +38,6 @@ def get_inv_analysis1():
         return jsonify({'error': 'An error occurred'}), 500
 
 @deals.route("/api/v1/dealsByYear_linePlot/", methods=['GET'])
-# @swag_from({
-#     'swagger': '2.0',
-#     'paths': {
-#         '/api/v1/dealsByYear_linePlot/': {
-#             'get': {
-#                 'summary': 'Get deals by year data',
-#                 'description': 'Retrieve a list of deals',
-#                 'responses': {
-#                     '200': {
-#                         'description': 'Successful operation',
-#                         'schema': {
-#                             'type': 'array',
-#                             'items': {
-#                                 'type': 'object',
-#                                 'properties': {
-#                                     'id': {
-#                                         'type': 'integer',
-#                                         'description': 'Deal ID'
-#                                     },
-#                                     'name': {
-#                                         'type': 'string',
-#                                         'description': 'Deal name'
-#                                     },
-                                    
-#                                 }
-#                             }
-#                         }
-#                     }
-#                 }
-#             }
-#         }
-#     }
-# })
-# def get_deals():
-    # Your implementation here
-    # ...
-
 @cross_origin()
 def get_inv_analysis():
 
