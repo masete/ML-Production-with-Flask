@@ -187,7 +187,7 @@ const Deals = () => {
         </Box>
 
            {/* ROW 3 */}
-           <Box
+           {/* <Box
           gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -223,11 +223,13 @@ const Deals = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+           <Box height="400px" m="-20px 0 0 0">
             <DealsBarChart />
           </Box>
-        </Box>
-        {/* <Box
+        </Box>  */}
+
+
+         {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -276,7 +278,7 @@ const Deals = () => {
               </Box>
             </Box>
           ))}
-        </Box> */}
+        </Box>  */}
 
         {/* ROW 3 */}
         <Box

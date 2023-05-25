@@ -55,7 +55,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
       />
       <Box
         m="5px 0 0 0"
-        height="75vh"
+        height="450px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
