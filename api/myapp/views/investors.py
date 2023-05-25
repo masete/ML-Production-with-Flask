@@ -5,7 +5,7 @@ import pandas as pd
 investors = Blueprint("investors", __name__)
 mysql = None
 
-@investors.before_app_first_request
+@investors.before_request
 def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']

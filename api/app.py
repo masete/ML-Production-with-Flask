@@ -1,14 +1,16 @@
 import os
 import threading
 from flask import Flask, g
+from apispec import APISpec
+from apispec.ext.marshmallow import MarshmallowPlugin
+from apispec_webframeworks.flask import FlaskPlugin
+from marshmallow import Schema, fields
+from werkzeug.utils import secure_filename
 from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
-# from datetime import timedelta
 
-
-# timeout = timedelta(seconds=10)
 
 def create_app():
     app = Flask(__name__)
