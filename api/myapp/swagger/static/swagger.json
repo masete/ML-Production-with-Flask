@@ -17,7 +17,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Investment"
+                      "$ref": "#/components/schemas/deals"
                     }
                   }
                 }
@@ -62,43 +62,68 @@
               }
             }
           }
-        },
-        "post": {
-          "summary": "Create a new deal",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Deal"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Deal created successfully"
-            }
-          }
         }
       }
     },
     "components": {
       "schemas": {
-        "Investment": {
+        "deals": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
               "format": "int64"
             },
-            "name": {
-              "type": "string"
+            "when": {
+              "type": "string",
+              "format": "Date"
             },
-            "amount": {
-              "type": "number",
-              "format": "float"
-            }
+            "company": {
+              "type": "string"
+            },"amount": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "funding_round": {
+                "type": "string"
+              },
+              "investors": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "Date"
+              },
+              "updated_at": {
+                "type": "string",
+                "format": "Date"
+              },"user_id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "company_slug": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },"publish": {
+                "type": "string"
+              },
+              "valuation_note": {
+                "type": "string"
+              },
+              "year": {
+                "type": "number",
+                "format": "float"
+              },"qurter": {
+                "type": "string"
+              },
+              "selected_country": {
+                "type": "string"
+              }
           }
         },
         "Deal": {
