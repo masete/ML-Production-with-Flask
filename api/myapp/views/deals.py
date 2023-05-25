@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, current_app, g
 from flask_cors import cross_origin
+# from flasgger import swag_from
 import pandas as pd
 
 
@@ -11,85 +12,69 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
-# @deals.route("/api/v1/update_inv/")
-# @cross_origin()
-# def update_inv_analysis1():
-#     try:
+@deals.route("/api/v1/get_all_inv/")
+@cross_origin()
+def get_inv_analysis1():
+    try:
     
-#         with current_app.app_context():
-#             db = mysql.db
+        with current_app.app_context():
+            db = mysql.db
 
-#         c = db.cursor()
+        c = db.cursor()
+        c.execute('''SELECT * FROM investors_v3''')
+        results = c.fetchall()
 
-#             # Execute the SELECT query to fetch the results
-#         c.execute("SELECT selected_headqtrs FROM investors_v3")
 
-#             # Fetch all the rows
-#         rows = c.fetchall()
+        columns = [desc[0] for desc in c.description]  # Get column names from description
 
-#             # Create a new cursor for the UPDATE statement
-#         update_cursor = db.cursor()
+        df = pd.DataFrame(results, columns=columns)
 
-#             # Update the values in the selected_headqtrs column
-#         update_cursor.execute("""
-#             UPDATE investors_v3
-#             SET selected_headqtrs =
-#                 CASE
-#                     WHEN selected_headqtrs = 'Lagos' THEN 'Nigeria'
-#                     WHEN selected_headqtrs = 'Johannesburg' THEN 'South Africa'
-#                     WHEN selected_headqtrs = 'California' THEN 'USA'
-#                     WHEN selected_headqtrs = 'Cape Town' THEN 'South Africa'
-#                     WHEN selected_headqtrs = 'Nairobi' THEN 'Kenya'
-#                     WHEN selected_headqtrs = 'Washington' THEN 'USA'
-#                     WHEN selected_headqtrs = 'San Francisco' THEN 'USA'
-#                     WHEN selected_headqtrs = 'New York' THEN 'USA'
-#                     WHEN selected_headqtrs = 'Cairo' THEN 'Egypt'
-#                     WHEN selected_headqtrs = 'Paris' THEN 'France'
-#                     WHEN selected_headqtrs = 'Dubai' THEN 'United Arab Emirates'
-#                     WHEN selected_headqtrs = 'London' THEN 'UK'
-#                     ELSE selected_headqtrs
-#                 END
-#         """)
+        data = df.to_dict(orient='records')
 
-#             # Commit the changes
-#         db.commit()
-
-#             # Close the cursors
-#         c.close()
-#         update_cursor.close()
-
-#         return jsonify({'message': 'Update successful'})
-
-#     except Exception as e:
-#         print(f"Error: {e}")
-#         return jsonify({'error': 'An error occurred'}), 500
-
-# @deals.route("/api/v1/get_all_inv/")
-# @cross_origin()
-# def get_inv_analysis1():
-#     try:
+        return jsonify(data)
     
-#         with current_app.app_context():
-#             db = mysql.db
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
 
-#         c = db.cursor()
-#         c.execute('''SELECT * FROM investors_v3''')
-#         results = c.fetchall()
+@deals.route("/api/v1/dealsByYear_linePlot/", methods=['GET'])
+# @swag_from({
+#     'swagger': '2.0',
+#     'paths': {
+#         '/api/v1/dealsByYear_linePlot/': {
+#             'get': {
+#                 'summary': 'Get deals by year data',
+#                 'description': 'Retrieve a list of deals',
+#                 'responses': {
+#                     '200': {
+#                         'description': 'Successful operation',
+#                         'schema': {
+#                             'type': 'array',
+#                             'items': {
+#                                 'type': 'object',
+#                                 'properties': {
+#                                     'id': {
+#                                         'type': 'integer',
+#                                         'description': 'Deal ID'
+#                                     },
+#                                     'name': {
+#                                         'type': 'string',
+#                                         'description': 'Deal name'
+#                                     },
+                                    
+#                                 }
+#                             }
+#                         }
+#                     }
+#                 }
+#             }
+#         }
+#     }
+# })
+# def get_deals():
+    # Your implementation here
+    # ...
 
-
-#         columns = [desc[0] for desc in c.description]  # Get column names from description
-
-#         df = pd.DataFrame(results, columns=columns)
-
-#         data = df.to_dict(orient='records')
-
-#         return jsonify(data)
-    
-#     except Exception as e:
-#         print(f"Error: {e}")  # Debug statement
-#         return jsonify({'error': 'An error occurred'}), 500
-
-@deals.route("/api/v1/dealsByYear_linePlot/")
 @cross_origin()
 def get_inv_analysis():
 
@@ -269,8 +254,8 @@ def get_dealsVsStage():
             WHEN funding_round = '' THEN 'undisclosed'
             ELSE funding_round
         END AS FundingRoundStage
-FROM investments
-GROUP BY Year, FundingRoundStage;
+        FROM investments
+        GROUP BY Year, FundingRoundStage;
 
 
         ''')
