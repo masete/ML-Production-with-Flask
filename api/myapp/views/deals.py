@@ -1,154 +1,275 @@
-from flask import Blueprint, jsonify, current_app
+from flask import Blueprint, jsonify, current_app, g
+from flask_cors import cross_origin
+# from flasgger import swag_from
 import pandas as pd
-import random
+
 
 deals = Blueprint("deals", __name__)
 mysql = None
 
-@deals.before_app_first_request
+@deals.before_request
 def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
-@deals.route("/api/v1/dealsByYear_linePlot/")
-def get_inv_analysis():
+@deals.route("/api/v1/get_all_inv/")
+@cross_origin()
+def get_inv_analysis1():
+    try:
     
-    with current_app.app_context():
-        db = mysql.db
+        with current_app.app_context():
+            db = mysql.db
 
-    c = db.cursor()
-    c.execute('''SELECT
-                    ROW_NUMBER() OVER (ORDER BY YEAR(`when`)) AS id,
-                    COUNT(*) AS deal_count,
-                    YEAR(`when`) AS year
-                FROM
-                    investments
-                GROUP BY
-                    year;
-                    ''')
-    results = c.fetchall()
+        c = db.cursor()
+        c.execute('''SELECT * FROM investors_v3''')
+        results = c.fetchall()
 
-    c.close()
 
-    columns = [desc[0] for desc in c.description]  # Get column names from description
+        columns = [desc[0] for desc in c.description]  # Get column names from description
 
-    df = pd.DataFrame(results, columns=columns)
+        df = pd.DataFrame(results, columns=columns)
 
-    data = df.to_dict(orient='records')
+        data = df.to_dict(orient='records')
 
-    return jsonify(data)
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+
+@deals.route("/api/v1/dealsByYear_linePlot/", methods=['GET'])
+# @swag_from({
+#     'swagger': '2.0',
+#     'paths': {
+#         '/api/v1/dealsByYear_linePlot/': {
+#             'get': {
+#                 'summary': 'Get deals by year data',
+#                 'description': 'Retrieve a list of deals',
+#                 'responses': {
+#                     '200': {
+#                         'description': 'Successful operation',
+#                         'schema': {
+#                             'type': 'array',
+#                             'items': {
+#                                 'type': 'object',
+#                                 'properties': {
+#                                     'id': {
+#                                         'type': 'integer',
+#                                         'description': 'Deal ID'
+#                                     },
+#                                     'name': {
+#                                         'type': 'string',
+#                                         'description': 'Deal name'
+#                                     },
+                                    
+#                                 }
+#                             }
+#                         }
+#                     }
+#                 }
+#             }
+#         }
+#     }
+# })
+# def get_deals():
+    # Your implementation here
+    # ...
+
+@cross_origin()
+def get_inv_analysis():
+
+    try:
+
+    
+        with current_app.app_context():
+            db = mysql.db
+
+        c = db.cursor()
+        c.execute('''   SELECT
+                        ROW_NUMBER() OVER (ORDER BY year) AS id,
+                        COUNT(*) AS deal_count,
+                            year
+                        FROM
+                            investments
+                        GROUP BY
+                            year;
+
+                        ''')
+        results = c.fetchall()
+
+
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
+
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
 
 
 @deals.route("/api/v1/valueOfDealsByCountry_barPlot/")
+@cross_origin()
 def get_valueOfDeals():
 
-	c = mysql.db.cursor()
+    try:
+        
+        with current_app.app_context():
+                db = mysql.db
 
-	c.execute('''SELECT
-  			SUBSTRING_INDEX(countries_of_operation, ',', 2) as country,
-  			SUM(investments.amount) as total_amount
-		FROM
-  			investments
-  			INNER JOIN companies_v3 ON investments.company = companies_v3.name
-		GROUP BY
-  			country
-			''')
+        c = mysql.db.cursor()
+
+        c.execute('''SELECT
+                        SUBSTRING_INDEX(investments.selected_country, ',', 1) AS country,
+                        SUM(investments.amount) AS total_amount
+                    FROM
+                        investments
+                    GROUP BY
+                        country
+                    ORDER BY
+                        total_amount DESC
+                    LIMIT 10;
+
+                ''')
+        
+        results = c.fetchall()
+
+
+        if results:
+            columns = [desc[0] for desc in c.description]  # Get column names from description
+            data = [dict(zip(columns, row)) for row in results]  # Convert rows to dictionaries
+            df = pd.DataFrame(results, columns=columns)
+
+            data = df.to_dict(orient='records')
+
+            return data
+        else:
+            data = []
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
     
-	results = c.fetchall()
+
+        return data
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
 
 
-	if results:
-		columns = [desc[0] for desc in c.description]  # Get column names from description
-		data = [dict(zip(columns, row)) for row in results]  # Convert rows to dictionaries
-		df = pd.DataFrame(results, columns=columns)
-
-		data = df.to_dict(orient='records')
-
-		return data
-	else:
-		data = []
-
-	columns = [desc[0] for desc in c.description]  # Get column names from description
-
-	df = pd.DataFrame(results, columns=columns)
-
-	data = df.to_dict(orient='records')
-    # c.close()  # Close the cursor
-    # mysql.db.close()  # Close the MySQL connection
-
-	return data
-
-    # c.close()
 
 
 @deals.route("/api/v1/quarteryValueOfInvestment/")
+@cross_origin()
 def get_valueOfDealsByQuarter():
+
+    try:
+
         
-    with current_app.app_context():
-        db = mysql.db
+        with current_app.app_context():
+            db = mysql.db
 
-    c = db.cursor()
-	
-    c.execute( '''
-		SELECT
-    		CONCAT(YEAR(`when`), '-Q', QUARTER(`when`)) AS quarter,
-    		SUM(amount) DIV 1000000 AS quarterly_value
-		FROM
-    		investments
-		WHERE
-    		`when` BETWEEN '2019-01-01' AND '2023-12-31'
-		GROUP BY
-    		quarter
-	
-	''')
-   
+        c = db.cursor()
+        
+        c.execute( '''
+                                    SELECT
+                                    CONCAT(year,'-',quarter) AS quarter,
+                                        selected_country,
+                                    SUM(amount) AS total_amount
+                                    FROM
+                                        investments
+                                    GROUP BY
+                                        year, quarter, selected_country
+                                    ORDER BY
+                                        year, quarter;
+        ''')
     
-    columns = [desc[0] for desc in c.description]
-    df = pd.DataFrame(c.fetchall(), columns = columns)
+        
+        columns = [desc[0] for desc in c.description]
+        print(columns)  # Debug statement
+        df = pd.DataFrame(c.fetchall(), columns = columns)
 
 
-    df['year'] = df['quarter'].str.extract('^(\d{4})')
-    df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
+        # df['year'] = df['quarter'].str.extract('^(\d{4})')
+        # df['quarter'] = df['quarter'].str.extract('^(\d{4}-Q\d)')
 
-    df = df.groupby(['year', 'quarter']).sum().reset_index()
+        # df = df.groupby(['year', 'quarter']).sum().reset_index()
 
 
-    data = df.to_dict(orient='records')
+        data = df.to_dict(orient='records')
 
-    colors = {}
-
-    for row in data:
-        quarter = row["quarter"]
-        if quarter not in colors:
-			# generate a random color for each unique quarter
-            colors[quarter] = '#' + ''.join(random.choices('0123456789ABCDEF', k=6))
-        row["color"] = colors[quarter]
-
-    # c.close()
-    return jsonify(data)
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
 
 @deals.route("/api/v1/dealsList/<int:page>")
+@cross_origin()
 def get_all_dealsList(page):
 
-    with current_app.app_context():
-        db = mysql.db
+     try:
 
-    items_per_page = 10  # Number of items per page
-    offset = (page - 1) * items_per_page
+        with current_app.app_context():
+            db = mysql.db
 
-    c = db.cursor()
-    c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
-    results = c.fetchall()
+        items_per_page = 6 # Number of items per page
+        offset = (page - 1) * items_per_page
 
-    # c.close()
+        c = db.cursor()
+        c.execute("SELECT * FROM investments LIMIT %s OFFSET %s", (items_per_page, offset))
 
-	# close cursor
-	# c.close()
+        results = c.fetchall()
 
-    columns = [desc[0] for desc in c.description]  # Get column names from description
+        columns = [desc[0] for desc in c.description]  # Get column names from description
 
-    df = pd.DataFrame(results, columns=columns)
+        df = pd.DataFrame(results, columns=columns)
 
-    data = df.to_dict(orient='records')
+        data = df.to_dict(orient='records')
 
-    return jsonify(data)
+        return jsonify(data)
+     
+     except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+
+@deals.route("/api/v1/dealsVsStage/")
+@cross_origin()
+def get_dealsVsStage():
+
+    try:
+
+        with current_app.app_context():
+            db = mysql.db
+
+        c = db.cursor()
+        c.execute('''
+                SELECT year AS Year, COUNT(*) AS DealCount, 
+        CASE 
+            WHEN funding_round = '' THEN 'undisclosed'
+            ELSE funding_round
+        END AS FundingRoundStage
+        FROM investments
+        GROUP BY Year, FundingRoundStage;
+
+
+        ''')
+        results = c.fetchall()
+
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
+
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+    

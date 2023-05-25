@@ -14,35 +14,19 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
                             
   useEffect(() => {
     const fetchData = async () => {
-      // try {
+    
         const response = await axios.get('/api/v1/dealsByYear_linePlot/');
         const data = response.data.map((d, i) => ({
                 id: `series-${i}`,
                 ...d
               }));
         setData(data);
-      // } catch (error) {
-      //   console.error('Error fetching data:', error);
-      // }
+  
     };
   
     fetchData();
   }, []);
   
-
-  // useEffect(() => {
-  //   if (data.length > 0) {
-  //     console.log(data);
-  //   }
-  // }, [data]);
-  // console.log(data)
-  
-
-
-
-    // if (!data) {
-    //   return <div>Loading...</div>;
-    // }
 
   return (
     <ResponsiveLine
@@ -52,7 +36,7 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
         {
           id: 'deals_count',
           data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
-          // console.log(data)
+          
         }
       ]}
 

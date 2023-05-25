@@ -17,6 +17,7 @@ import DealsLineChart from "../../components/DealsLineChart";
 import DealsPieChart from "../../components/DealsPieChart";
 import DealsBarChart from "../../components/DealsBarChart";
 import Contacts from "../../components/DealsList";
+import FRBarChart from "../../components/Deals_FR_BarChart"
 import GeographyChart from "../../components/GeographyChart";
 // import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
@@ -186,7 +187,7 @@ const Deals = () => {
         </Box>
 
            {/* ROW 3 */}
-           <Box
+           {/* <Box
           gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -222,11 +223,13 @@ const Deals = () => {
               </IconButton>
             </Box>
           </Box>
-          <Box height="250px" m="-20px 0 0 0">
+           <Box height="400px" m="-20px 0 0 0">
             <DealsBarChart />
           </Box>
-        </Box>
-        {/* <Box
+        </Box>  */}
+
+
+         {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -275,7 +278,7 @@ const Deals = () => {
               </Box>
             </Box>
           ))}
-        </Box> */}
+        </Box>  */}
 
         {/* ROW 3 */}
         <Box
@@ -382,6 +385,43 @@ const Deals = () => {
             <Contacts />
           </Box>
         </Box>
+
+         {/* ROW 6 */}
+         {/* <Box
+          gridColumn="span 12"
+          gridRow="span 4"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                Number of deals by year with their funding rounds
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                Past 5 years
+              </Typography>
+            </Box>
+            
+          </Box>
+          <Box height="550px" m="-0px 0 0 0">
+            
+            <FRBarChart/>
+          </Box>
+        </Box> */}
       </Box>
     </Box>
   );

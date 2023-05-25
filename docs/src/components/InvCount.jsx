@@ -3,9 +3,9 @@ import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-// import { mockLineData as data } from "../data/mockData";
+import { mockLineData as data } from "../data/mockData";
 
-const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
+const ILineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -13,7 +13,7 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+      const response = await axios.get('/api/v1/investorsByCountry/');
       const data = response.data.map((d, i) => ({
         id: `series-${i}`,
         ...d
@@ -24,19 +24,20 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
     fetchData();
   }, []);
 
+  // console.log(data)
+
 
   return (
     <ResponsiveLine
-      // data={data}
+    // data={data}
     data={[
         {
-          id: "quarterly_value",
-          data: data.map((item) => ({
-            x: new Date(item.quarter + "-01").toLocaleDateString(),
-            y: item.quarterly_value,
-          })),
-        },
+          id: 'investor_count',
+          data: data.map(({ country, investor_count }) => ({ x: country, y: investor_count }))
+          
+        }
       ]}
+   
       theme={{
         axis: {
           domain: {
@@ -88,8 +89,8 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
         orient: "bottom",
         tickSize: 0,
         tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "transportation", // added
+        tickRotation: 20,
+        legend: isDashboard ? undefined : "country", // added
         legendOffset: 36,
         legendPosition: "middle",
       }}
@@ -141,4 +142,4 @@ const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
   );
 };
 
-export default QLineChart;
+export default ILineChart;

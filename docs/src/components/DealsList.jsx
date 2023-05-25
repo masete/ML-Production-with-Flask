@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Box } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
 // import { DealsListData as data } from "../data/mockData";
@@ -16,14 +16,14 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await axios.get('/api/v1/dealsList/');
+        const response = await axios.get('/api/v1/dealsList/' + currentPage);
         setData(response.data);
         console.log(response.data)
       
     };
   
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -55,7 +55,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
       />
       <Box
         m="5px 0 0 0"
-        height="75vh"
+        height="450px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -94,7 +94,7 @@ const Contacts = ({ isCustomLineColors = false, isDashboard = false }) => {
 
       <Box>
           <Pagination
-            count={10} // Replace with the actual total number of pages
+            count={100} // Replace with the actual total number of pages
             page={currentPage}
             onChange={handlePageChange}
           />

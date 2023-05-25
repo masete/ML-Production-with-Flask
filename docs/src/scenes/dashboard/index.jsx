@@ -16,9 +16,11 @@ import Header from "../../components/Header";
 import QBarChart from "../../components/QBarChart";
 import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
+import FRBarChart from "../../components/Deals_FR_BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import FunctionsIcon from '@mui/icons-material/Functions';
+import ILineChart from "../../components/InvCount"
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -173,6 +175,51 @@ const Dashboard = () => {
             <QBarChart isDashboard={true} />
           </Box>
         </Box>
+
+            {/* ROW 3
+        <Box
+          gridColumn="span 8"
+          gridRow="span 4"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="0px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                Quarterly value of deals in Millions.
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                In the past 5 years.
+              </Typography>
+            </Box>
+            {/* <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box> */}
+          {/* </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            {/* <QLineChart isDashboard={true} /> */}
+            {/* <QBarChart isDashboard={true} /> */}
+            {/* <FRBarChart isDashboard={true} /> */}
+          {/* </Box> */}
+        {/* </Box> */} 
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -224,6 +271,49 @@ const Dashboard = () => {
           ))}
         </Box>
 
+        {/* ROW 5 */}
+        <Box
+          gridColumn="span 12"
+          gridRow="span 2"
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            mt="25px"
+            p="0 30px"
+            display="flex "
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.grey[100]}
+              >
+                Investor Distribution by country
+              </Typography>
+              <Typography
+                variant="h3"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                Top 20 countries with most investors
+              </Typography>
+            </Box>
+            {/* <Box>
+              <IconButton>
+                <DownloadOutlinedIcon
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box> */}
+          </Box>
+          <Box height="250px" m="-20px 0 0 0">
+            {/* <InvestorsConf /> */}
+            <ILineChart isDashboard={false} />
+          </Box>
+        </Box>
+
         {/* ROW 3 */}
         <Box
           gridColumn="span 4"
@@ -265,6 +355,7 @@ const Dashboard = () => {
           </Typography>
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
+            {/* <FRBarChart isDashboard={true} /> */}
           </Box>
         </Box>
         <Box

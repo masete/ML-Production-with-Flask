@@ -3,29 +3,38 @@ import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-// import { mockBarData as data } from "../data/mockData";
+import { mockBarData as data } from "../data/mockData";
 
-const QBarChart = ({ isDashboard = false }) => {
+const FRBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+//   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
-      setData(response.data);
-    };
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const response = await axios.get('/api/v1/dealsVsStage/');
+//       const data = response.data.map((d, i) => ({
+//         id: `series-${i}`,
+//         ...d
+//       }));
+//       setData(data);
+//     };
   
-    fetchData();
-  }, []);
-  
+//     fetchData();
+//   }, []);
 
   return (
     <ResponsiveBar
       data={data}
-     
-    
+
+    //   data={[
+    //     {
+    //       id: 'id',
+    //       data: data.map(({ country, total_amount }) => ({ x: country, y: total_amount }))
+    //       // console.log(data)
+    //     }
+    //   ]}
       theme={{
         // added
         axis: {
@@ -55,10 +64,11 @@ const QBarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-       keys={['quarterly_value']}
-       indexBy={'quarter'}
-      // keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      // indexBy="country"
+      keys={["Angel","Initial Coin Offering","Pre-seed","Seed", "Seed II","Grant", "Venture ","Convertible Note","Private Equity",
+      "Corporate","Accelerator","Mergers and Acquisitions","Late Stage","Bridge","Fund","Prizes","Equity Crowdfunding",
+       "Unspecified","Pre-Series A","Series A","Series A II" ,"Pre-Series B","Series B","Series B II","Post Series B", "Series C","Series D",
+       "Series D II","Series E","Debt Financing","Debt Financing I","Debt Financing II", "Debt Financing III","Debt Financing IV"]}
+      indexBy="Year"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -93,8 +103,8 @@ const QBarChart = ({ isDashboard = false }) => {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 20,
-        legend: isDashboard ? undefined : "country", // changed
+        tickRotation: 0,
+        legend: isDashboard ? undefined : "Year", // changed
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -102,7 +112,7 @@ const QBarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
+        legend: isDashboard ? undefined : "Deals Count", // changed
         legendPosition: "middle",
         legendOffset: -40,
       }}
@@ -145,4 +155,4 @@ const QBarChart = ({ isDashboard = false }) => {
   );
 };
 
-export default QBarChart;
+export default FRBarChart;
