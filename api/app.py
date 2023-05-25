@@ -1,6 +1,6 @@
 import os
 import threading
-from flask import Flask, g
+from flask import Flask, g, render_template
 from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.swagger import swagger_bp, swagger_blueprint
@@ -36,6 +36,10 @@ def create_app():
     app.register_blueprint(swagger_bp)
     app.register_blueprint(swagger_blueprint, url_prefix='/api/docs')
 
+
+    @app.route("/api/docs/")
+    def swagger_ui():
+        return render_template("swagger_ui.html")
 
     return app
 
