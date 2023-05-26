@@ -1,21 +1,39 @@
-from flask import Blueprint,render_template, jsonify
+from flask import Blueprint, jsonify, current_app
+from flask_cors import cross_origin
+import pandas as pd
 
-from ...app import app
 
 
-# hello = Blueprint('hello',__name__)
 acquisitions = Blueprint("acquisitions",__name__)
+mysql = None
+
+@acquisitions.before_request
+def setup_mysql():
+    global mysql
+    mysql = current_app.config['MYSQL']
 
 
-@acquisitions.route("/api/v1/acquisition/<int:id>")
-def get_one_acquisition(id):
-	print("masete n")
+@acquisitions.route("/api/v1/get_all_acq/")
+@cross_origin()
+def get_all_acq():
+    try:
+    
+        with current_app.app_context():
+            db = mysql.db
 
-	
-	c = app.db.cursor()
-	c.execute('SELECT * FROM acquisitions')
-	results = c.fetchone()
-	return jsonify({"single acquisition": results})
-	# return results
-	# return render_template('index.html',results=results)
+        c = db.cursor()
+        c.execute('''SELECT * FROM acquisitions''')
+        results = c.fetchall()
 
+
+        # columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        # df = pd.DataFrame(results, columns=columns)
+
+        # data = results.to_dict(orient='records')
+
+        return jsonify(results)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
