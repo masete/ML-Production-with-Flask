@@ -117,13 +117,94 @@
               "type": "integer",
               "format": "int64"
             },
-            "name": {
+            "description": {
               "type": "string"
             },
             "status": {
               "type": "string",
-              "enum": ["Pending", "Approved", "Rejected"]
+              "enum": ["Active", "Inactive"]
+            },
+            "Data": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "year_founded": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "employees": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "headquaters": {
+              "type": "string"
+            },
+            "other_offices": {
+              "type": "string"
+            },
+            "investor_type": {
+              "type": "string"
+            },
+            "investment_stage": {
+              "type": "string"
+            },
+            "portfolio_size": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "geographical_focus": {
+              "type": "string"
+            },
+            "post_status": {
+              "type": "string",
+              "enum": ["review", "reviewed"]
+            },
+            "user_id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "linkedin": {
+              "type": "string"
+            },
+            "twitter": {
+              "type": "string"
+            },
+
+            "facebook": {
+              "type": "string"
+            },
+            "logo": {
+              "type": "image"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "updated_at": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "activity_in_africa": {
+              "type": "string"
+            },
+            "ticket_size": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "percentage_completion": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "empty_column": {
+              "type": "string"
+            },
+            "selected_headqtrs": {
+              "type": "string"
             }
+           
           }
         }
       }
