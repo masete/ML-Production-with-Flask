@@ -1,9 +1,9 @@
 import os
 import threading
-from flask import Flask, g, render_template
+from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.views.investors import investors
-# from myapp.swagger import swagger_bp, swagger_blueprint
+from myapp.views.acquisitions import acquisitions
 from flask_swagger_ui import get_swaggerui_blueprint
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
@@ -45,6 +45,7 @@ def create_app():
     # register the blueprint
     app.register_blueprint(deals)
     app.register_blueprint(investors)
+    app.register_blueprint(acquisitions)
     app.register_blueprint(swaggerui_blueprint)
 
     return app
