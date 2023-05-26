@@ -1,12 +1,12 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "title": "Digest Africa",
-      "description": "API documentation for investments and deals",
+      "title": "Digest Africa API ",
+      "description": "API documentation for Investors, Deals, Founders, Acquisitions, Companies",
       "version": "1.0"
     },
     "paths": {
-      "/api/v1/get_all_inv/": {
+      "/api/v1/get_all_deals/": {
         "get": {
           "summary": "Retrieve a list of deals",
           "responses": {
@@ -24,29 +24,11 @@
               }
             }
           }
-        },
-        "post": {
-          "summary": "Create a new deal",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Investment"
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Investment created successfully"
-            }
-          }
         }
       },
-      "/deals": {
+      "/api/v1/get_all_inv/": {
         "get": {
-          "summary": "Retrieve a list of deals",
+          "summary": "Retrieve a list of investors",
           "responses": {
             "200": {
               "description": "Successful response",
@@ -55,7 +37,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Deal"
+                      "$ref": "#/components/schemas/investors"
                     }
                   }
                 }
@@ -65,6 +47,8 @@
         }
       }
     },
+
+
     "components": {
       "schemas": {
         "deals": {
@@ -126,7 +110,7 @@
               }
           }
         },
-        "Deal": {
+        "investors": {
           "type": "object",
           "properties": {
             "id": {

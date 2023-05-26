@@ -12,6 +12,31 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
+@deals.route("/api/v1/get_all_deals/")
+@cross_origin()
+def get_all_deals():
+    try:
+    
+        with current_app.app_context():
+            db = mysql.db
+
+        c = db.cursor()
+        c.execute('''SELECT * FROM investments''')
+        results = c.fetchall()
+
+
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
+
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+
 @deals.route("/api/v1/get_all_inv/")
 @cross_origin()
 def get_inv_analysis1():

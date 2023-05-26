@@ -3,15 +3,17 @@ import threading
 from flask import Flask, g, render_template
 from myapp.views.deals import deals
 from myapp.views.investors import investors
-from myapp.swagger import swagger_bp, swagger_blueprint
-
+# from myapp.swagger import swagger_bp, swagger_blueprint
+from flask_swagger_ui import get_swaggerui_blueprint
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
 
 
 def create_app():
-    # app = Flask(__name__, template_folder='/myapp/templates')
-    app = Flask(__name__)
+    app = Flask(__name__,)
+    SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
+    API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
+
 
     cors = CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
@@ -30,16 +32,20 @@ def create_app():
     mysql = MySQL(app)
     app.config['MYSQL'] = mysql
 
+
+    swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    API_URL,
+    config={  # Swagger UI config overrides
+        'app_name': "Digest Africa API"
+    },)
+
+
+
     # register the blueprint
     app.register_blueprint(deals)
     app.register_blueprint(investors)
-    app.register_blueprint(swagger_bp)
-    app.register_blueprint(swagger_blueprint, url_prefix='/api/docs')
-
-
-    # @app.route("/api/docs/")
-    # def swagger_ui():
-    #     return render_template("swagger_ui.html")
+    app.register_blueprint(swaggerui_blueprint)
 
     return app
 
