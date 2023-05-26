@@ -10,7 +10,7 @@ from flask_cors import CORS
 
 
 def create_app():
-    # app = Flask(__name__, template_folder='./swagger/templates')
+    # app = Flask(__name__, template_folder='/myapp/templates')
     app = Flask(__name__)
 
     cors = CORS(app)
@@ -37,9 +37,9 @@ def create_app():
     app.register_blueprint(swagger_blueprint, url_prefix='/api/docs')
 
 
-    @app.route("/api/docs/")
-    def swagger_ui():
-        return render_template("swagger_ui.html")
+    # @app.route("/api/docs/")
+    # def swagger_ui():
+    #     return render_template("swagger_ui.html")
 
     return app
 

@@ -1,5 +1,9 @@
-from flask import Blueprint
-from flasgger import Swagger
+from flask import render_template, Blueprint
+from flask_cors import cross_origin
 
-swagger_bp = Blueprint('swagger', __name__, url_prefix='/swagger')
-swagger = Swagger(swagger_bp, template_file='swagger.yml')
+swagger_bp = Blueprint("swagger_bp", __name__)
+
+@swagger_bp.route("/api/docs/")
+@cross_origin()
+def swagger_ui():
+    return render_template("swagger_ui.html")
