@@ -15,7 +15,7 @@ def setup_mysql():
 
 @acquisitions.route("/api/v1/get_all_acq/")
 @cross_origin()
-def get_inv_acq():
+def get_all_acq():
     try:
     
         with current_app.app_context():
@@ -26,13 +26,13 @@ def get_inv_acq():
         results = c.fetchall()
 
 
-        columns = [desc[0] for desc in c.description]  # Get column names from description
+        # columns = [desc[0] for desc in c.description]  # Get column names from description
 
-        df = pd.DataFrame(results, columns=columns)
+        # df = pd.DataFrame(results, columns=columns)
 
-        data = df.to_dict(orient='records')
+        # data = results.to_dict(orient='records')
 
-        return jsonify(data)
+        return jsonify(results)
     
     except Exception as e:
         print(f"Error: {e}")  # Debug statement
