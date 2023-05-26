@@ -12,6 +12,31 @@ def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
+@deals.route("/api/v1/get_all_deals/")
+@cross_origin()
+def get_all_deals():
+    try:
+    
+        with current_app.app_context():
+            db = mysql.db
+
+        c = db.cursor()
+        c.execute('''SELECT * FROM investments''')
+        results = c.fetchall()
+
+
+        columns = [desc[0] for desc in c.description]  # Get column names from description
+
+        df = pd.DataFrame(results, columns=columns)
+
+        data = df.to_dict(orient='records')
+
+        return jsonify(data)
+    
+    except Exception as e:
+        print(f"Error: {e}")  # Debug statement
+        return jsonify({'error': 'An error occurred'}), 500
+
 @deals.route("/api/v1/get_all_inv/")
 @cross_origin()
 def get_inv_analysis1():
@@ -38,43 +63,6 @@ def get_inv_analysis1():
         return jsonify({'error': 'An error occurred'}), 500
 
 @deals.route("/api/v1/dealsByYear_linePlot/", methods=['GET'])
-# @swag_from({
-#     'swagger': '2.0',
-#     'paths': {
-#         '/api/v1/dealsByYear_linePlot/': {
-#             'get': {
-#                 'summary': 'Get deals by year data',
-#                 'description': 'Retrieve a list of deals',
-#                 'responses': {
-#                     '200': {
-#                         'description': 'Successful operation',
-#                         'schema': {
-#                             'type': 'array',
-#                             'items': {
-#                                 'type': 'object',
-#                                 'properties': {
-#                                     'id': {
-#                                         'type': 'integer',
-#                                         'description': 'Deal ID'
-#                                     },
-#                                     'name': {
-#                                         'type': 'string',
-#                                         'description': 'Deal name'
-#                                     },
-                                    
-#                                 }
-#                             }
-#                         }
-#                     }
-#                 }
-#             }
-#         }
-#     }
-# })
-# def get_deals():
-    # Your implementation here
-    # ...
-
 @cross_origin()
 def get_inv_analysis():
 
