@@ -17,7 +17,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/deals"
+                      "$ref": "#/components/schemas/Deals"
                     }
                   }
                 }
@@ -37,7 +37,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/investors"
+                      "$ref": "#/components/schemas/Investors"
                     }
                   }
                 }
@@ -57,7 +57,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/investors"
+                      "$ref": "#/components/schemas/Acquisitions"
                     }
                   }
                 }
@@ -68,7 +68,7 @@
       },
       "/api/v1/people/": {
         "get": {
-          "summary":"Retrieve a list of companies acquiring and those being acquired from our acquisitions table ",
+          "summary":"Retrieve a list of people (Founders, COO, CTO, CEO)",
           "responses": {
             "200": {
               "description": "Successful response",
@@ -77,7 +77,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/investors"
+                      "$ref": "#/components/schemas/People"
                     }
                   }
                 }
@@ -88,7 +88,7 @@
       },
       "/api/v1/get_all_companies/": {
         "get": {
-          "summary":"Retrieve a list of companies acquiring and those being acquired from our acquisitions table ",
+          "summary":"Retrieve a list of companies",
           "responses": {
             "200": {
               "description": "Successful response",
@@ -97,7 +97,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/investors"
+                      "$ref": "#/components/schemas/Companies"
                     }
                   }
                 }
