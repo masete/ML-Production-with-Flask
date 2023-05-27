@@ -17,7 +17,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/deals"
+                      "$ref": "#/components/schemas/Deals"
                     }
                   }
                 }
@@ -37,7 +37,67 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/investors"
+                      "$ref": "#/components/schemas/Investors"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/get_all_acq/": {
+        "get": {
+          "summary":"Retrieve a list of companies acquiring and those being acquired from our acquisitions table ",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Acquisitions"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/people/": {
+        "get": {
+          "summary":"Retrieve a list of people (Founders, COO, CTO, CEO)",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/People"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/v1/get_all_companies/": {
+        "get": {
+          "summary":"Retrieve a list of companies",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Companies"
                     }
                   }
                 }
@@ -51,7 +111,7 @@
 
     "components": {
       "schemas": {
-        "deals": {
+        "Deals": {
           "type": "object",
           "properties": {
             "id": {
@@ -110,7 +170,7 @@
               }
           }
         },
-        "investors": {
+        "Investors": {
           "type": "object",
           "properties": {
             "id": {
@@ -206,8 +266,240 @@
             }
            
           }
+        },
+        "Acquisitions": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": {
+              "type": "string"
+            },
+            "when": {
+              "type": "integer",
+              "format": "Date"
+            },
+            "acquiring": {
+              "type": "string"
+            },
+            "acquired": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "source": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "integer",
+              "format": "Date"
+            },
+            "updated_at": {
+              "type": "integer",
+              "format": "Date"
+            },
+            "user_id": {
+              "type": "integer",
+              "format": "int64"
+            }
+        }
+      },
+      "People": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "organisation_name": {
+            "type": "string"
+          },
+          "organisation_type": {
+            "type": "string"
+          },
+          "organisation_slug": {
+            "type": "string"
+          },
+          "industry": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "image": {
+            "type": "image"
+          },
+          "linkedin": {
+            "type": "string"
+          },
+          "post_status": {
+            "type": "string",
+            "enum": ["review", "reviewed"]
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "people_slug": {
+            "type": "string"
+          },
+          "percentage_completion": {
+            "type": "integer",
+            "format": "percentage"
+          },
+          "empty_column": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "education": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "facebook": {
+            "type": "string"
+          },
+          "twitter": {
+            "type": "string"
+          },
+          "news": {
+            "type": "string"
+          }
+        }
+      },
+      "Companies": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Active", "Acquired","Dead"]
+          },
+          "year_founded": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "main_sector": {
+            "type": "string"
+          },
+          "headquaters": {
+            "type": "string"
+          },
+          "country_of_operation": {
+            "type": "string"
+          },
+          "number_of_employees": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "logo": {
+            "type": "image"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "post_status": {
+            "type": "string",
+            "enum": ["review", "reviewed"]
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "linkedin": {
+            "type": "string"
+          },
+          "twitter": {
+            "type": "string"
+          },
+          "facebook": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "percentage_completion": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "empty_column": {
+            "type": "string"
+          },
+          "place_of_incoparation": {
+            "type": "string"
+          },
+          "investment_stage": {
+            "type": "string"
+          },
+          "sub_sectors": {
+            "type": "string"
+          },
+          "revenue": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "raising": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "when": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "news": {
+            "type": "string"
+          },
+          "reminded_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "co_founders": {
+            "type": "string"
+          }
         }
       }
-    }
-  }
-  
+    } 
+  } 
+} 
