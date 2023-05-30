@@ -7,15 +7,6 @@ exits_bp = Blueprint("exits_bp", __name__)
 mysql = None
 
 
-# def date2int(df):
-#     if df.when:
-#         t=df['when']
-#         try:
-#             t1=t.timetuple()
-#             return int(time.mktime(t1))
-#         except ValueError:
-#             return None
-
 @exits_bp.before_request
 def setup_mysql():
     global mysql
