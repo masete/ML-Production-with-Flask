@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, current_app
 from flask_cors import cross_origin
 import pandas as pd
 
-claim_profiles = Blueprint("exits", __name__)
+claim_profiles = Blueprint("claim_profiles", __name__)
 mysql = None
 
 @claim_profiles.before_request
