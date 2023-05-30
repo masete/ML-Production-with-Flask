@@ -4,6 +4,9 @@ from flask import Flask, g
 from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.views.acquisitions import acquisitions
+from myapp.views.claim_profiles import claim_profiles
+from myapp.views.exits import exits
+from myapp.views.funds import funds
 from myapp.views.people import people
 from myapp.views.company import company
 from flask_swagger_ui import get_swaggerui_blueprint
@@ -46,6 +49,9 @@ def create_app():
 
     # register the blueprint
     app.register_blueprint(deals)
+    app.register_blueprint(claim_profiles)
+    app.register_blueprint(funds)
+    app.register_blueprint(exits)
     app.register_blueprint(investors)
     app.register_blueprint(acquisitions)
     app.register_blueprint(company)
