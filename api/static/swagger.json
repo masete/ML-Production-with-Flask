@@ -105,7 +105,72 @@
             }
           }
         }
+      },
+
+      "/api/v1/get_all_funds/": {
+        "get": {
+          "summary":"Retrieve a list of funds ",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Funds"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "/api/v1/get_all_exits/": {
+        "get": {
+          "summary":"Retrieve a list of exits ",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Exits"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "/api/v1/claim_profiles/": {
+        "get": {
+          "summary":"Retrieve a list of claim profiles ",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Claim"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
+
+      
     },
 
 
