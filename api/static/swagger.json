@@ -564,7 +564,56 @@
             "type": "string"
           }
         }
+      },
+      "Funds": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "when": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "name": {
+            "type": "string"
+          },
+          "fund_manager": {
+            "type": "string"
+          },
+          "amount_raised": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "fund_round": {
+            "type": "string"
+          },
+          "target_amount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "investors": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "Date"
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
       }
+
     } 
   } 
 } 
