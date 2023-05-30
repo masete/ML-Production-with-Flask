@@ -88,7 +88,7 @@
       },
       "/api/v1/get_all_companies/": {
         "get": {
-          "summary":"Retrieve a list of companies",
+          "summary":"Retrieve a list of companies ",
           "responses": {
             "200": {
               "description": "Successful response",
