@@ -2,16 +2,16 @@ from flask import Blueprint, jsonify, current_app
 from flask_cors import cross_origin
 import pandas as pd
 
-exits = Blueprint("exits", __name__)
+exits_bp = Blueprint("exits_bp", __name__)
 mysql = None
 
-@exits.before_request
+@exits_bp.before_request
 def setup_mysql():
     global mysql
     mysql = current_app.config['MYSQL']
 
 
-@exits.route("/api/v1/get_all_exits/")
+@exits_bp.route("/api/v1/get_all_exits/")
 @cross_origin()
 def get_funds():
     try:

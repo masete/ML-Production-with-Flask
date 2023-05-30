@@ -5,7 +5,7 @@ from myapp.views.deals import deals
 from myapp.views.investors import investors
 from myapp.views.acquisitions import acquisitions
 from myapp.views.claim_profiles import claim_profiles
-from myapp.views.exits import exits
+from myapp.views.exits import exits_bp
 from myapp.views.funds import funds
 from myapp.views.people import people
 from myapp.views.company import company
@@ -51,7 +51,7 @@ def create_app():
     app.register_blueprint(deals)
     app.register_blueprint(claim_profiles)
     app.register_blueprint(funds)
-    app.register_blueprint(exits)
+    app.register_blueprint(exits_bp)
     app.register_blueprint(investors)
     app.register_blueprint(acquisitions)
     app.register_blueprint(company)
