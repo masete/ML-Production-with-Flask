@@ -1,11 +1,12 @@
 from flask import Blueprint, jsonify, current_app, g
 from flask_cors import cross_origin
-# from flasgger import swag_from
+import stripe
 import pandas as pd
 
 
 deals = Blueprint("deals", __name__)
 mysql = None
+stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
 
 @deals.before_request
 def setup_mysql():
