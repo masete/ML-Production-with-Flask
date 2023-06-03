@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, current_app, g
+from flask import Blueprint, jsonify, current_app, g, request
 from flask_cors import cross_origin
 import stripe
 import pandas as pd
@@ -17,6 +17,13 @@ def setup_mysql():
 @cross_origin()
 def get_all_deals():
     try:
+
+        session_id = request.headers.get('Authorization')
+
+        # Verify the session_id and check if it represents a paid session
+        session = stripe.checkout.Session.retrieve(session_id)
+        if session.payment_status != 'paid':
+            return jsonify({'error': 'Payment not completed.'}), 401
     
         with current_app.app_context():
             db = mysql.db
@@ -33,6 +40,10 @@ def get_all_deals():
         data = df.to_dict(orient='records')
 
         return jsonify(data)
+    
+    except stripe.error.StripeError:
+        return jsonify({'error': 'An error occurred during payment verification.'}), 400
+
     
     except Exception as e:
         print(f"Error: {e}")  # Debug statement

@@ -6,24 +6,20 @@ import stripe
 pricing = Blueprint("pricing", __name__)
 
 # Step 2: Define the payment endpoint
-@pricing.route("/api/v1/pricing/", methods=['POST'])
-@cross_origin()
-def pay():
-    # Step 3: Calculate the cost
-    data = request.get_json()
-    num_records = data.get('num_records')
-    unit_cost = 0.001
-    total_cost = num_records * unit_cost
-
+def pay_for_deals():
     try:
-        # Step 4: Generate a payment request
+        data = request.get_json()
+        num_deals = data.get('num_deals')
+        unit_cost = 0.001
+        total_cost = num_deals * unit_cost
+
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[{
                 'price_data': {
                     'currency': 'usd',
                     'product_data': {
-                        'name': 'Records Access',
+                        'name': 'Deals Access',
                     },
                     'unit_amount': int(total_cost * 100),
                 },
@@ -33,6 +29,7 @@ def pay():
             success_url='http://yourdomain.com/success',
             cancel_url='http://yourdomain.com/cancel',
         )
+
         return jsonify({'session_id': session.id})
 
     except stripe.error.StripeError:
