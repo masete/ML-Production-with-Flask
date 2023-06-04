@@ -2,8 +2,7 @@ from flask import jsonify, request, Blueprint, redirect
 from flask_cors import cross_origin
 import paddle
 
-paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
-
+# paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
 pricing = Blueprint("pricing", __name__)
 
 # Step 2: Define the payment endpoint
