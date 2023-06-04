@@ -1,11 +1,13 @@
 from flask import Blueprint, jsonify, current_app, g, request
 from flask_cors import cross_origin
 import pandas as pd
-import paddle
+import paddlepaddle as paddle
+
+# import paddle
 
 deals = Blueprint("deals", __name__)
 mysql = None
-# paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
+paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
 
 @deals.before_request
 def setup_mysql():

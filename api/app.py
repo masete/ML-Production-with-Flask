@@ -12,6 +12,7 @@ from myapp.views.company import company
 from flask_swagger_ui import get_swaggerui_blueprint
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
+import paddlepaddle as paddle
 
 
 def create_app():
