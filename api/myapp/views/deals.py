@@ -1,14 +1,14 @@
 from flask import Blueprint, jsonify, current_app, g, request
 from flask_cors import cross_origin
 import pandas as pd
-import paddle
+# import paddle
 
 
 
 deals = Blueprint("deals", __name__)
 mysql = None
 # stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
-paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
+# paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
 
 
 @deals.before_request
@@ -20,13 +20,13 @@ def setup_mysql():
 @cross_origin()
 def get_all_deals():
     try:
-        session_id = request.headers.get('Authorization')
+        # session_id = request.headers.get('Authorization')
 
-        # Verify the session_id and check if it represents a paid session
-        checkout = paddle.Checkout(session_id=session_id)
-        checkout_details = checkout.details()
-        if checkout_details['state'] != 'paid':
-            return jsonify({'error': 'Payment not completed.'}), 401
+        # # Verify the session_id and check if it represents a paid session
+        # checkout = paddle.Checkout(session_id=session_id)
+        # checkout_details = checkout.details()
+        # if checkout_details['state'] != 'paid':
+        #     return jsonify({'error': 'Payment not completed.'}), 401
 
         with current_app.app_context():
             db = mysql.db
@@ -43,8 +43,8 @@ def get_all_deals():
 
         return jsonify(data)
 
-    except paddle.Error:
-        return jsonify({'error': 'An error occurred during payment verification.'}), 400
+    # except paddle.Error:
+    #     return jsonify({'error': 'An error occurred during payment verification.'}), 400
 
     except Exception as e:
         print(f"Error: {e}")  # Debug statement

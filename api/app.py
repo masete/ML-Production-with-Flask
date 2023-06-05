@@ -9,17 +9,18 @@ from myapp.views.exits import exits_bp
 from myapp.views.funds import funds
 from myapp.views.people import people
 from myapp.views.company import company
+from myapp.payment.webhook import webhook
 from flask_swagger_ui import get_swaggerui_blueprint
 from myapp.mysql_connection import MySQL
 from flask_cors import CORS
-import paddlepaddle as paddle
+# import paddlepaddle as paddle
 
 
 def create_app():
     app = Flask(__name__,)
     SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
     API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
-    app.config['paddle.api_key'] = os.environ['PADLE_API_KEY']
+    # app.config['paddle.api_key'] = os.environ['PADLE_API_KEY']
 
 
     cors = CORS(app)
@@ -59,6 +60,7 @@ def create_app():
     app.register_blueprint(company)
     app.register_blueprint(people)
     app.register_blueprint(swaggerui_blueprint)
+    app.register_blueprint(webhook)
 
     return app
 
