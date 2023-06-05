@@ -1,11 +1,14 @@
 from flask import jsonify, request, Blueprint, redirect
 from flask_cors import cross_origin
-import stripe
+import paddle
+
 
 # paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
 pricing = Blueprint("pricing", __name__)
 
-stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
+# stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
+paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
+
 
 
 @pricing.route("/api/v1/pay", methods=['POST'])
@@ -17,24 +20,21 @@ def pay_for_resources():
         unit_cost = 0.001
         total_cost = num_deals * unit_cost
 
-        session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price_data': {
-                    'currency': 'usd',
-                    'product': 'YOUR_PRODUCT_ID',  # Replace with your Stripe product ID
-                    'unit_amount': int(total_cost * 100),  # Amount in cents
-                },
-                'quantity': 1,
+        checkout = paddle.Checkout(
+            title='Deals Access',
+            currency='USD',
+            quantity=1,
+            prices=[{
+                'product_id': 'YOUR_PRODUCT_ID',  # Replace with your Paddle product ID
+                'unit_price': total_cost,
             }],
-            mode='payment',
             success_url='http://yourdomain.com/success',
             cancel_url='http://yourdomain.com/cancel',
         )
 
-        return jsonify({'checkout_url': session.url}), 200
+        return redirect(checkout.url, code=303)
 
-    except stripe.error.StripeError:
+    except paddle.Error:
         return jsonify({'error': 'Payment request failed.'}), 400
 
 # Step 6: Verify the payment

@@ -1,12 +1,14 @@
 from flask import Blueprint, jsonify, current_app, g, request
 from flask_cors import cross_origin
 import pandas as pd
-import stripe
+import paddle
+
 
 
 deals = Blueprint("deals", __name__)
 mysql = None
-stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
+# stripe.api_key = 'YOUR_STRIPE_SECRET_KEY'
+paddle.api_key = 'YOUR_PADDLE_VENDOR_API_KEY'
 
 
 @deals.before_request
@@ -21,8 +23,9 @@ def get_all_deals():
         session_id = request.headers.get('Authorization')
 
         # Verify the session_id and check if it represents a paid session
-        session = stripe.checkout.Session.retrieve(session_id)
-        if session.payment_status != 'paid':
+        checkout = paddle.Checkout(session_id=session_id)
+        checkout_details = checkout.details()
+        if checkout_details['state'] != 'paid':
             return jsonify({'error': 'Payment not completed.'}), 401
 
         with current_app.app_context():
@@ -40,12 +43,13 @@ def get_all_deals():
 
         return jsonify(data)
 
-    except stripe.error.StripeError:
+    except paddle.Error:
         return jsonify({'error': 'An error occurred during payment verification.'}), 400
 
     except Exception as e:
         print(f"Error: {e}")  # Debug statement
         return jsonify({'error': 'An error occurred'}), 500
+
 
 # @deals.route("/api/v1/get_all_inv/")
 # @cross_origin()
