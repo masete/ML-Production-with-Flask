@@ -3,40 +3,40 @@ import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-// import { valueVcountry as data } from "../data/mockData";
+import { valueVcountry as data } from "../data/mockData";
 
 const DealsBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/valueOfDealsByCountry_barPlot/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/valueOfDealsByCountry_barPlot/');
+  //     const data = response.data.map((d, i) => ({
+  //       id: `series-${i}`,
+  //       ...d
+  //     }));
+  //     setData(data);
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
   
 
 
   return (
     <ResponsiveBar
-      // data={data}
-      data={[
-        {
-          id: 'total_amount',
-          data: data.map(({ country, total_amount }) => ({ x: country, y: total_amount }))
+      data={data}
+      // data={[
+      //   {
+      //     id: 'total_amount',
+      //     data: data.map(({ country, total_amount }) => ({ x: country, y: total_amount }))
           
-        }
-      ]}
+      //   }
+      // ]}
       theme={{
         // added
         axis: {

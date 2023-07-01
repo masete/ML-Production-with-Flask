@@ -3,22 +3,22 @@ import axios from 'axios';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-// import { mockBarData as data } from "../data/mockData";
+import { mockBarData as data } from "../data/mockData";
 
 const QBarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
-      setData(response.data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+  //     setData(response.data);
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
   
 
   return (

@@ -3,40 +3,40 @@ import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-// import { mockLineData as data } from "../data/mockData";
+import { mockLineData as data } from "../data/mockData";
 
 const QLineChart = ({ isCustomLineColors = false, isDashboard = true }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
-      const data = response.data.map((d, i) => ({
-        id: `series-${i}`,
-        ...d
-      }));
-      setData(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get('/api/v1/quarteryValueOfInvestment/');
+  //     const data = response.data.map((d, i) => ({
+  //       id: `series-${i}`,
+  //       ...d
+  //     }));
+  //     setData(data);
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
 
   return (
     <ResponsiveLine
-      // data={data}
-    data={[
-        {
-          id: "quarterly_value",
-          data: data.map((item) => ({
-            x: new Date(item.quarter + "-01").toLocaleDateString(),
-            y: item.quarterly_value,
-          })),
-        },
-      ]}
+      data={data}
+    // data={[
+    //     {
+    //       id: "quarterly_value",
+    //       data: data.map((item) => ({
+    //         x: new Date(item.quarter + "-01").toLocaleDateString(),
+    //         y: item.quarterly_value,
+    //       })),
+    //     },
+    //   ]}
       theme={{
         axis: {
           domain: {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme } from "@mui/material";  
 import { tokens } from "../theme";
-// import { yVposts as data } from "../data/mockData";
+import { yVposts as data } from "../data/mockData";
 
 const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();
@@ -12,33 +12,33 @@ const DealsLineChart = ({ isCustomLineColors = false, isDashboard = false }) => 
   const [data, setData] = useState([]);
  
                             
-  useEffect(() => {
-    const fetchData = async () => {
+  // useEffect(() => {
+  //   const fetchData = async () => {
     
-        const response = await axios.get('/api/v1/dealsByYear_linePlot/');
-        const data = response.data.map((d, i) => ({
-                id: `series-${i}`,
-                ...d
-              }));
-        setData(data);
+  //       const response = await axios.get('/api/v1/dealsByYear_linePlot/');
+  //       const data = response.data.map((d, i) => ({
+  //               id: `series-${i}`,
+  //               ...d
+  //             }));
+  //       setData(data);
   
-    };
+  //   };
   
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
   
 
   return (
     <ResponsiveLine
-      // data={data}
+      data={data}
       
-      data={[
-        {
-          id: 'deals_count',
-          data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
+      // data={[
+      //   {
+      //     id: 'deals_count',
+      //     data: data.map(({ year, deal_count }) => ({ x: year, y: deal_count }))
           
-        }
-      ]}
+      //   }
+      // ]}
 
 
       theme={{

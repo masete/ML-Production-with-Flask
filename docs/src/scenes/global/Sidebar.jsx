@@ -193,7 +193,7 @@ const Sidebar = () => {
               setSelected={setSelected}
             /> */}
 
-<Typography
+            <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
@@ -215,13 +215,22 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            {/* <Item
-              title="Probability to Series C"
-              to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
+
+          <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Data
+            </Typography>
+            <Item
+              title="Data Manipulations"
+              to="/data"
+              // icon={<PersonOutlinedIcon />}
+              icon={<AutoGraphIcon />}
               selected={selected}
               setSelected={setSelected}
-            /> */}
+            />
 
             <Typography
               variant="h6"
